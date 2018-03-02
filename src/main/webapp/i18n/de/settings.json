@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "title": "Einstellungen für Benutzer [<b>{{username}}</b>]",
+        "form": {
+            "firstname": "Vorname",
+            "firstname.placeholder": "Ihr Vorname",
+            "lastname": "Nachname",
+            "lastname.placeholder": "Ihr Nachname",
+            "voie": "Hauptstraße",
+            "voie.placeholder": "Ihr Hauptstraße",
+            "complement": "Ergänzung",
+            "complement.placeholder": "Ihr Ergänzung",
+            "codePostal": "Postleitzahl",
+            "codePostal.placeholder": "Ihr Postleitzahl",
+            "ville": "Stadt",
+            "ville.placeholder": "Ihr Stadt",
+            "telephone": "Telefonnummer",
+            "telephone.placeholder": "Ihr Telefonnummer",
+            "language": "Sprache",
+            "button": "Speichern"
+        },
+        "messages": {
+            "error": {
+                "fail": "<strong>Es ist ein Fehler aufgetreten!</strong> Die Einstellungen konnten nicht gespeichert werden.",
+                "emailexists": "<strong>Email wird bereits verwendet!</strong> Bitte wählen Sie eine andere aus."
+            },
+            "success": "<strong>Einstellungen wurden gespeichert!</strong>",
+            "validate": {
+                "firstname": {
+                    "required": "Ihr Vorname wird benötigt.",
+                    "minlength": "Ihr vorname muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr vorname darf nicht länger als 50 Zeichen sein"
+                },
+                "lastname": {
+                    "required": "Ihr Nachname wird benötigt.",
+                    "minlength": "Ihr nachname muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr nachname darf nicht länger als 50 Zeichen sein"
+                },
+                "voie": {
+                    "minlength": "Ihr hauptstraße muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr hauptstraße darf nicht länger als 50 Zeichen sein"
+                },
+                "complement": {
+                    "minlength": "Ihr ergänzung muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr ergänzung darf nicht länger als 50 Zeichen sein"
+                },
+                "codePostal": {
+                    "minlength": "Ihr postleitzahl muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr postleitzahl darf nicht länger als 50 Zeichen sein"
+                },
+                "ville": {
+                    "minlength": "Ihr stadt muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr stadt darf nicht länger als 50 Zeichen sein"
+                },
+                "telephone": {
+                    "minlength": "Ihr telefonnummer muss mindestens 1 Zeichen lang sein",
+                    "maxlength": "Ihr telefonnummer darf nicht länger als 50 Zeichen sein"
+                }
+            }
+        }
+    }
+}

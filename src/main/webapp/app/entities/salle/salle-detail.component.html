@@ -1,0 +1,39 @@
+<div *ngIf="salle">
+    <h3><span jhiTranslate="factoryApp.salle.detail.title">Salle</span> {{salle.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.salle.code">Code</span></dt>
+        <dd>
+            <span>{{salle.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.salle.capacite">Capacite</span></dt>
+        <dd>
+            <span>{{salle.capacite}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.salle.etage">Etage</span></dt>
+        <dd>
+            <span>{{salle.etage}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.salle.projecteur">Projecteur</span></dt>
+        <dd>
+            <div *ngIf="salle.projecteur">
+                <a [routerLink]="['/projecteur', salle.projecteur?.id]">{{salle.projecteur?.code}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'salle/'+ salle.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "projecteur" : {
+            "home": {
+                "title": "Projektor",
+                "createLabel": "Projektor erstellen",
+                "createOrEditLabel": "Projektor erstellen oder bearbeiten",
+                "search": "Suche nach Projektor"
+            },
+            "created": "Projektor erstellt mit ID {{ param }}",
+            "updated": "Projektor aktualisiert mit ID {{ param }}",
+            "deleted": "Projektor gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Projektor {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Projektor"
+            },
+            "code": "Code",
+            "coutJour": "Kostentag",
+            "etat": "Zustand",
+            "salle": "Saal"
+        }
+    }
+}

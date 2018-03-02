@@ -1,0 +1,10 @@
+{
+    "factoryApp": {
+        "EtatMaterielEnum" : {
+            "null": "",
+            "OK": "OK",
+            "ABIME": "ABIME",
+            "INUTILISABLE": "INUTILISABLE"
+        }
+    }
+}

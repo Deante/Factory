@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "stagiaire" : {
+            "home": {
+                "title": "Trainees",
+                "createLabel": "Create a new Trainee",
+                "createOrEditLabel": "Create or edit a Trainee",
+                "search": "Search for Trainee"
+            },
+            "created": "A new Trainee is created with identifier {{ param }}",
+            "updated": "A Trainee is updated with identifier {{ param }}",
+            "deleted": "A Trainee is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Trainee {{ id }}?"
+            },
+            "detail": {
+                "title": "Trainee"
+            },
+            "user": "User",
+            "formation": "Training",
+            "ordinateur": "Computer",
+            "niveau": "Level"
+        }
+    }
+}

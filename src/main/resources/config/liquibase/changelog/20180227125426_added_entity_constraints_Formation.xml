@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Formation.
+    -->
+    <changeSet id="20180227125426-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="departement_id"
+                                 baseTableName="formation"
+                                 constraintName="fk_formation_departement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="departement"/>
+
+        <addForeignKeyConstraint baseColumnNames="formations_id"
+                                 baseTableName="formation_formateurs"
+                                 constraintName="fk_formation_formateurs_formations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formation"/>
+        <addForeignKeyConstraint baseColumnNames="formateurs_id"
+                                 baseTableName="formation_formateurs"
+                                 constraintName="fk_formation_formateurs_formateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formateur"/>
+        
+        <addForeignKeyConstraint baseColumnNames="gestionnaire_id"
+                                 baseTableName="formation"
+                                 constraintName="fk_formation_gestionnaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gestionnaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="salle_id"
+                                 baseTableName="formation"
+                                 constraintName="fk_formation_salle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="salle"/>
+
+        <addForeignKeyConstraint baseColumnNames="technicien_id"
+                                 baseTableName="formation"
+                                 constraintName="fk_formation_technicien_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="technicien"/>
+
+        <addForeignKeyConstraint baseColumnNames="formations_id"
+                                 baseTableName="formation_modules"
+                                 constraintName="fk_formation_modules_formations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formation"/>
+        <addForeignKeyConstraint baseColumnNames="modules_id"
+                                 baseTableName="formation_modules"
+                                 constraintName="fk_formation_modules_modules_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="module"/>
+        
+    </changeSet>
+</databaseChangeLog>

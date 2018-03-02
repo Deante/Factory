@@ -1,0 +1,26 @@
+{
+    "factoryApp": {
+        "salle" : {
+            "home": {
+                "title": "Salles",
+                "createLabel": "Créer une nouvelle Salle",
+                "createOrEditLabel": "Créer ou éditer une Salle",
+                "search": "Recherche par Salle"
+            },
+            "created": "Une nouvelle Salle a été créée avec l'identifiant {{ param }}",
+            "updated": "La Salle avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Salle avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Salle {{ id }} ?"
+            },
+            "detail": {
+                "title": "Salle"
+            },
+            "code": "Code",
+            "capacite": "Capacité",
+            "etage": "Étage",
+            "projecteur": "Projecteur",
+            "formations": "Formations"
+        }
+    }
+}

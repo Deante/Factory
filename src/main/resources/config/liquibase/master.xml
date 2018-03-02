@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000001_updated_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227123538_added_entity_Site.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227124336_added_entity_Departement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227124517_added_entity_Competence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227125023_added_entity_Module.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227125426_added_entity_Formation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_Gestionnaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_Formateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_Technicien.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132756_added_entity_Matiere.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227133448_added_entity_Salle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227134155_added_entity_Stagiaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227134757_added_entity_Projecteur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227135513_added_entity_Ordinateur.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180227124336_added_entity_constraints_Departement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227124517_added_entity_constraints_Competence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227125023_added_entity_constraints_Module.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227125426_added_entity_constraints_Formation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_constraints_Gestionnaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_constraints_Formateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227132455_added_entity_constraints_Technicien.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227133448_added_entity_constraints_Salle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180227134155_added_entity_constraints_Stagiaire.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "matieres",
+            "otherEntityName": "matiere",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nom",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "competences"
+        },
+        {
+            "relationshipName": "formateurs",
+            "otherEntityName": "formateur",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "competences"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "niveau",
+            "fieldType": "NiveauEnum",
+            "fieldValues": "DEBUTANT,INTERMEDIAIRE,AVANCE"
+        }
+    ],
+    "changelogDate": "20180227124517",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "competence",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

@@ -1,0 +1,46 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.home {
+    display: inline-block;
+    width: 90%;
+    height: 90%;
+    min-height: 186px !important;
+    background: url("../../content/images/home.png") no-repeat center top;
+    background-size: contain;
+    margin: 35px 20px 35px 20px;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+    .home {
+        background: url("../../content/images/home2x.png") no-repeat center top;
+        background-size: contain;
+    }
+}
+
+/* ==============================================================
+Cards
+===============================================================*/
+
+.card-header-formers {
+    background-color: #fbedc8 !important; 
+    height: 15px !important;
+}
+
+.card-header-trainings {
+    background-color: #fbedc8 !important;
+    height: 15px !important;
+}
+
+.card-content {
+    background-color: #e8e8e8 !important;
+    height: 75px !important;
+}

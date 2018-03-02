@@ -1,0 +1,119 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySiteLabel" jhiTranslate="factoryApp.site.home.createOrEditLabel">Create or edit a Site</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!site.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="site.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="site.nom" required minlength="1" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 1 }">
+                   This field is required to be at least 1 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.voie" for="field_voie">Voie</label>
+            <input type="text" class="form-control" name="voie" id="field_voie"
+                [(ngModel)]="site.voie" minlength="8" maxlength="50"/>
+            <div [hidden]="!(editForm.controls.voie?.dirty && editForm.controls.voie?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.voie?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 8 }">
+                   This field is required to be at least 8 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.voie?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.complement" for="field_complement">Complement</label>
+            <input type="text" class="form-control" name="complement" id="field_complement"
+                [(ngModel)]="site.complement" minlength="0" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.complement?.dirty && editForm.controls.complement?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.complement?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 0 }">
+                   This field is required to be at least 0 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.complement?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.codePostal" for="field_codePostal">Code Postal</label>
+            <input type="text" class="form-control" name="codePostal" id="field_codePostal"
+                [(ngModel)]="site.codePostal" minlength="5" maxlength="5"/>
+            <div [hidden]="!(editForm.controls.codePostal?.dirty && editForm.controls.codePostal?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.codePostal?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 5 }">
+                   This field is required to be at least 5 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.codePostal?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 5 }">
+                   This field cannot be longer than 5 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.ville" for="field_ville">Ville</label>
+            <input type="text" class="form-control" name="ville" id="field_ville"
+                [(ngModel)]="site.ville" minlength="2" maxlength="50"/>
+            <div [hidden]="!(editForm.controls.ville?.dirty && editForm.controls.ville?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ville?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 2 }">
+                   This field is required to be at least 2 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ville?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.site.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                [(ngModel)]="site.telephone" minlength="10" maxlength="10"/>
+            <div [hidden]="!(editForm.controls.telephone?.dirty && editForm.controls.telephone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.telephone?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 10 }">
+                   This field is required to be at least 10 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.telephone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

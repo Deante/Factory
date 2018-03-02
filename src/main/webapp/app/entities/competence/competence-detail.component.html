@@ -1,0 +1,35 @@
+<div *ngIf="competence">
+    <h3><span jhiTranslate="factoryApp.competence.detail.title">Competence</span> {{competence.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.competence.nom">Nom</span></dt>
+        <dd>
+            <span>{{competence.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.competence.niveau">Niveau</span></dt>
+        <dd>
+            <span jhiTranslate="{{'factoryApp.NiveauEnum.' + competence.niveau}}">{{competence.niveau}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.competence.matieres">Matieres</span></dt>
+        <dd>
+            <span *ngFor="let matieres of competence.matieres; let last = last">
+                <a [routerLink]="['/matiere', matieres?.id ]">{{matieres.nom}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'competence/'+ competence.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

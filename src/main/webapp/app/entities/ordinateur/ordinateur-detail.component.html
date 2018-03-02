@@ -1,0 +1,49 @@
+<div *ngIf="ordinateur">
+    <h3><span jhiTranslate="factoryApp.ordinateur.detail.title">Ordinateur</span> {{ordinateur.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.ordinateur.code">Code</span></dt>
+        <dd>
+            <span>{{ordinateur.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.processeur">Processeur</span></dt>
+        <dd>
+            <span>{{ordinateur.processeur}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.memoire">Memoire</span></dt>
+        <dd>
+            <span>{{ordinateur.memoire}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.disque">Disque</span></dt>
+        <dd>
+            <span>{{ordinateur.disque}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.anneeAchat">Annee Achat</span></dt>
+        <dd>
+            <span>{{ordinateur.anneeAchat}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.coutJour">Cout Jour</span></dt>
+        <dd>
+            <span>{{ordinateur.coutJour}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.ordinateur.etat">Etat</span></dt>
+        <dd>
+            <span jhiTranslate="{{'factoryApp.EtatMaterielEnum.' + ordinateur.etat}}">{{ordinateur.etat}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ordinateur/'+ ordinateur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

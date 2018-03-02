@@ -1,0 +1,11 @@
+version: '2'
+services:
+    factory-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/Factory/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=Factory
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

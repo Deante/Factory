@@ -1,0 +1,24 @@
+{
+    "factoryApp": {
+        "technicien" : {
+            "home": {
+                "title": "Technicians",
+                "createLabel": "Create a new Technician",
+                "createOrEditLabel": "Create or edit a Technician",
+                "search": "Search for Technician"
+            },
+            "created": "A new Technician is created with identifier {{ param }}",
+            "updated": "A Technician is updated with identifier {{ param }}",
+            "deleted": "A Technician is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Technician {{ id }}?"
+            },
+            "detail": {
+                "title": "Technician"
+            },
+            "user": "User",
+            "formation": "Training"
+        }
+    }
+}
+

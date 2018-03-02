@@ -1,0 +1,47 @@
+<div *ngIf="module">
+    <h3><span jhiTranslate="factoryApp.module.detail.title">Module</span> {{module.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.module.titre">Titre</span></dt>
+        <dd>
+            <span>{{module.titre}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.module.duree">Duree</span></dt>
+        <dd>
+            <span>{{module.duree}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.module.couleur">Couleur</span></dt>
+        <dd>
+            <span jhiTranslate="{{'factoryApp.CouleurEnum.' + module.couleur}}">{{module.couleur}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.module.prerequis">Prerequis</span></dt>
+        <dd>
+            <span>{{module.prerequis}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.module.contenu">Contenu</span></dt>
+        <dd>
+            <span>{{module.contenu}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.module.matieres">Matieres</span></dt>
+        <dd>
+            <span *ngFor="let matieres of module.matieres; let last = last">
+                <a [routerLink]="['/matiere', matieres?.id ]">{{matieres.nom}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'module/'+ module.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

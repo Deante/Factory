@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "projecteur" : {
+            "home": {
+                "title": "Projecteurs",
+                "createLabel": "Créer un nouveau Projecteur",
+                "createOrEditLabel": "Créer ou éditer un Projecteur",
+                "search": "Recherche par Projecteur"
+            },
+            "created": "Un nouveau Projecteur a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Projecteur avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Projecteur avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Projecteur {{ id }} ?"
+            },
+            "detail": {
+                "title": "Projecteur"
+            },
+            "code": "Code",
+            "coutJour": "Coût Jour",
+            "etat": "État",
+            "salle": "Salle"
+        }
+    }
+}

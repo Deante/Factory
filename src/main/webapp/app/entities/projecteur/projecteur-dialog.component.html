@@ -1,0 +1,57 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProjecteurLabel" jhiTranslate="factoryApp.projecteur.home.createOrEditLabel">Create or edit a Projecteur</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!projecteur.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="projecteur.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.projecteur.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="projecteur.code" required minlength="3" maxlength="8"/>
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                   This field is required to be at least 3 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 8 }">
+                   This field cannot be longer than 8 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.projecteur.coutJour" for="field_coutJour">Cout Jour</label>
+            <input type="number" class="form-control" name="coutJour" id="field_coutJour"
+                [(ngModel)]="projecteur.coutJour" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.projecteur.etat" for="field_etat">Etat</label>
+            <select class="form-control" name="etat" [(ngModel)]="projecteur.etat" id="field_etat" >
+                <option value="OK">{{'factoryApp.EtatMaterielEnum.OK' | translate}}</option>
+                <option value="ABIME">{{'factoryApp.EtatMaterielEnum.ABIME' | translate}}</option>
+                <option value="INUTILISABLE">{{'factoryApp.EtatMaterielEnum.INUTILISABLE' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

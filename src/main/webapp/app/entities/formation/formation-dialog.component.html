@@ -1,0 +1,131 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFormationLabel" jhiTranslate="factoryApp.formation.home.createOrEditLabel">Create or edit a Formation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!formation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="formation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                [(ngModel)]="formation.nom" required minlength="3" maxlength="50"/>
+            <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                   This field is required to be at least 3 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nom?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 50 }">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.dateDebutForm" for="field_dateDebutForm">Date Debut Form</label>
+            <div class="input-group">
+                <input id="field_dateDebutForm" type="text" class="form-control" name="dateDebutForm" ngbDatepicker  #dateDebutFormDp="ngbDatepicker" [(ngModel)]="formation.dateDebutForm"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateDebutFormDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateDebutForm?.dirty && editForm.controls.dateDebutForm?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateDebutForm?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.dateFinForm" for="field_dateFinForm">Date Fin Form</label>
+            <div class="input-group">
+                <input id="field_dateFinForm" type="text" class="form-control" name="dateFinForm" ngbDatepicker  #dateFinFormDp="ngbDatepicker" [(ngModel)]="formation.dateFinForm"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="dateFinFormDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateFinForm?.dirty && editForm.controls.dateFinForm?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateFinForm?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.objectifs" for="field_objectifs">Objectifs</label>
+            <input type="text" class="form-control" name="objectifs" id="field_objectifs"
+                [(ngModel)]="formation.objectifs" minlength="0" maxlength="250"/>
+            <div [hidden]="!(editForm.controls.objectifs?.dirty && editForm.controls.objectifs?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.objectifs?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 0 }">
+                   This field is required to be at least 0 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.objectifs?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 250 }">
+                   This field cannot be longer than 250 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.departement" for="field_departement">Departement</label>
+            <select class="form-control" id="field_departement" name="departement" [(ngModel)]="formation.departement" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="departementOption.id === formation.departement?.id ? formation.departement : departementOption" *ngFor="let departementOption of departements; trackBy: trackDepartementById">{{departementOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="factoryApp.formation.formateurs" for="field_formateurs">Formateurs</label>
+            <select class="form-control" id="field_formateurs" multiple name="formateurs" [(ngModel)]="formation.formateurs">
+                <option [ngValue]="getSelected(formation.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.gestionnaire" for="field_gestionnaire">Gestionnaire</label>
+            <select class="form-control" id="field_gestionnaire" name="gestionnaire" [(ngModel)]="formation.gestionnaire" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="gestionnaireOption.id === formation.gestionnaire?.id ? formation.gestionnaire : gestionnaireOption" *ngFor="let gestionnaireOption of gestionnaires; trackBy: trackGestionnaireById">{{gestionnaireOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.salle" for="field_salle">Salle</label>
+            <select class="form-control" id="field_salle" name="salle" [(ngModel)]="formation.salle" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="salleOption.id === formation.salle?.id ? formation.salle : salleOption" *ngFor="let salleOption of salles; trackBy: trackSalleById">{{salleOption.code}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.formation.technicien" for="field_technicien">Technicien</label>
+            <select class="form-control" id="field_technicien" name="technicien" [(ngModel)]="formation.technicien" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="technicienOption.id === formation.technicien?.id ? formation.technicien : technicienOption" *ngFor="let technicienOption of techniciens; trackBy: trackTechnicienById">{{technicienOption.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="factoryApp.formation.modules" for="field_modules">Modules</label>
+            <select class="form-control" id="field_modules" multiple name="modules" [(ngModel)]="formation.modules">
+                <option [ngValue]="getSelected(formation.modules, moduleOption)" *ngFor="let moduleOption of modules; trackBy: trackModuleById">{{moduleOption.titre}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

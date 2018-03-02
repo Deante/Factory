@@ -1,0 +1,80 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "departements",
+            "otherEntityName": "departement",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "site"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "voie",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "8",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "complement",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "0",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "codePostal",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "5"
+        },
+        {
+            "fieldName": "ville",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "telephone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "10",
+            "fieldValidateRulesMaxlength": "10"
+        }
+    ],
+    "changelogDate": "20180227123538",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "site",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

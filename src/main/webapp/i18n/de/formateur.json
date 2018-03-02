@@ -1,0 +1,26 @@
+{
+    "factoryApp": {
+        "formateur" : {
+            "home": {
+                "title": "Ausbilders",
+                "createLabel": "Ausbilder erstellen",
+                "createOrEditLabel": "Ausbilder erstellen oder bearbeiten",
+                "search": "Suche nach Ausbilder"
+            },
+            "created": "Ausbilder erstellt mit ID {{ param }}",
+            "updated": "Ausbilder aktualisiert mit ID {{ param }}",
+            "deleted": "Ausbilder gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Ausbilder {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Ausbilder"
+            },
+            "dateDebutDispo": "frühe Verfügbarkeit",
+            "dateFinDispo": "Ende der Verfügbarkeit",
+            "user": "Benutzer",
+            "competences": "Computerkenntnisse",
+            "formations": "Ausbildungen"
+        }
+    }
+}

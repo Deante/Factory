@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "site",
+            "otherEntityName": "site",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "formations",
+            "otherEntityName": "formation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "departement"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "etages",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180227124336",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "departement",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

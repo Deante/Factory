@@ -1,0 +1,28 @@
+{
+    "factoryApp": {
+        "module" : {
+            "home": {
+                "title": "Module",
+                "createLabel": "Modul erstellen",
+                "createOrEditLabel": "Modul erstellen oder bearbeiten",
+                "search": "Suche nach Modul"
+            },
+            "created": "Modul erstellt mit ID {{ param }}",
+            "updated": "Modul aktualisiert mit ID {{ param }}",
+            "deleted": "Modul gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Modul {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Modul"
+            },
+            "titre": "Titel",
+            "duree": "Dauer",
+            "couleur": "Farbe",
+            "prerequis": "Voraussetzungen",
+            "contenu": "Inhalt",
+            "formations": "Ausbildungen",
+            "matieres": "Themen"
+        }
+    }
+}

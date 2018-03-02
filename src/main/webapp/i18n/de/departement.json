@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "departement" : {
+            "home": {
+                "title": "Abteilungen",
+                "createLabel": "Abteilung erstellen",
+                "createOrEditLabel": "Abteilung erstellen oder bearbeiten",
+                "search": "Suche nach Abteilung"
+            },
+            "created": "Abteilung erstellt mit ID {{ param }}",
+            "updated": "Abteilung aktualisiert mit ID {{ param }}",
+            "deleted": "Abteilung gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Abteilung {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Abteilung"
+            },
+            "nom": "Name",
+            "etages": "Etagen",
+            "site": "Seite",
+            "formations": "Ausbildungen"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "factoryApp": {
+        "salle" : {
+            "home": {
+                "title": "Salles",
+                "createLabel": "Salle erstellen",
+                "createOrEditLabel": "Salle erstellen oder bearbeiten",
+                "search": "Suche nach Salle"
+            },
+            "created": "Salle erstellt mit ID {{ param }}",
+            "updated": "Salle aktualisiert mit ID {{ param }}",
+            "deleted": "Salle gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Salle {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Salle"
+            },
+            "code": "Code",
+            "capacite": "Capacite",
+            "etage": "Etage",
+            "projecteur": "Projecteur",
+            "formations": "Formations"
+        }
+    }
+}

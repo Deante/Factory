@@ -1,0 +1,94 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "departement",
+            "otherEntityName": "departement",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "formateurs",
+            "otherEntityName": "formateur",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nom",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "formations"
+        },
+        {
+            "relationshipName": "gestionnaire",
+            "otherEntityName": "gestionnaire",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "stagiaires",
+            "otherEntityName": "stagiaire",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "formation"
+        },
+        {
+            "relationshipName": "salle",
+            "otherEntityName": "salle",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "code"
+        },
+        {
+            "relationshipName": "technicien",
+            "otherEntityName": "technicien",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "modules",
+            "otherEntityName": "module",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "titre",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "formations"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "dateDebutForm",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateFinForm",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "objectifs",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "0",
+            "fieldValidateRulesMaxlength": "250"
+        }
+    ],
+    "changelogDate": "20180227125426",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "formation",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

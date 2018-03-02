@@ -1,0 +1,41 @@
+<div *ngIf="stagiaire">
+    <h3><span jhiTranslate="factoryApp.stagiaire.detail.title">Stagiaire</span> {{stagiaire.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.stagiaire.niveau">Niveau</span></dt>
+        <dd>
+            <span jhiTranslate="{{'factoryApp.NiveauEnum.' + stagiaire.niveau}}">{{stagiaire.niveau}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.stagiaire.user">User</span></dt>
+        <dd>
+            {{stagiaire.user?.login}}
+        </dd>
+        <dt><span jhiTranslate="factoryApp.stagiaire.formation">Formation</span></dt>
+        <dd>
+            <div *ngIf="stagiaire.formation">
+                <a [routerLink]="['/formation', stagiaire.formation?.id]">{{stagiaire.formation?.nom}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.stagiaire.ordinateur">Ordinateur</span></dt>
+        <dd>
+            <div *ngIf="stagiaire.ordinateur">
+                <a [routerLink]="['/ordinateur', stagiaire.ordinateur?.id]">{{stagiaire.ordinateur?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'stagiaire/'+ stagiaire.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

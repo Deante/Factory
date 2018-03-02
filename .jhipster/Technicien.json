@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "technicien"
+        },
+        {
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "technicien"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180227132455",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "technicien",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

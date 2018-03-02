@@ -1,0 +1,12 @@
+{
+    "factoryApp": {
+        "CouleurEnum" : {
+            "null": "",
+            "ROUGE": "ROUGE",
+            "VERT": "VERT",
+            "BLEU": "BLEU",
+            "JAUNE": "JAUNE",
+            "NOIR": "NOIR"
+        }
+    }
+}

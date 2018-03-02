@@ -1,0 +1,14 @@
+{
+    "home": {
+        "title": "Formations",
+        "subtitle": "Gestion des intervenants et des formations",
+        "logged": {
+            "message": "Vous êtes connecté en tant que \"{{username}}\"."
+        },
+        "question": "Si vous avez des questions sur les formations Factory :",
+        "link": {
+            "homepage": "Page d'accueil Factory",
+            "follow": "Suivez @Factory sur Twitter"
+        }
+    }
+}

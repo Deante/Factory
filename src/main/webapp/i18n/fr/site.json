@@ -1,0 +1,28 @@
+{
+    "factoryApp": {
+        "site" : {
+            "home": {
+                "title": "Sites",
+                "createLabel": "Créer un nouveau Site",
+                "createOrEditLabel": "Créer ou éditer un Site",
+                "search": "Recherche par Site"
+            },
+            "created": "Un nouveau Site a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Site avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Site avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Site {{ id }} ?"
+            },
+            "detail": {
+                "title": "Site"
+            },
+            "nom": "Nom",
+            "voie": "Voie",
+            "complement": "Complément",
+            "codePostal": "Code Postal",
+            "ville": "Ville",
+            "telephone": "Téléphone",
+            "departements": "Départements"
+        }
+    }
+}

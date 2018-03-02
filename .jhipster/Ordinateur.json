@@ -1,0 +1,73 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "stagiaires",
+            "otherEntityName": "stagiaire",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "ordinateur"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "8"
+        },
+        {
+            "fieldName": "processeur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "memoire",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "8",
+            "fieldValidateRulesMax": "64"
+        },
+        {
+            "fieldName": "disque",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "128",
+            "fieldValidateRulesMax": "8000"
+        },
+        {
+            "fieldName": "anneeAchat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coutJour",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "EtatMaterielEnum",
+            "fieldValues": "OK,ABIME,INUTILISABLE"
+        }
+    ],
+    "changelogDate": "20180227135513",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "ordinateur",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

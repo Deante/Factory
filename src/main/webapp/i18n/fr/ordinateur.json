@@ -1,0 +1,29 @@
+{
+    "factoryApp": {
+        "ordinateur" : {
+            "home": {
+                "title": "Ordinateurs",
+                "createLabel": "Créer un nouveau Ordinateur",
+                "createOrEditLabel": "Créer ou éditer un Ordinateur",
+                "search": "Recherche par Ordinateur"
+            },
+            "created": "Un nouveau Ordinateur a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ordinateur avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ordinateur avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ordinateur {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ordinateur"
+            },
+            "code": "Code",
+            "processeur": "Processeur",
+            "memoire": "Mémoire",
+            "disque": "Disque",
+            "anneeAchat": "Année Achat",
+            "coutJour": "Coût Jour",
+            "etat": "État",
+            "stagiaires": "Stagiaires"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "factoryApp": {
+        "stagiaire" : {
+            "home": {
+                "title": "Stagiaires",
+                "createLabel": "Créer un nouveau Stagiaire",
+                "createOrEditLabel": "Créer ou éditer un Stagiaire",
+                "search": "Recherche par Stagiaire"
+            },
+            "created": "Un nouveau Stagiaire a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Stagiaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Stagiaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Stagiaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Stagiaire"
+            },
+            "user": "Utilisateur",
+            "formations": "Formations",
+            "niveau": "Niveau"
+        }
+    }
+}

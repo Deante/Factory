@@ -1,0 +1,10 @@
+{
+    "factoryApp": {
+        "NiveauEnum" : {
+            "null": "",
+            "DEBUTANT": "DEBUTANT",
+            "INTERMEDIAIRE": "INTERMEDIAIRE",
+            "AVANCE": "AVANCE"
+        }
+    }
+}

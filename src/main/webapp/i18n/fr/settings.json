@@ -1,0 +1,62 @@
+{
+    "settings": {
+        "title": "Profil de l'utilisateur [<b>{{username}}</b>]",
+        "form": {
+            "firstname": "Prénom",
+            "firstname.placeholder": "Votre prénom",
+            "lastname": "Nom",
+            "lastname.placeholder": "Votre nom",
+            "voie": "Adresse",
+            "voie.placeholder": "Votre adresse",
+            "complement": "Complément",
+            "complement.placeholder": "Votre complément d'adresse",
+            "codePostal": "Code Postal",
+            "codePostal.placeholder": "Votre code postal",
+            "ville": "Ville",
+            "ville.placeholder": "Votre ville",
+            "telephone": "Téléphone",
+            "telephone.placeholder": "Votre téléphone",
+            "language": "Langue",
+            "button": "Sauvegarder"
+        },
+        "messages": {
+            "error": {
+                "fail": "<strong>Une erreur est survenue !</strong> Votre profil n'a pas été sauvegardé.",
+                "emailexists": "<strong>Cet email est déjà utilisé !</strong> Veuillez en choisir un autre."
+            },
+            "success": "<strong>Votre profil a été sauvegardé !</strong>",
+            "validate": {
+                "firstname": {
+                    "required": "Votre prénom est requis.",
+                    "minlength": "Votre prénom doit comporter au moins un caractère.",
+                    "maxlength": "Votre prénom ne doit pas comporter plus de 50 caractères."
+                },
+                "lastname": {
+                    "required": "Votre nom est requis.",
+                    "minlength": "Votre nom doit comporter au moins un caractère.",
+                    "maxlength": "Votre nom ne doit pas comporter plus de 50 caractères."
+                },
+                "voie": {
+                    "minlength": "Votre adresse doit comporter au moins huit caractères.",
+                    "maxlength": "Votre adresse ne doit pas comporter plus de 50 caractères."
+                },
+                "complement": {
+                    "minlength": "Votre complément d'adresse doit comporter au moins un caractère.",
+                    "maxlength": "Votre complément d'adresse ne doit pas comporter plus de 50 caractères."
+                },
+                "codePostal": {
+                    "minlength": "Votre code postal doit comporter au moins cinq caractères.",
+                    "maxlength": "Votre code postal ne doit pas comporter plus de 5 caractères."
+                },
+                "ville": {
+                    "minlength": "Votre ville doit comporter au moins trois caractères.",
+                    "maxlength": "Votre ville ne doit pas comporter plus de 50 caractères."
+                },
+                "telephone": {
+                    "minlength": "Votre téléphone doit comporter au moins 10 caractères.",
+                    "maxlength": "Votre téléphone ne doit pas comporter plus de 10 caractères."
+                }
+            }
+        }
+    }
+}

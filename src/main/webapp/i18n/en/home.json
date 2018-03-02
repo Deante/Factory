@@ -1,0 +1,14 @@
+{
+    "home": {
+        "title": "Trainings",
+        "subtitle": "Formers and Trainings Management",
+        "logged": {
+            "message": "You are logged in as \"{{username}}\"."
+        },
+        "question": "If you have questions about Factory trainings :",
+        "link": {
+            "homepage": "Factory Homepage",
+            "follow": "Suivez @Factory sur Twitter"
+        }
+    }
+}

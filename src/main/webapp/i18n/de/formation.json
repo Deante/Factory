@@ -1,0 +1,32 @@
+{
+    "factoryApp": {
+        "formation" : {
+            "home": {
+                "title": "Ausbildungen",
+                "createLabel": "Ausbildung erstellen",
+                "createOrEditLabel": "Ausbildung erstellen oder bearbeiten",
+                "search": "Suche nach Ausbildung"
+            },
+            "created": "Ausbildung erstellt mit ID {{ param }}",
+            "updated": "Ausbildung aktualisiert mit ID {{ param }}",
+            "deleted": "Ausbildung gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Ausbildung {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Ausbildung"
+            },
+            "nom": "Name",
+            "dateDebutForm": "Beginn des Trainings",
+            "dateFinForm": "Ende des Trainings",
+            "objectifs": "Ziele",
+            "departement": "Abteilung",
+            "formateurs": "Ausbilders",
+            "gestionnaire": "Manager",
+            "stagiaires": "Auszubildende",
+            "salle": "Saal",
+            "technicien": "Techniker",
+            "modules": "Module"
+        }
+    }
+}

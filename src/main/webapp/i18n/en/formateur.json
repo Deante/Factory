@@ -1,0 +1,26 @@
+{
+    "factoryApp": {
+        "formateur" : {
+            "home": {
+                "title": "Formateurs",
+                "createLabel": "Create a new Formateur",
+                "createOrEditLabel": "Create or edit a Formateur",
+                "search": "Search for Formateur"
+            },
+            "created": "A new Formateur is created with identifier {{ param }}",
+            "updated": "A Formateur is updated with identifier {{ param }}",
+            "deleted": "A Formateur is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Formateur {{ id }}?"
+            },
+            "detail": {
+                "title": "Formateur"
+            },
+            "user": "User",
+            "dateDebutDispo": "Availability start",
+            "dateFinDispo": "Availability end",
+            "competences": "Skills",
+            "formations": "Trainings"
+        }
+    }
+}

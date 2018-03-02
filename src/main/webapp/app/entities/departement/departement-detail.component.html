@@ -1,0 +1,35 @@
+<div *ngIf="departement">
+    <h3><span jhiTranslate="factoryApp.departement.detail.title">Departement</span> {{departement.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.departement.nom">Nom</span></dt>
+        <dd>
+            <span>{{departement.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.departement.etages">Etages</span></dt>
+        <dd>
+            <span>{{departement.etages}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.departement.site">Site</span></dt>
+        <dd>
+            <div *ngIf="departement.site">
+                <a [routerLink]="['/site', departement.site?.id]">{{departement.site?.nom}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'departement/'+ departement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

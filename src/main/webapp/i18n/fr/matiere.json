@@ -1,0 +1,24 @@
+{
+    "factoryApp": {
+        "matiere" : {
+            "home": {
+                "title": "Matieres",
+                "createLabel": "Créer une nouvelle Matiere",
+                "createOrEditLabel": "Créer ou éditer une Matiere",
+                "search": "Recherche par Matiere"
+            },
+            "created": "Une nouvelle Matiere a été créée avec l'identifiant {{ param }}",
+            "updated": "La Matiere avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Matiere avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Matiere {{ id }} ?"
+            },
+            "detail": {
+                "title": "Matière"
+            },
+            "nom": "Nom",
+            "modules": "Modules",
+            "competences": "Compétences"
+        }
+    }
+}

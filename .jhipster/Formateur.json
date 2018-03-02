@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "formateur"
+        },
+        {
+            "relationshipName": "competences",
+            "otherEntityName": "competence",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "formateurs"
+        },
+        {
+            "relationshipName": "formations",
+            "otherEntityName": "formation",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "formateurs"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebutDispo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateFinDispo",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180227132455",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "formateur",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

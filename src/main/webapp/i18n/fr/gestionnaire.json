@@ -1,0 +1,23 @@
+{
+    "factoryApp": {
+        "gestionnaire" : {
+            "home": {
+                "title": "Gestionnaires",
+                "createLabel": "Créer un nouveau Gestionnaire",
+                "createOrEditLabel": "Créer ou éditer un Gestionnaire",
+                "search": "Recherche par Gestionnaire"
+            },
+            "created": "Un nouveau Gestionnaire a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Gestionnaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Gestionnaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Gestionnaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Gestionnaire"
+            },
+            "user": "Utilisateur",
+            "formations": "Formations"
+        }
+    }
+}

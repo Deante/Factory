@@ -1,0 +1,27 @@
+{
+    "factoryApp": {
+        "formateur" : {
+            "home": {
+                "title": "Formateurs",
+                "createLabel": "Créer un nouveau Formateur",
+                "createOrEditLabel": "Créer ou éditer un Formateur",
+                "search": "Recherche par Formateur"
+            },
+            "created": "Un nouveau Formateur a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Formateur avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Formateur avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Formateur {{ id }} ?"
+            },
+            "detail": {
+                "title": "Formateur"
+            },
+            "dateDebutDispo": "Début Dispo",
+            "dateFinDispo": "Fin Dispo",
+            "user": "Utilisateur",
+            "competences": "Compétences",
+            "formations": "Formations"
+        }
+    }
+}
+

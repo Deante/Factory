@@ -1,0 +1,115 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOrdinateurLabel" jhiTranslate="factoryApp.ordinateur.home.createOrEditLabel">Create or edit a Ordinateur</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ordinateur.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ordinateur.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="ordinateur.code" required minlength="3" maxlength="8"/>
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                   This field is required to be at least 3 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 8 }">
+                   This field cannot be longer than 8 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.processeur" for="field_processeur">Processeur</label>
+            <input type="text" class="form-control" name="processeur" id="field_processeur"
+                [(ngModel)]="ordinateur.processeur" minlength="2" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.processeur?.dirty && editForm.controls.processeur?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.processeur?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 2 }">
+                   This field is required to be at least 2 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.processeur?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.memoire" for="field_memoire">Memoire</label>
+            <input type="number" class="form-control" name="memoire" id="field_memoire"
+                [(ngModel)]="ordinateur.memoire" min="8" max="64"/>
+            <div [hidden]="!(editForm.controls.memoire?.dirty && editForm.controls.memoire?.invalid)">
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.memoire?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 8 }">
+                    This field should be at least 8.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.memoire?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 64 }">
+                    This field cannot be more than 64.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.memoire?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.disque" for="field_disque">Disque</label>
+            <input type="number" class="form-control" name="disque" id="field_disque"
+                [(ngModel)]="ordinateur.disque" min="128" max="8000"/>
+            <div [hidden]="!(editForm.controls.disque?.dirty && editForm.controls.disque?.invalid)">
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.disque?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 128 }">
+                    This field should be at least 128.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.disque?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 8000 }">
+                    This field cannot be more than 8000.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.disque?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.anneeAchat" for="field_anneeAchat">Annee Achat</label>
+            <input type="text" class="form-control" name="anneeAchat" id="field_anneeAchat"
+                [(ngModel)]="ordinateur.anneeAchat" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.coutJour" for="field_coutJour">Cout Jour</label>
+            <input type="number" class="form-control" name="coutJour" id="field_coutJour"
+                [(ngModel)]="ordinateur.coutJour" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.ordinateur.etat" for="field_etat">Etat</label>
+            <select class="form-control" name="etat" [(ngModel)]="ordinateur.etat" id="field_etat" >
+                <option value="OK">{{'factoryApp.EtatMaterielEnum.OK' | translate}}</option>
+                <option value="ABIME">{{'factoryApp.EtatMaterielEnum.ABIME' | translate}}</option>
+                <option value="INUTILISABLE">{{'factoryApp.EtatMaterielEnum.INUTILISABLE' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

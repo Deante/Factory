@@ -1,0 +1,29 @@
+{
+    "factoryApp": {
+        "ordinateur" : {
+            "home": {
+                "title": "Computer",
+                "createLabel": "Computer erstellen",
+                "createOrEditLabel": "Computer erstellen oder bearbeiten",
+                "search": "Suche nach Computer"
+            },
+            "created": "Computer erstellt mit ID {{ param }}",
+            "updated": "Computer aktualisiert mit ID {{ param }}",
+            "deleted": "Computer gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Computer {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Computer"
+            },
+            "code": "Code",
+            "processeur": "Prozessor",
+            "memoire": "Speicher",
+            "disque": "Festplatte",
+            "anneeAchat": "Jahr Kauf",
+            "coutJour": "Kostentag",
+            "etat": "Zustand",
+            "stagiaires": "Trainee"
+        }
+    }
+}

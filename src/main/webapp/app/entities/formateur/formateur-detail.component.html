@@ -1,0 +1,39 @@
+<div *ngIf="formateur">
+    <h3><span jhiTranslate="factoryApp.formateur.detail.title">Formateur</span> {{formateur.id}}</h3>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.formateur.dateDebutDispo">Date Debut Dispo</span></dt>
+        <dd>
+            <span>{{formateur.dateDebutDispo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.formateur.dateFinDispo">Date Fin Dispo</span></dt>
+        <dd>
+            <span>{{formateur.dateFinDispo | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.formateur.user">User</span></dt>
+        <dd>
+            {{formateur.user?.login}}
+        </dd>
+        <dt><span jhiTranslate="factoryApp.formateur.competences">Competences</span></dt>
+        <dd>
+            <span *ngFor="let competences of formateur.competences; let last = last">
+                <a [routerLink]="['/competence', competences?.id ]">{{competences.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'formateur/'+ formateur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

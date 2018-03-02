@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModuleLabel" jhiTranslate="factoryApp.module.home.createOrEditLabel">Create or edit a Module</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!module.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="module.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.module.titre" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                [(ngModel)]="module.titre" required minlength="3" maxlength="20"/>
+            <div [hidden]="!(editForm.controls.titre?.dirty && editForm.controls.titre?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titre?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titre?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                   This field is required to be at least 3 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titre?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                   This field cannot be longer than 20 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.module.duree" for="field_duree">Duree</label>
+            <input type="number" class="form-control" name="duree" id="field_duree"
+                [(ngModel)]="module.duree" required/>
+            <div [hidden]="!(editForm.controls.duree?.dirty && editForm.controls.duree?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.duree?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.duree?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.module.couleur" for="field_couleur">Couleur</label>
+            <select class="form-control" name="couleur" [(ngModel)]="module.couleur" id="field_couleur" >
+                <option value="ROUGE">{{'factoryApp.CouleurEnum.ROUGE' | translate}}</option>
+                <option value="VERT">{{'factoryApp.CouleurEnum.VERT' | translate}}</option>
+                <option value="BLEU">{{'factoryApp.CouleurEnum.BLEU' | translate}}</option>
+                <option value="JAUNE">{{'factoryApp.CouleurEnum.JAUNE' | translate}}</option>
+                <option value="NOIR">{{'factoryApp.CouleurEnum.NOIR' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.module.prerequis" for="field_prerequis">Prerequis</label>
+            <input type="text" class="form-control" name="prerequis" id="field_prerequis"
+                [(ngModel)]="module.prerequis" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.module.contenu" for="field_contenu">Contenu</label>
+            <input type="text" class="form-control" name="contenu" id="field_contenu"
+                [(ngModel)]="module.contenu" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="factoryApp.module.matieres" for="field_matieres">Matieres</label>
+            <select class="form-control" id="field_matieres" multiple name="matieres" [(ngModel)]="module.matieres">
+                <option [ngValue]="getSelected(module.matieres, matiereOption)" *ngFor="let matiereOption of matieres; trackBy: trackMatiereById">{{matiereOption.nom}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

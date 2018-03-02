@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "projecteur" : {
+            "home": {
+                "title": "Projectors",
+                "createLabel": "Create a new Projector",
+                "createOrEditLabel": "Create or edit a Projector",
+                "search": "Search for Projector"
+            },
+            "created": "A new Projector is created with identifier {{ param }}",
+            "updated": "A Projector is updated with identifier {{ param }}",
+            "deleted": "A Projector is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Projector {{ id }}?"
+            },
+            "detail": {
+                "title": "Projector"
+            },
+            "code": "Code",
+            "cout": "Daily Cost",
+            "etat": "State",
+            "salle": "Room"
+        }
+    }
+}

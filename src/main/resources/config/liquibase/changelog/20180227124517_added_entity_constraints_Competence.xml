@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Competence.
+    -->
+    <changeSet id="20180227124517-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="competences_id"
+                                 baseTableName="competence_matieres"
+                                 constraintName="fk_competence_matieres_competences_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="competence"/>
+        <addForeignKeyConstraint baseColumnNames="matieres_id"
+                                 baseTableName="competence_matieres"
+                                 constraintName="fk_competence_matieres_matieres_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="matiere"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stagiaire"
+        },
+        {
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipName": "ordinateur",
+            "otherEntityName": "ordinateur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "niveau",
+            "fieldType": "NiveauEnum",
+            "fieldValues": "DEBUTANT,INTERMEDIAIRE,AVANCE"
+        }
+	],
+    "changelogDate": "20180227134155",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "stagiaire",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

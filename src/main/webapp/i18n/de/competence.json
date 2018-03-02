@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "competence" : {
+            "home": {
+                "title": "Computerkenntnisse",
+                "createLabel": "Computerkenntnisse erstellen",
+                "createOrEditLabel": "Computerkenntnisse erstellen oder bearbeiten",
+                "search": "Suche nach Computerkenntnisse"
+            },
+            "created": "Computerkenntnisse erstellt mit ID {{ param }}",
+            "updated": "Computerkenntnisse aktualisiert mit ID {{ param }}",
+            "deleted": "Computerkenntnisse gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Computerkenntnisse {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Computerkenntnisse"
+            },
+            "nom": "Name",
+            "matieres": "Themen",
+            "formateurs": "Ausbilders",
+            "niveau": "Meisterschaftsstufe"
+        }
+    }
+}

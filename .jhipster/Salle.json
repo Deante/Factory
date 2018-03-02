@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "projecteur",
+            "otherEntityName": "projecteur",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "code",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "salle"
+        },
+        {
+            "relationshipName": "formations",
+            "otherEntityName": "formation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "salle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "8"
+        },
+        {
+            "fieldName": "capacite",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "2",
+            "fieldValidateRulesMax": "250"
+        },
+        {
+            "fieldName": "etage",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "20"
+        }
+    ],
+    "changelogDate": "20180227133448",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "salle",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

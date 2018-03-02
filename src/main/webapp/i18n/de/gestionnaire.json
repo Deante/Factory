@@ -1,0 +1,23 @@
+{
+    "factoryApp": {
+        "gestionnaire" : {
+            "home": {
+                "title": "Manager",
+                "createLabel": "Manager erstellen",
+                "createOrEditLabel": "Manager erstellen oder bearbeiten",
+                "search": "Suche nach Manager"
+            },
+            "created": "Manager erstellt mit ID {{ param }}",
+            "updated": "Manager aktualisiert mit ID {{ param }}",
+            "deleted": "Manager gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Manager {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Manager"
+            },
+            "user": "Benutzer",
+            "formations": "Ausbildungen"
+        }
+    }
+}

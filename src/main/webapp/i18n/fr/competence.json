@@ -1,0 +1,25 @@
+{
+    "factoryApp": {
+        "competence" : {
+            "home": {
+                "title": "Compétences",
+                "createLabel": "Créer une nouvelle Compétence",
+                "createOrEditLabel": "Créer ou éditer une Compétence",
+                "search": "Recherche par Compétence"
+            },
+            "created": "Une nouvelle Compétence a été créée avec l'identifiant {{ param }}",
+            "updated": "La Compétence avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Compétence avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Compétence {{ id }} ?"
+            },
+            "detail": {
+                "title": "Compétence"
+            },
+            "nom": "Nom",
+            "matieres": "Matières",
+            "formateurs": "Formateurs",
+            "niveau": "Niveau"
+        }
+    }
+}

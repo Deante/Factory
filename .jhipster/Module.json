@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "formations",
+            "otherEntityName": "formation",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "modules"
+        },
+        {
+            "relationshipName": "matieres",
+            "otherEntityName": "matiere",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nom",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "modules"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "20"
+        },
+        {
+            "fieldName": "duree",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "couleur",
+            "fieldType": "CouleurEnum",
+            "fieldValues": "ROUGE,VERT,BLEU,JAUNE,NOIR"
+        },
+        {
+            "fieldName": "prerequis",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "contenu",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20180227125023",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "module",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

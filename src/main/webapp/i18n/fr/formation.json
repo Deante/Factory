@@ -1,0 +1,32 @@
+{
+    "factoryApp": {
+        "formation" : {
+            "home": {
+                "title": "Formations",
+                "createLabel": "Créer une nouvelle Formation",
+                "createOrEditLabel": "Créer ou éditer une Formation",
+                "search": "Recherche par Formation"
+            },
+            "created": "Une nouvelle Formation a été créée avec l'identifiant {{ param }}",
+            "updated": "La Formation avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Formation avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Formation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Formation"
+            },
+            "nom": "Nom",
+            "dateDebutForm": "Début Formation",
+            "dateFinForm": "Fin Formation",
+            "objectifs": "Objectifs",
+            "departement": "Département",
+            "formateurs": "Formateurs",
+            "gestionnaire": "Gestionnaire",
+            "stagiaires": "Stagiaires",
+            "salle": "Salle",
+            "technicien": "Technicien",
+            "modules": "Modules"
+        }
+    }
+}

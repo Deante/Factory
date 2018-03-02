@@ -1,0 +1,23 @@
+{
+    "factoryApp": {
+        "technicien" : {
+            "home": {
+                "title": "Techniker",
+                "createLabel": "Techniker erstellen",
+                "createOrEditLabel": "Techniker erstellen oder bearbeiten",
+                "search": "Suche nach Techniker"
+            },
+            "created": "Techniker erstellt mit ID {{ param }}",
+            "updated": "Techniker aktualisiert mit ID {{ param }}",
+            "deleted": "Techniker gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Techniker {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Techniker"
+            },
+            "user": "Benutzer",
+            "formation": "Ausbildung"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "factoryApp": {
+        "ordinateur" : {
+            "home": {
+                "title": "Computers",
+                "createLabel": "Create a new Computer",
+                "createOrEditLabel": "Create or edit a Computer",
+                "search": "Search for Computer"
+            },
+            "created": "A new Computer is created with identifier {{ param }}",
+            "updated": "A Computer is updated with identifier {{ param }}",
+            "deleted": "A Computer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Computer {{ id }}?"
+            },
+            "detail": {
+                "title": "Computer"
+            },
+            "code": "Code",
+            "processeur": "Processor",
+            "memoire": "Memory",
+            "disque": "Disk",
+            "anneeAchat": "Purchase year",
+            "cout": "Daily Cost",
+            "etat": "State",
+            "stagiaires": "Trainees"
+        }
+    }
+}

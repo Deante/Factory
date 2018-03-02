@@ -1,0 +1,26 @@
+{
+    "factoryApp": {
+        "stagiaire" : {
+            "home": {
+                "title": "Trainee",
+                "createLabel": "Trainee erstellen",
+                "createOrEditLabel": "Trainee erstellen oder bearbeiten",
+                "search": "Suche nach Trainee"
+            },
+            "created": "Trainee erstellt mit ID {{ param }}",
+            "updated": "Trainee aktualisiert mit ID {{ param }}",
+            "deleted": "Trainee gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Trainee {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Trainee"
+            },
+            "user": "Benutzer",
+            "formation": "Ausbildung",
+            "ordinateur": "Computer",
+            "niveau": "Meisterschaftsstufe"
+        }
+    }
+}
+

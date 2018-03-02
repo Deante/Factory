@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "gestionnaire"
+        },
+        {
+            "relationshipName": "formations",
+            "otherEntityName": "formation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "gestionnaire"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180227132455",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "gestionnaire",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}
