@@ -17,7 +17,8 @@
                 "title": "Stagiaire"
             },
             "user": "Utilisateur",
-            "formations": "Formations",
+            "formation": "Formation",
+            "ordinateur": "Ordinateur",
             "niveau": "Niveau"
         }
     }

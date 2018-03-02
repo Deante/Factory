@@ -56,7 +56,17 @@
             "confirmpassword": "Neues Passwort bestätigen",
             "confirmpassword.placeholder": "Bestätigen Sie Ihr neues Passwort",
             "email": "Email Adresse",
-            "email.placeholder": "Ihre Email Adresse"
+            "email.placeholder": "Ihre Email Adresse",
+            "voie": "Hauptstraße",
+            "voie.placeholder": "Ihr Hauptstraße",
+            "complement": "Ergänzung",
+            "complement.placeholder": "Ihr Ergänzung",
+            "codePostal": "Postleitzahl",
+            "codePostal.placeholder": "Ihr Postleitzahl",
+            "ville": "Stadt",
+            "ville.placeholder": "Ihr Stadt",
+            "telephone": "Telefonnummer",
+            "telephone.placeholder": "Ihr Telefonnummer"
         },
         "messages": {
             "info": {
