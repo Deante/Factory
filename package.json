@@ -82,7 +82,7 @@
     "merge-jsons-webpack-plugin": "1.0.11",
     "phantomjs-prebuilt": "2.1.16",
     "proxy-middleware": "0.15.0",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.2",
     "sourcemap-istanbul-instrumenter-loader": "0.2.0",
     "style-loader": "0.18.2",
     "to-string-loader": "1.1.5",
