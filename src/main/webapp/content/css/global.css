@@ -66,6 +66,10 @@ a.jh-navbar-toggler:hover {
     color:#37576c !important;
 }
 
+body .ui-button, body .ui-state-active, body .ui-state-highlight {
+    background-color: #37576c !important;
+}
+
 /* ==========================================================================
 Colors
 ========================================================================== */
