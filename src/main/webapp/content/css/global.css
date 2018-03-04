@@ -2,6 +2,11 @@
 Bootstrap tweaks
 ===============================================================*/
 
+@font-face {
+    font-family: ubuntuB;
+    src: url('../fonts/Ubuntu-B.ttf');
+}
+
 body, h1, h2, h3, h4 {
     font-weight: 300;
 }
@@ -11,13 +16,13 @@ body {
     min-width:380px !important;
 }
 
-h1, h2, h4 {
-    color: #05344e;
+h1, h3 {
+    color: #000;
     font-weight: bold;
 }
 
-h3 {
-    color: #37576c;
+h2, h4 {
+    color: #05344e;
     font-weight: bold;
 }
 
@@ -233,6 +238,7 @@ Alerts
 /* ==========================================================================
 Browser Upgrade Prompt
 ========================================================================== */
+
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;

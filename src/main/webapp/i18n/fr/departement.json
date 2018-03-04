@@ -2,16 +2,16 @@
     "factoryApp": {
         "departement" : {
             "home": {
-                "title": "Departements",
-                "createLabel": "Créer un nouveau Departement",
-                "createOrEditLabel": "Créer ou éditer un Departement",
-                "search": "Recherche par Departement"
+                "title": "Départements",
+                "createLabel": "Créer un nouveau Département",
+                "createOrEditLabel": "Créer ou éditer un Département",
+                "search": "Recherche par Département"
             },
-            "created": "Un nouveau Departement a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Departement avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Departement avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouveau Département a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Département avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Département avec l'identifiant {{ param }} a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Departement {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer le Département {{ id }} ?"
             },
             "detail": {
                 "title": "Département"
