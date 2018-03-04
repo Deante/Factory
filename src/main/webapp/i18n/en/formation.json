@@ -17,8 +17,8 @@
                 "title": "Training"
             },
             "nom": "Name",
-            "dateDebutForm": "Training start",
-            "dateFinForm": "Training end",
+            "dateDebutForm": "Start",
+            "dateFinForm": "End",
             "objectifs": "Goals",
             "departement": "Department",
             "formateurs": "Formers",

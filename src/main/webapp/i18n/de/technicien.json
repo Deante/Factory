@@ -17,7 +17,9 @@
                 "title": "Techniker"
             },
             "user": "Benutzer",
-            "formation": "Ausbildung"
+            "formation": "Ausbildung",
+            "lastname": "Nachname",
+            "firstname": "Vorname"
         }
     }
 }

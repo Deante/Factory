@@ -17,8 +17,8 @@
                 "title": "Ausbildung"
             },
             "nom": "Name",
-            "dateDebutForm": "Beginn des Trainings",
-            "dateFinForm": "Ende des Trainings",
+            "dateDebutForm": "Beginn",
+            "dateFinForm": "Ende",
             "objectifs": "Ziele",
             "departement": "Abteilung",
             "formateurs": "Ausbilders",

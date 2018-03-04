@@ -55,7 +55,7 @@
                 </td>
                 <td>
                     <div *ngIf="formation.gestionnaire">
-                        <a [routerLink]="['../gestionnaire', formation.gestionnaire?.id ]" >{{formation.gestionnaire?.nom}}</a>
+                        <a [routerLink]="['../gestionnaire', formation.gestionnaire?.id ]" >{{formation.gestionnaire?.user.lastName}} {{formation.gestionnaire?.user.firstName}}</a>
                     </div>
                 </td>
                 <td>
@@ -65,7 +65,8 @@
                 </td>
                 <td>
                     <div *ngIf="formation.technicien">
-                        <a [routerLink]="['../technicien', formation.technicien?.id ]" >{{formation.technicien?.nom}}</a>
+                        <a [routerLink]="['../technicien', formation.technicien?.id ]" >{{formation.technicien?.user.lastName}}
+                        {{formation.technicien?.user.firstName}}</a>
                     </div>
                 </td>
                 <td class="text-right">

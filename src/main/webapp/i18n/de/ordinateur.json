@@ -19,7 +19,7 @@
             "code": "Code",
             "processeur": "Prozessor",
             "memoire": "Speicher",
-            "disque": "Festplatte",
+            "disque": "Festplattenkapazität",
             "anneeAchat": "Jahr Kauf",
             "coutJour": "Kostentag",
             "etat": "Zustand",

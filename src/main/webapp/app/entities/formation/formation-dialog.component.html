@@ -89,14 +89,14 @@
         <div class="form-group">
             <label jhiTranslate="factoryApp.formation.formateurs" for="field_formateurs">Formateurs</label>
             <select class="form-control" id="field_formateurs" multiple name="formateurs" [(ngModel)]="formation.formateurs">
-                <option [ngValue]="getSelected(formation.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.nom}}</option>
+                <option [ngValue]="getSelected(formation.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user.lastName}} {{formateurOption.user.firstName}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="factoryApp.formation.gestionnaire" for="field_gestionnaire">Gestionnaire</label>
             <select class="form-control" id="field_gestionnaire" name="gestionnaire" [(ngModel)]="formation.gestionnaire" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="gestionnaireOption.id === formation.gestionnaire?.id ? formation.gestionnaire : gestionnaireOption" *ngFor="let gestionnaireOption of gestionnaires; trackBy: trackGestionnaireById">{{gestionnaireOption.nom}}</option>
+                <option [ngValue]="gestionnaireOption.id === formation.gestionnaire?.id ? formation.gestionnaire : gestionnaireOption" *ngFor="let gestionnaireOption of gestionnaires; trackBy: trackGestionnaireById">{{gestionnaireOption.user.lastName}} {{gestionnaireOption.user.firstName}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -110,7 +110,7 @@
             <label class="form-control-label" jhiTranslate="factoryApp.formation.technicien" for="field_technicien">Technicien</label>
             <select class="form-control" id="field_technicien" name="technicien" [(ngModel)]="formation.technicien" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="technicienOption.id === formation.technicien?.id ? formation.technicien : technicienOption" *ngFor="let technicienOption of techniciens; trackBy: trackTechnicienById">{{technicienOption.nom}}</option>
+                <option [ngValue]="technicienOption.id === formation.technicien?.id ? formation.technicien : technicienOption" *ngFor="let technicienOption of techniciens; trackBy: trackTechnicienById">{{technicienOption.user.lastName}} {{technicienOption.user.firstName}}</option>
             </select>
         </div>
         <div class="form-group">

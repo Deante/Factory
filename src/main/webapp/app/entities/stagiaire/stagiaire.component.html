@@ -34,6 +34,8 @@
             <th jhiSortBy="user.login"><span jhiTranslate="factoryApp.stagiaire.user">User</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="formation.nom"><span jhiTranslate="factoryApp.stagiaire.formation">Formation</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="ordinateur.id"><span jhiTranslate="factoryApp.stagiaire.ordinateur">Ordinateur</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.lastName"><span jhiTranslate="factoryApp.stagiaire.lastname">Lastname</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.firstName"><span jhiTranslate="factoryApp.stagiaire.firstname">Firstname</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,12 @@
                 <td jhiTranslate="{{'factoryApp.NiveauEnum.' + stagiaire.niveau}}">{{stagiaire.niveau}}</td>
                 <td>
                     {{stagiaire.user?.login}}
+                </td>
+                <td>
+                    {{stagiaire.user?.lastName}}
+                </td>
+                <td>
+                    {{stagiaire.user?.firstName}}
                 </td>
                 <td>
                     <div *ngIf="stagiaire.formation">

@@ -17,7 +17,9 @@
                 "title": "Manager"
             },
             "user": "Benutzer",
-            "formations": "Ausbildungen"
+            "formations": "Ausbildungen",
+            "lastname": "Nachname",
+            "firstname": "Vorname"
         }
     }
 }

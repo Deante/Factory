@@ -17,8 +17,8 @@
                 "title": "Formation"
             },
             "nom": "Nom",
-            "dateDebutForm": "Début Formation",
-            "dateFinForm": "Fin Formation",
+            "dateDebutForm": "Début",
+            "dateFinForm": "Fin",
             "objectifs": "Objectifs",
             "departement": "Département",
             "formateurs": "Formateurs",

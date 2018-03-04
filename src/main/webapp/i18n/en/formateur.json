@@ -20,7 +20,9 @@
             "dateDebutDispo": "Availability start",
             "dateFinDispo": "Availability end",
             "competences": "Skills",
-            "formations": "Trainings"
+            "formations": "Trainings",
+            "lastname": "Lastname",
+            "firstname": "Firstname"
         }
     }
 }

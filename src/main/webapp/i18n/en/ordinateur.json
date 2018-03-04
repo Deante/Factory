@@ -19,7 +19,7 @@
             "code": "Code",
             "processeur": "Processor",
             "memoire": "Memory",
-            "disque": "Disk",
+            "disque": "Disk Capacity",
             "anneeAchat": "Purchase year",
             "cout": "Daily Cost",
             "etat": "State",

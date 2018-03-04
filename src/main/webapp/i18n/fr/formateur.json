@@ -20,7 +20,9 @@
             "dateFinDispo": "Fin Dispo",
             "user": "Utilisateur",
             "competences": "Compétences",
-            "formations": "Formations"
+            "formations": "Formations",
+            "lastname": "Nom",
+            "firstname": "Prénom"
         }
     }
 }

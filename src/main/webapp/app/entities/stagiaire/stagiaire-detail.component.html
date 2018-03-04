@@ -11,6 +11,12 @@
         <dd>
             {{stagiaire.user?.login}}
         </dd>
+        <dd>
+            {{stagiaire.user?.lastName}}
+        </dd>
+        <dd>
+            {{stagiaire.user?.firstName}}
+        </dd>
         <dt><span jhiTranslate="factoryApp.stagiaire.formation">Formation</span></dt>
         <dd>
             <div *ngIf="stagiaire.formation">

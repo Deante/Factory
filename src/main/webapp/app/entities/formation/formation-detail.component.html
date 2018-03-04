@@ -34,7 +34,8 @@
         <dt><span jhiTranslate="factoryApp.formation.gestionnaire">Gestionnaire</span></dt>
         <dd>
             <div *ngIf="formation.gestionnaire">
-                <a [routerLink]="['/gestionnaire', formation.gestionnaire?.id]">{{formation.gestionnaire?.nom}}</a>
+                <a [routerLink]="['/gestionnaire', formation.gestionnaire?.id]">{{formation.gestionnaire?.user.lastName}}
+                {{formation.gestionnaire?.user.firstName}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="factoryApp.formation.salle">Salle</span></dt>
@@ -46,7 +47,8 @@
         <dt><span jhiTranslate="factoryApp.formation.technicien">Technicien</span></dt>
         <dd>
             <div *ngIf="formation.technicien">
-                <a [routerLink]="['/technicien', formation.technicien?.id]">{{formation.technicien?.nom}}</a>
+                <a [routerLink]="['/technicien', formation.technicien?.id]">{{formation.technicien?.user.lastName}}
+                {{formation.technicien?.user.firstName}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="factoryApp.formation.modules">Modules</span></dt>

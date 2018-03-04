@@ -19,7 +19,9 @@
             "user": "Utilisateur",
             "formation": "Formation",
             "ordinateur": "Ordinateur",
-            "niveau": "Niveau"
+            "niveau": "Niveau",
+            "lastname": "Nom",
+            "firstname": "Prénom"
         }
     }
 }

@@ -33,6 +33,8 @@
             <th jhiSortBy="dateDebutDispo"><span jhiTranslate="factoryApp.formateur.dateDebutDispo">Date Debut Dispo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dateFinDispo"><span jhiTranslate="factoryApp.formateur.dateFinDispo">Date Fin Dispo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="user.login"><span jhiTranslate="factoryApp.formateur.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.lastName"><span jhiTranslate="factoryApp.formateur.lastname">Lastname</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.firstName"><span jhiTranslate="factoryApp.formateur.firstname">Firstname</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,12 @@
                 <td>{{formateur.dateFinDispo | date:'mediumDate'}}</td>
                 <td>
                     {{formateur.user?.login}}
+                </td>
+                <td>
+                    {{formateur.user?.lastName}}
+                </td>
+                <td>
+                    {{formateur.user?.firstName}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

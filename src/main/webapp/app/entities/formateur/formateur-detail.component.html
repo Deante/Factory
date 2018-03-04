@@ -15,6 +15,12 @@
         <dd>
             {{formateur.user?.login}}
         </dd>
+        <dd>
+            {{formateur.user?.lastName}}
+        </dd>
+        <dd>
+            {{formateur.user?.firstName}}
+        </dd>
         <dt><span jhiTranslate="factoryApp.formateur.competences">Competences</span></dt>
         <dd>
             <span *ngFor="let competences of formateur.competences; let last = last">

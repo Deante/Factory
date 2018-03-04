@@ -19,7 +19,9 @@
             "user": "User",
             "formation": "Training",
             "ordinateur": "Computer",
-            "niveau": "Level"
+            "niveau": "Level",
+            "lastname": "Lastname",
+            "firstname": "Firstname"
         }
     }
 }

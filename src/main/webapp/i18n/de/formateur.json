@@ -20,7 +20,9 @@
             "dateFinDispo": "Ende der Verfügbarkeit",
             "user": "Benutzer",
             "competences": "Computerkenntnisse",
-            "formations": "Ausbildungen"
+            "formations": "Ausbildungen",
+            "lastname": "Nachname",
+            "firstname": "Vorname"
         }
     }
 }
