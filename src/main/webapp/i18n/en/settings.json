@@ -2,6 +2,7 @@
     "settings": {
         "title": "User settings for [<b>{{username}}</b>]",
         "form": {
+            "login": "User Name",
             "firstname": "First Name",
             "firstname.placeholder": "Your first name",
             "lastname": "Last Name",

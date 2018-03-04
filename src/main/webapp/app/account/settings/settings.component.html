@@ -10,7 +10,25 @@
             <jhi-alert-error></jhi-alert-error>
 
             <form name="form" role="form" (ngSubmit)="save()" #settingsForm="ngForm" *ngIf="settingsAccount" novalidate>
-
+                <div class="form-group">
+                    <label class="form-control-label" for="firstName" jhiTranslate="settings.form.login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="{{'settings.form.login.placeholder' | translate}}"
+                           [(ngModel)]="settingsAccount.login" minlength=1 maxlength=50 #loginInput="ngModel" required>
+                    <div *ngIf="loginInput.dirty && loginInput.invalid">
+                        <small class="form-text text-danger"
+                           *ngIf="loginInput.errors.required" jhiTranslate="settings.messages.validate.firstname.required">
+                            Your login is required.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="loginInput.errors.minlength" jhiTranslate="settings.messages.validate.firstname.minlength">
+                            Your login is required to be at least 3 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="loginInput.errors.maxlength" jhiTranslate="settings.messages.validate.firstname.maxlength">
+                            Your login cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="form-control-label" for="firstName" jhiTranslate="settings.form.firstname">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
