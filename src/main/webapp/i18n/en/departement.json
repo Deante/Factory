@@ -17,7 +17,7 @@
                 "title": "Department"
             },
             "nom": "Name",
-            "etages": "Levels",
+            "etages": "Level",
             "site": "Site",
             "formations": "Trainings"
         }
