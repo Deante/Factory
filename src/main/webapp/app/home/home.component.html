@@ -4,18 +4,18 @@
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-ld-8">
-        <h2 jhiTranslate="home.title">Trainings</h2>
+        <h3 jhiTranslate="home.title">Trainings</h3>
         <!-- <h1 class="display-4" jhiTranslate="home.title">AJC Trainings</h1> -->
         <p class="lead" jhiTranslate="home.subtitle">Formers and Trainings Management</p>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span *ngIf="account" jhiTranslate="home.logged.message"
-                    translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span> 
+                    translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
             </div>
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span jhiTranslate="global.messages.info.register.noaccount">
-                    You don't have an account yet ? 
+                    You don't have an account yet ?
                 </span>
                 <a class="alert-link" routerLink="register" routerLinkActive="active">
                     <span jhiTranslate="global.messages.info.register.link">Register</span>
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div>    
+        <div>
             <p jhiTranslate="home.question">If you have any question on Factory trainings :</p>
             <div>
                 <ul>
