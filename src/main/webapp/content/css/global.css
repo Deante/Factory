@@ -16,12 +16,7 @@ body {
     min-width:380px !important;
 }
 
-h1, h3 {
-    color: #000;
-    font-weight: bold;
-}
-
-h2, h4 {
+h1, h2, h3, h4 {
     color: #05344e;
     font-weight: bold;
 }
