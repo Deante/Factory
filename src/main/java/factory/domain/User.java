@@ -35,34 +35,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
-    
-    @Size(min = 2, max = 50)
-    @Column(name = "nom", length = 50)
-    private String nom;
-
-    @Size(min = 2, max = 25)
-    @Column(name = "prenom", length = 25)
-    private String prenom;
-
-    @Size(min = 8, max = 50)
-    @Column(name = "voie", length = 50)
-    private String voie;
-
-    @Size(min = 0, max = 20)
-    @Column(name = "complement", length = 20)
-    private String complement;
-
-    @Size(min = 5, max = 5)
-    @Column(name = "code_postal", length = 5)
-    private String codePostal;
-
-    @Size(min = 3, max = 75)
-    @Column(name = "ville", length = 75)
-    private String ville;
-
-    @Size(min = 10, max = 10)
-    @Column(name = "telephone", length = 10)
-    private String telephone;
 
     @NotNull
     @Pattern(regexp = Constants.LOGIN_REGEX)
@@ -88,6 +60,26 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(min = 5, max = 100)
     @Column(length = 100, unique = true)
     private String email;
+
+    @Size(min = 8, max = 50)
+    @Column(name = "voie", length = 50)
+    private String voie;
+
+    @Size(min = 0, max = 20)
+    @Column(name = "complement", length = 20)
+    private String complement;
+
+    @Size(min = 5, max = 5)
+    @Column(name = "code_postal", length = 5)
+    private String codePostal;
+
+    @Size(min = 3, max = 75)
+    @Column(name = "ville", length = 75)
+    private String ville;
+
+    @Size(min = 10, max = 10)
+    @Column(name = "telephone", length = 10)
+    private String telephone;
 
     @NotNull
     @Column(nullable = false)
@@ -132,20 +124,44 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getLogin() {
+        return login;
+    }
+    // Lowercase the login before saving it in database
+    public void setLogin(String login) {
+        this.login = StringUtils.lowerCase(login, Locale.ENGLISH);
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getPassword() {
+        return password;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getVoie() {
@@ -186,47 +202,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    // Lowercase the login before saving it in database
-    public void setLogin(String login) {
-        this.login = StringUtils.lowerCase(login, Locale.ENGLISH);
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getImageUrl() {
@@ -305,10 +280,25 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", voie=" + voie + ", complement="
-                + complement + ", codePostal=" + codePostal + ", ville=" + ville + ", telephone=" + telephone
-                + ", login=" + login + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", email=" + email + ", activated=" + activated + ", langKey=" + langKey + ", imageUrl=" + imageUrl
-                + ", activationKey=" + activationKey + ", resetKey=" + resetKey + ", resetDate=" + resetDate + "]";
+        return "User{" +
+            "id=" + id +
+            ", login='" + login + '\'' +
+            ", password='" + password + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", voie='" + voie + '\'' +
+            ", complement='" + complement + '\'' +
+            ", codePostal='" + codePostal + '\'' +
+            ", ville='" + ville + '\'' +
+            ", telephone='" + telephone + '\'' +
+            ", activated=" + activated +
+            ", langKey='" + langKey + '\'' +
+            ", imageUrl='" + imageUrl + '\'' +
+            ", activationKey='" + activationKey + '\'' +
+            ", resetKey='" + resetKey + '\'' +
+            ", resetDate=" + resetDate +
+            ", authorities=" + authorities +
+            '}';
     }
 }

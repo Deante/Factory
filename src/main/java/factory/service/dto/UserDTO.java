@@ -34,19 +34,19 @@ public class UserDTO {
     @Email
     @Size(min = 5, max = 100)
     private String email;
-    
+
     @Size(min = 8, max = 50)
     private String voie;
-    
+
     @Size(min = 0, max = 20)
     private String complement;
-    
+
     @Size(min = 5, max = 5)
     private String codePostal;
-    
+
     @Size(min = 3, max = 75)
     private String ville;
-    
+
     @Size(min = 10, max = 10)
     private String telephone;
 
@@ -78,13 +78,13 @@ public class UserDTO {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
-        
+
         this.voie = user.getVoie();
         this.complement = user.getComplement();
         this.codePostal = user.getCodePostal();
         this.ville = user.getVille();
         this.telephone = user.getTelephone();
-        
+
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
@@ -243,11 +243,25 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO [id=" + id + ", login=" + login + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", email=" + email + ", voie=" + voie + ", complement=" + complement + ", codePostal=" + codePostal
-                + ", ville=" + ville + ", telephone=" + telephone + ", imageUrl=" + imageUrl + ", activated="
-                + activated + ", langKey=" + langKey + ", createdBy=" + createdBy + ", createdDate=" + createdDate
-                + ", lastModifiedBy=" + lastModifiedBy + ", lastModifiedDate=" + lastModifiedDate + ", authorities="
-                + authorities + "]";
+        return "UserDTO{" +
+            "id=" + id +
+            ", login='" + login + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", voie='" + voie + '\'' +
+            ", complement='" + complement + '\'' +
+            ", codePostal='" + codePostal + '\'' +
+            ", ville='" + ville + '\'' +
+            ", telephone='" + telephone + '\'' +
+            ", imageUrl='" + imageUrl + '\'' +
+            ", activated=" + activated +
+            ", langKey='" + langKey + '\'' +
+            ", createdBy='" + createdBy + '\'' +
+            ", createdDate=" + createdDate +
+            ", lastModifiedBy='" + lastModifiedBy + '\'' +
+            ", lastModifiedDate=" + lastModifiedDate +
+            ", authorities=" + authorities +
+            '}';
     }
 }
