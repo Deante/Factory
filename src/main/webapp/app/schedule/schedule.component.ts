@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { JhiLanguageService } from 'ng-jhipster';
+import {JhiAlertService, JhiEventManager, JhiLanguageService, JhiParseLinks} from 'ng-jhipster';
 import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
 import {MyEvent} from './event/event';
+import {Salle, SalleService} from '../entities/salle';
+import {ITEMS_PER_PAGE, Principal, ResponseWrapper} from '../shared';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'jhi-schedule',
@@ -13,16 +17,38 @@ export class ScheduleComponent implements OnInit {
     msgs: Message[] = [];
     activeIndex = 0;
     events: any[];
+    page: any;
     headerConfig: any;
     event: MyEvent;
     dialogVisible = false;
     idGen = 100;
     fr: any;
+    eventSalle: Salle;
+    salles: Salle[];
+    itemsPerPage: number;
+    links: any;
+    predicate: any;
+    reverse: any;
+    totalItems: number;
 
-    constructor(private eventService: EventService) { }
+    constructor(private eventService: EventService,
+                private salleService: SalleService,
+                private jhiAlertService: JhiAlertService,
+                private eventManager: JhiEventManager,
+                private parseLinks: JhiParseLinks,
+                private activatedRoute: ActivatedRoute,
+                private principal: Principal) {
+        this.salles = [];
+        this.itemsPerPage = ITEMS_PER_PAGE;
+        this.page = 0;
+        this.links = {
+            last: 0
+        }
+    };
 
     ngOnInit() {
         this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        this.loadAll();
 
         this.headerConfig = {
             left: 'prev,next today',
@@ -41,6 +67,10 @@ export class ScheduleComponent implements OnInit {
             ],
             monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec']
         };
+    }
+
+    loadPage(page) {
+        this.page = page;
     }
 
     loadEvents(event: any) {
@@ -167,4 +197,34 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: label});
     }
 
+    loadAll() {
+        this.salleService.query({
+            page: this.page,
+            size: this.itemsPerPage,
+            sort: this.sort()
+        }).subscribe(
+            (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    sort() {
+        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+        if (this.predicate !== 'id') {
+            result.push('id');
+        }
+        return result;
+    }
+
+    private onSuccess(data, headers) {
+        this.links = this.parseLinks.parse(headers.get('link'));
+        this.totalItems = headers.get('X-Total-Count');
+        for (let i = 0; i < data.length; i++) {
+            this.salles.push(data[i]);
+        }
+    }
+
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
 }
