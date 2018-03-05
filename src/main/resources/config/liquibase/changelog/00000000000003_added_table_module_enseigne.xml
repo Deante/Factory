@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="00000000000005" author="TGR">
+        <createTable tableName="module_enseigne">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="formation_id" type="bigint"/>
+            <column name="module_id" type="bigint"/>
+            <column name="formateur_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+	
+	<changeSet id="00000000000006" author="jhipster">
+        <addForeignKeyConstraint baseColumnNames="formation_id"
+                                 baseTableName="module_enseigne"
+                                 constraintName="fk_module_enseigne_stag_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formation"/>
+								 
+        <addForeignKeyConstraint baseColumnNames="module_id"
+                                 baseTableName="module_enseigne"
+                                 constraintName="fk_module_enseigne_ordi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordinateur"/>
+								 
+        <addForeignKeyConstraint baseColumnNames="formateur_id"
+                                 baseTableName="module_enseigne"
+                                 constraintName="fk_module_enseigne_forma_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formateur"/>
+    </changeSet>
+
+</databaseChangeLog>
