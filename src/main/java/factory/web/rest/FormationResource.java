@@ -145,4 +145,19 @@ public class FormationResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    /**
+     * GET  /formations/:id/pdf : get the pdf of the "id" formation.
+     *
+     * @param id the id of the formation to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the pdf of formation, or with status 404 (Not Found)
+     */
+    @GetMapping("/formations/{id}/pdf")
+    @Timed
+    public ResponseEntity<Formation> getFormationPdf(@PathVariable Long id) {
+        log.debug("REST request to get pdf of Formation : {}", id);
+        Formation formation = formationService.findOne(id);
+        // formationService.createPdf();
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(formation));
+    }
+
 }
