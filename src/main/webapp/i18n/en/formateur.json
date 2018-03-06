@@ -21,8 +21,7 @@
             "dateFinDispo": "Availability end",
             "competences": "Skills",
             "formations": "Trainings",
-            "lastname": "Lastname",
-            "firstname": "Firstname"
+            "modules": "Modules"
         }
     }
 }

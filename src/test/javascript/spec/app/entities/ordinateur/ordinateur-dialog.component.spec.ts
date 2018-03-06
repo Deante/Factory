@@ -8,6 +8,7 @@ import { FactoryTestModule } from '../../../test.module';
 import { OrdinateurDialogComponent } from '../../../../../../main/webapp/app/entities/ordinateur/ordinateur-dialog.component';
 import { OrdinateurService } from '../../../../../../main/webapp/app/entities/ordinateur/ordinateur.service';
 import { Ordinateur } from '../../../../../../main/webapp/app/entities/ordinateur/ordinateur.model';
+import { StagiaireService } from '../../../../../../main/webapp/app/entities/stagiaire';
 
 describe('Component Tests', () => {
 
@@ -23,6 +24,7 @@ describe('Component Tests', () => {
                 imports: [FactoryTestModule],
                 declarations: [OrdinateurDialogComponent],
                 providers: [
+                    StagiaireService,
                     OrdinateurService
                 ]
             })

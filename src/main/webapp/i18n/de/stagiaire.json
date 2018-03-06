@@ -18,11 +18,10 @@
             },
             "user": "Benutzer",
             "formation": "Ausbildung",
-            "ordinateur": "Computer",
+            "ordinateurs": "Computer",
             "niveau": "Meisterschaftsstufe",
             "lastname": "Nachname",
             "firstname": "Vorname"
         }
     }
 }
-

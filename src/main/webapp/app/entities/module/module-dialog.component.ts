@@ -11,6 +11,7 @@ import { ModulePopupService } from './module-popup.service';
 import { ModuleService } from './module.service';
 import { Formation, FormationService } from '../formation';
 import { Matiere, MatiereService } from '../matiere';
+import { Formateur, FormateurService } from '../formateur';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -26,12 +27,15 @@ export class ModuleDialogComponent implements OnInit {
 
     matieres: Matiere[];
 
+    formateurs: Formateur[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private moduleService: ModuleService,
         private formationService: FormationService,
         private matiereService: MatiereService,
+        private formateurService: FormateurService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -42,6 +46,8 @@ export class ModuleDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.formations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.matiereService.query()
             .subscribe((res: ResponseWrapper) => { this.matieres = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.formateurService.query()
+            .subscribe((res: ResponseWrapper) => { this.formateurs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -83,6 +89,10 @@ export class ModuleDialogComponent implements OnInit {
     }
 
     trackMatiereById(index: number, item: Matiere) {
+        return item.id;
+    }
+
+    trackFormateurById(index: number, item: Formateur) {
         return item.id;
     }
 

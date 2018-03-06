@@ -22,7 +22,8 @@
             "prerequis": "Prerequisites",
             "contenu": "Content",
             "formations": "Trainings",
-            "matieres": "Subjects"
+            "matieres": "Subjects",
+            "formateurs": "Formers"
         }
     }
 }

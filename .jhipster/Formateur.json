@@ -23,6 +23,13 @@
             "relationshipType": "many-to-many",
             "ownerSide": false,
             "otherEntityRelationshipName": "formateurs"
+        },
+        {
+            "relationshipName": "modules",
+            "otherEntityName": "module",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "formateurs"
         }
     ],
     "fields": [

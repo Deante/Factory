@@ -12,6 +12,7 @@ import { FormateurService } from './formateur.service';
 import { User, UserService } from '../../shared';
 import { Competence, CompetenceService } from '../competence';
 import { Formation, FormationService } from '../formation';
+import { Module, ModuleService } from '../module';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -28,6 +29,8 @@ export class FormateurDialogComponent implements OnInit {
     competences: Competence[];
 
     formations: Formation[];
+
+    modules: Module[];
     dateDebutDispoDp: any;
     dateFinDispoDp: any;
 
@@ -38,6 +41,7 @@ export class FormateurDialogComponent implements OnInit {
         private userService: UserService,
         private competenceService: CompetenceService,
         private formationService: FormationService,
+        private moduleService: ModuleService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -50,6 +54,8 @@ export class FormateurDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.competences = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.formationService.query()
             .subscribe((res: ResponseWrapper) => { this.formations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.moduleService.query()
+            .subscribe((res: ResponseWrapper) => { this.modules = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -95,6 +101,10 @@ export class FormateurDialogComponent implements OnInit {
     }
 
     trackFormationById(index: number, item: Formation) {
+        return item.id;
+    }
+
+    trackModuleById(index: number, item: Module) {
         return item.id;
     }
 

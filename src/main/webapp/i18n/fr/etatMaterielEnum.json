@@ -2,7 +2,7 @@
     "factoryApp": {
         "EtatMaterielEnum" : {
             "null": "",
-            "OK": "NEUF",
+            "OK": "OK",
             "ABIME": "ABIMÉ",
             "INUTILISABLE": "HORS SERVICE"
         }

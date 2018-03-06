@@ -22,10 +22,9 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="factoryApp.stagiaire.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="stagiaire.user" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === stagiaire.user?.id ? stagiaire.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            <label jhiTranslate="factoryApp.stagiaire.ordinateurs" for="field_ordinateurs">Ordinateurs</label>
+            <select class="form-control" id="field_ordinateurs" multiple name="ordinateurs" [(ngModel)]="stagiaire.ordinateurs">
+                <option [ngValue]="getSelected(stagiaire.ordinateurs, ordinateurOption)" *ngFor="let ordinateurOption of ordinateurs; trackBy: trackOrdinateurById">{{ordinateurOption.code}}</option>
             </select>
         </div>
         <div class="form-group">

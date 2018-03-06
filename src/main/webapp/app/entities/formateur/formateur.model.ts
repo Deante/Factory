@@ -8,6 +8,7 @@ export class Formateur implements BaseEntity {
         public user?: User,
         public competences?: BaseEntity[],
         public formations?: BaseEntity[],
+        public modules?: BaseEntity[],
     ) {
     }
 }

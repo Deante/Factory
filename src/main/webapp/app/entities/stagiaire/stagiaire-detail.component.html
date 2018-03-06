@@ -1,5 +1,6 @@
+
 <div *ngIf="stagiaire">
-    <h3><span jhiTranslate="factoryApp.stagiaire.detail.title">Stagiaire</span> {{stagiaire.id}}</h3>
+    <h2><span jhiTranslate="factoryApp.stagiaire.detail.title">Stagiaire</span> {{stagiaire.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -7,15 +8,11 @@
         <dd>
             <span jhiTranslate="{{'factoryApp.NiveauEnum.' + stagiaire.niveau}}">{{stagiaire.niveau}}</span>
         </dd>
-        <dt><span jhiTranslate="factoryApp.stagiaire.user">User</span></dt>
+        <dt><span jhiTranslate="factoryApp.stagiaire.ordinateurs">Ordinateurs</span></dt>
         <dd>
-            {{stagiaire.user?.login}}
-        </dd>
-        <dd>
-            {{stagiaire.user?.lastName}}
-        </dd>
-        <dd>
-            {{stagiaire.user?.firstName}}
+            <span *ngFor="let ordinateurs of stagiaire.ordinateurs; let last = last">
+                <a [routerLink]="['/ordinateur', ordinateurs?.id ]">{{ordinateurs.code}}</a>{{last ? '' : ', '}}
+            </span>
         </dd>
         <dt><span jhiTranslate="factoryApp.stagiaire.formation">Formation</span></dt>
         <dd>

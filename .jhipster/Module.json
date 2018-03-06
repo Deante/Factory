@@ -15,6 +15,14 @@
             "otherEntityField": "nom",
             "ownerSide": true,
             "otherEntityRelationshipName": "modules"
+        },
+        {
+            "relationshipName": "formateurs",
+            "otherEntityName": "formateur",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "user.lastName",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "modules"
         }
     ],
     "fields": [

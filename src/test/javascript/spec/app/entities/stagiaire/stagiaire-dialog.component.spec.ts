@@ -8,9 +8,8 @@ import { FactoryTestModule } from '../../../test.module';
 import { StagiaireDialogComponent } from '../../../../../../main/webapp/app/entities/stagiaire/stagiaire-dialog.component';
 import { StagiaireService } from '../../../../../../main/webapp/app/entities/stagiaire/stagiaire.service';
 import { Stagiaire } from '../../../../../../main/webapp/app/entities/stagiaire/stagiaire.model';
-import { UserService } from '../../../../../../main/webapp/app/shared';
-import { FormationService } from '../../../../../../main/webapp/app/entities/formation';
 import { OrdinateurService } from '../../../../../../main/webapp/app/entities/ordinateur';
+import { FormationService } from '../../../../../../main/webapp/app/entities/formation';
 
 describe('Component Tests', () => {
 
@@ -26,9 +25,8 @@ describe('Component Tests', () => {
                 imports: [FactoryTestModule],
                 declarations: [StagiaireDialogComponent],
                 providers: [
-                    UserService,
-                    FormationService,
                     OrdinateurService,
+                    FormationService,
                     StagiaireService
                 ]
             })

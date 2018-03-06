@@ -3,13 +3,13 @@
         "ordinateur" : {
             "home": {
                 "title": "Ordinateurs",
-                "createLabel": "Créer un nouveau Ordinateur",
+                "createLabel": "Créer un nouvel Ordinateur",
                 "createOrEditLabel": "Créer ou éditer un Ordinateur",
                 "search": "Recherche par Ordinateur"
             },
-            "created": "Un nouveau Ordinateur a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Ordinateur avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Ordinateur avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouvel Ordinateur a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Ordinateur avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Ordinateur avec l'identifiant {{ param }} a été supprimé",
             "delete": {
                 "question": "Etes-vous certain de vouloir supprimer le Ordinateur {{ id }} ?"
             },
@@ -19,7 +19,7 @@
             "code": "Code",
             "processeur": "Processeur",
             "memoire": "Mémoire",
-            "disque": "Capacité Disque",
+            "disque": "Disque",
             "anneeAchat": "Année Achat",
             "coutJour": "Coût Jour",
             "etat": "État",

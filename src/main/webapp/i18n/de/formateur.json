@@ -21,8 +21,7 @@
             "user": "Benutzer",
             "competences": "Computerkenntnisse",
             "formations": "Ausbildungen",
-            "lastname": "Nachname",
-            "firstname": "Vorname"
+            "modules": "Module"
         }
     }
 }

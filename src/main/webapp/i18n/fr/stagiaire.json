@@ -16,12 +16,10 @@
             "detail": {
                 "title": "Stagiaire"
             },
-            "user": "Utilisateur",
-            "formation": "Formation",
-            "ordinateur": "Ordinateur",
             "niveau": "Niveau",
-            "lastname": "Nom",
-            "firstname": "Prénom"
+            "ordinateurs": "Ordinateurs",
+            "formation": "Formation",
+            "ordinateur": "Ordinateur"
         }
     }
 }

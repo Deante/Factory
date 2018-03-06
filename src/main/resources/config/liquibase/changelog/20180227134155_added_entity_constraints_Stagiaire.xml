@@ -8,12 +8,17 @@
     -->
     <changeSet id="20180227134155-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="stagiaire"
-                                 constraintName="fk_stagiaire_user_id"
+        <addForeignKeyConstraint baseColumnNames="stagiaires_id"
+                                 baseTableName="stagiaire_ordinateurs"
+                                 constraintName="fk_stagiaire_ordinateurs_stagiaires_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_user"/>
-
+                                 referencedTableName="stagiaire"/>
+        <addForeignKeyConstraint baseColumnNames="ordinateurs_id"
+                                 baseTableName="stagiaire_ordinateurs"
+                                 constraintName="fk_stagiaire_ordinateurs_ordinateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordinateur"/>
+        
         <addForeignKeyConstraint baseColumnNames="formation_id"
                                  baseTableName="stagiaire"
                                  constraintName="fk_stagiaire_formation_id"

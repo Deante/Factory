@@ -22,7 +22,8 @@
             "prerequis": "Voraussetzungen",
             "contenu": "Inhalt",
             "formations": "Ausbildungen",
-            "matieres": "Themen"
+            "matieres": "Themen",
+            "formateurs": "Ausbilder"
         }
     }
 }

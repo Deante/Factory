@@ -51,6 +51,11 @@ public class Formateur implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Formation> formations = new HashSet<>();
 
+    @ManyToMany(mappedBy = "formateurs")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Module> modules = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -147,6 +152,31 @@ public class Formateur implements Serializable {
 
     public void setFormations(Set<Formation> formations) {
         this.formations = formations;
+    }
+
+    public Set<Module> getModules() {
+        return modules;
+    }
+
+    public Formateur modules(Set<Module> modules) {
+        this.modules = modules;
+        return this;
+    }
+
+    public Formateur addModules(Module module) {
+        this.modules.add(module);
+        module.getFormateurs().add(this);
+        return this;
+    }
+
+    public Formateur removeModules(Module module) {
+        this.modules.remove(module);
+        module.getFormateurs().remove(this);
+        return this;
+    }
+
+    public void setModules(Set<Module> modules) {
+        this.modules = modules;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

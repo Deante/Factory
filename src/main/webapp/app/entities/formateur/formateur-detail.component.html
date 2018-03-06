@@ -1,5 +1,6 @@
+
 <div *ngIf="formateur">
-    <h3><span jhiTranslate="factoryApp.formateur.detail.title">Formateur</span> {{formateur.id}}</h3>
+    <h2><span jhiTranslate="factoryApp.formateur.detail.title">Formateur</span> {{formateur.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -14,12 +15,6 @@
         <dt><span jhiTranslate="factoryApp.formateur.user">User</span></dt>
         <dd>
             {{formateur.user?.login}}
-        </dd>
-        <dd>
-            {{formateur.user?.lastName}}
-        </dd>
-        <dd>
-            {{formateur.user?.firstName}}
         </dd>
         <dt><span jhiTranslate="factoryApp.formateur.competences">Competences</span></dt>
         <dd>

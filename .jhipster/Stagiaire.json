@@ -2,12 +2,12 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "user",
-            "otherEntityName": "user",
-            "relationshipType": "one-to-one",
-            "otherEntityField": "login",
+            "relationshipName": "ordinateurs",
+            "otherEntityName": "ordinateur",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "code",
             "ownerSide": true,
-            "otherEntityRelationshipName": "stagiaire"
+            "otherEntityRelationshipName": "stagiaires"
         },
         {
             "relationshipName": "formation",

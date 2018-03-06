@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FactorySharedModule } from '../../shared';
-import { FactoryAdminModule } from '../../admin/admin.module';
 import {
     StagiaireService,
     StagiairePopupService,
@@ -24,7 +23,6 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         FactorySharedModule,
-        FactoryAdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 import factory.domain.enumeration.NiveauEnum;
@@ -31,9 +33,12 @@ public class Stagiaire implements Serializable {
     @Column(name = "niveau")
     private NiveauEnum niveau;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private User user;
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "stagiaire_ordinateurs",
+               joinColumns = @JoinColumn(name="stagiaires_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="ordinateurs_id", referencedColumnName="id"))
+    private Set<Ordinateur> ordinateurs = new HashSet<>();
 
     @ManyToOne
     private Formation formation;
@@ -63,17 +68,29 @@ public class Stagiaire implements Serializable {
         this.niveau = niveau;
     }
 
-    public User getUser() {
-        return user;
+    public Set<Ordinateur> getOrdinateurs() {
+        return ordinateurs;
     }
 
-    public Stagiaire user(User user) {
-        this.user = user;
+    public Stagiaire ordinateurs(Set<Ordinateur> ordinateurs) {
+        this.ordinateurs = ordinateurs;
         return this;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public Stagiaire addOrdinateurs(Ordinateur ordinateur) {
+        this.ordinateurs.add(ordinateur);
+        ordinateur.getStagiaires().add(this);
+        return this;
+    }
+
+    public Stagiaire removeOrdinateurs(Ordinateur ordinateur) {
+        this.ordinateurs.remove(ordinateur);
+        ordinateur.getStagiaires().remove(this);
+        return this;
+    }
+
+    public void setOrdinateurs(Set<Ordinateur> ordinateurs) {
+        this.ordinateurs = ordinateurs;
     }
 
     public Formation getFormation() {

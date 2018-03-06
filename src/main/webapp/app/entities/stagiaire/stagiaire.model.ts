@@ -1,4 +1,4 @@
-import { BaseEntity, User } from './../../shared';
+import { BaseEntity } from './../../shared';
 
 export const enum NiveauEnum {
     'DEBUTANT',
@@ -10,7 +10,7 @@ export class Stagiaire implements BaseEntity {
     constructor(
         public id?: number,
         public niveau?: NiveauEnum,
-        public user?: User,
+        public ordinateurs?: BaseEntity[],
         public formation?: BaseEntity,
         public ordinateur?: BaseEntity,
     ) {
