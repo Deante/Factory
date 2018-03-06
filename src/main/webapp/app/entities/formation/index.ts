@@ -6,3 +6,4 @@ export * from './formation-delete-dialog.component';
 export * from './formation-detail.component';
 export * from './formation.component';
 export * from './formation.route';
+export * from './formation-pdf.component';
