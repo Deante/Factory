@@ -67,7 +67,7 @@ export class FormationService {
     /**
      * Convert a returned JSON object to Formation.
      */
-    private convertItemFromServer(json: any): Formation {
+     convertItemFromServer(json: any): Formation {
         const entity: Formation = Object.assign(new Formation(), json);
         entity.dateDebutForm = this.dateUtils
             .convertLocalDateFromServer(json.dateDebutForm);

@@ -4,4 +4,5 @@ export class MyEvent {
     start: string;
     end: string;
     allDay = true;
+    capacite: number;
 }

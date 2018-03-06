@@ -3,10 +3,9 @@ import {JhiAlertService, JhiEventManager, JhiLanguageService, JhiParseLinks} fro
 import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
 import {MyEvent} from './event/event';
-import {Salle, SalleService} from '../entities/salle';
 import {ITEMS_PER_PAGE, Principal, ResponseWrapper} from '../shared';
-import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import {Formation, FormationService} from '../entities/formation';
+import moment = require('moment');
 
 @Component({
     selector: 'jhi-schedule',
@@ -23,32 +22,16 @@ export class ScheduleComponent implements OnInit {
     dialogVisible = false;
     idGen = 100;
     fr: any;
-    eventSalle: Salle;
-    salles: Salle[];
-    itemsPerPage: number;
-    links: any;
-    predicate: any;
-    reverse: any;
-    totalItems: number;
-
+    formation: Formation;
+    formations: Formation[];
     constructor(private eventService: EventService,
-                private salleService: SalleService,
-                private jhiAlertService: JhiAlertService,
-                private eventManager: JhiEventManager,
-                private parseLinks: JhiParseLinks,
-                private activatedRoute: ActivatedRoute,
-                private principal: Principal) {
-        this.salles = [];
-        this.itemsPerPage = ITEMS_PER_PAGE;
-        this.page = 0;
-        this.links = {
-            last: 0
-        }
+                private formationService: FormationService) {
+        this.formations = [];
+
     };
 
     ngOnInit() {
-        this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.loadAll();
+        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => {this.events = this.loadFormationEvent(events)});
 
         this.headerConfig = {
             left: 'prev,next today',
@@ -77,7 +60,8 @@ export class ScheduleComponent implements OnInit {
         const start = event.view.start;
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
-        this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        console.log('loadevents');
+        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => {this.events = this.loadFormationEvent(events)});
     }
 
     handleDayClick(event: any) {
@@ -159,7 +143,7 @@ export class ScheduleComponent implements OnInit {
 
     saveEvent() {
         // update
-        if ( this.event.id) {
+        if (this.event.id) {
             const index: number = this.findEventIndexById(this.event.id);
             if (index >= 0) {
                 this.events[index] = this.event;
@@ -197,34 +181,19 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: label});
     }
 
-    loadAll() {
-        this.salleService.query({
-            page: this.page,
-            size: this.itemsPerPage,
-            sort: this.sort()
-        }).subscribe(
-            (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-    }
-
-    sort() {
-        const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
+    loadFormationEvent(response: ResponseWrapper): Array<any> {
+        const result: Array<any> = Array<any>();
+        for (let forma of response.json) {
+            const e = new MyEvent();
+            e.id = this.idGen++;
+            e.title = forma.salle.code;
+            e.start = forma.dateDebutForm;
+            e.end = forma.dateFinForm;
+            e.capacite = forma.salle.capacite;
+            result.push(e);
         }
+        console.log(this.events);
         return result;
     }
 
-    private onSuccess(data, headers) {
-        this.links = this.parseLinks.parse(headers.get('link'));
-        this.totalItems = headers.get('X-Total-Count');
-        for (let i = 0; i < data.length; i++) {
-            this.salles.push(data[i]);
-        }
-    }
-
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
 }
