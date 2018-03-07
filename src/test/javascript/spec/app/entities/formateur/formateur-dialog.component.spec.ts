@@ -11,6 +11,7 @@ import { Formateur } from '../../../../../../main/webapp/app/entities/formateur/
 import { UserService } from '../../../../../../main/webapp/app/shared';
 import { CompetenceService } from '../../../../../../main/webapp/app/entities/competence';
 import { FormationService } from '../../../../../../main/webapp/app/entities/formation';
+import { ModuleService } from '../../../../../../main/webapp/app/entities/module';
 
 describe('Component Tests', () => {
 
@@ -29,6 +30,7 @@ describe('Component Tests', () => {
                     UserService,
                     CompetenceService,
                     FormationService,
+                    ModuleService,
                     FormateurService
                 ]
             })

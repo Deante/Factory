@@ -2,7 +2,7 @@
     "factoryApp": {
         "formateur" : {
             "home": {
-                "title": "Ausbilders",
+                "title": "Ausbilder",
                 "createLabel": "Ausbilder erstellen",
                 "createOrEditLabel": "Ausbilder erstellen oder bearbeiten",
                 "search": "Suche nach Ausbilder"
@@ -16,13 +16,11 @@
             "detail": {
                 "title": "Ausbilder"
             },
-            "dateDebutDispo": "frühe Verfügbarkeit",
-            "dateFinDispo": "Ende der Verfügbarkeit",
-            "user": "Benutzer",
+            "user": "User",
             "competences": "Computerkenntnisse",
             "formations": "Ausbildungen",
-            "lastname": "Nachname",
-            "firstname": "Vorname"
+            "modules": "Module",
+            "disponibilites": "Verfügbarkeit"
         }
     }
 }

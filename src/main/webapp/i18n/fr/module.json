@@ -17,12 +17,13 @@
                 "title": "Module"
             },
             "titre": "Titre",
-            "duree": "Duree",
+            "duree": "Durée",
             "couleur": "Couleur",
-            "prerequis": "Prerequis",
+            "prerequis": "Prérequis",
             "contenu": "Contenu",
             "formations": "Formations",
-            "matieres": "Matieres"
+            "matieres": "Matières",
+            "formateurs": "Formateurs"
         }
     }
 }

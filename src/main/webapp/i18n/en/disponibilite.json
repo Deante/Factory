@@ -1,0 +1,24 @@
+{
+    "factoryApp": {
+        "disponibilite" : {
+            "home": {
+                "title": "Availibilities",
+                "createLabel": "Create a new Availibility",
+                "createOrEditLabel": "Create or edit a Availibility",
+                "search": "Search for Availibility"
+            },
+            "created": "A new Availibility is created with identifier {{ param }}",
+            "updated": "An Availibility is updated with identifier {{ param }}",
+            "deleted": "An Availibility is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Availibility {{ id }}?"
+            },
+            "detail": {
+                "title": "Availibility"
+            },
+            "dateDebut": "Start Date",
+            "dateFin": "End Date",
+            "formateur": "Former"
+        }
+    }
+}

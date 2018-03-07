@@ -19,5 +19,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="matiere"/>
         
+        <addForeignKeyConstraint baseColumnNames="modules_id"
+                                 baseTableName="module_formateurs"
+                                 constraintName="fk_module_formateurs_modules_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="module"/>
+        <addForeignKeyConstraint baseColumnNames="formateurs_id"
+                                 baseTableName="module_formateurs"
+                                 constraintName="fk_module_formateurs_formateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formateur"/>
+        
     </changeSet>
 </databaseChangeLog>

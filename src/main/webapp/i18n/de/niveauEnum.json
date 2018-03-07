@@ -2,9 +2,9 @@
     "factoryApp": {
         "NiveauEnum" : {
             "null": "",
-            "DEBUTANT": "ANFÄNGER",
-            "INTERMEDIAIRE": "ZWISCHEN",
-            "AVANCE": "FORTGESCHRITTEN"
+            "DEBUTANT": "DEBUTANT",
+            "INTERMEDIAIRE": "INTERMEDIAIRE",
+            "AVANCE": "AVANCE"
         }
     }
 }

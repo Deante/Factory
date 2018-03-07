@@ -55,6 +55,17 @@
 
         <addPrimaryKey columnNames="modules_id, matieres_id" tableName="module_matieres"/>
         
+        <createTable tableName="module_formateurs">
+            <column name="formateurs_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modules_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="modules_id, formateurs_id" tableName="module_formateurs"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

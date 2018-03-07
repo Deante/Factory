@@ -65,7 +65,7 @@ public class StagiaireService {
     @Transactional(readOnly = true)
     public Stagiaire findOne(Long id) {
         log.debug("Request to get Stagiaire : {}", id);
-        return stagiaireRepository.findOne(id);
+        return stagiaireRepository.findOneWithEagerRelationships(id);
     }
 
     /**

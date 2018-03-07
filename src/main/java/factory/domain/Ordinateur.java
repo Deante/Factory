@@ -60,7 +60,7 @@ public class Ordinateur implements Serializable {
     @Column(name = "etat")
     private EtatMaterielEnum etat;
 
-    @OneToMany(mappedBy = "ordinateur")
+    @ManyToMany(mappedBy = "ordinateurs")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Stagiaire> stagiaires = new HashSet<>();
@@ -176,13 +176,13 @@ public class Ordinateur implements Serializable {
 
     public Ordinateur addStagiaires(Stagiaire stagiaire) {
         this.stagiaires.add(stagiaire);
-        stagiaire.setOrdinateur(this);
+        stagiaire.getOrdinateurs().add(this);
         return this;
     }
 
     public Ordinateur removeStagiaires(Stagiaire stagiaire) {
         this.stagiaires.remove(stagiaire);
-        stagiaire.setOrdinateur(null);
+        stagiaire.getOrdinateurs().remove(this);
         return this;
     }
 

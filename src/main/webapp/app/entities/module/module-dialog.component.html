@@ -73,6 +73,12 @@
                 <option [ngValue]="getSelected(module.matieres, matiereOption)" *ngFor="let matiereOption of matieres; trackBy: trackMatiereById">{{matiereOption.nom}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label jhiTranslate="factoryApp.module.formateurs" for="field_formateurs">Formateurs</label>
+            <select class="form-control" id="field_formateurs" multiple name="formateurs" [(ngModel)]="module.formateurs">
+                <option [ngValue]="getSelected(module.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user.lastName}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

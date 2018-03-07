@@ -1,0 +1,36 @@
+
+<div *ngIf="disponibilite">
+    <h2><span jhiTranslate="factoryApp.disponibilite.detail.title">Disponibilite</span> {{disponibilite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="factoryApp.disponibilite.dateDebut">Date Debut</span></dt>
+        <dd>
+            <span>{{disponibilite.dateDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.disponibilite.dateFin">Date Fin</span></dt>
+        <dd>
+            <span>{{disponibilite.dateFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="factoryApp.disponibilite.formateur">Formateur</span></dt>
+        <dd>
+            <div *ngIf="disponibilite.formateur">
+                <a [routerLink]="['/formateur', disponibilite.formateur?.id]">{{disponibilite.formateur?.user.lastName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'disponibilite/'+ disponibilite.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

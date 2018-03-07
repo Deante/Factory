@@ -13,6 +13,7 @@ import { FactorySalleModule } from './salle/salle.module';
 import { FactoryStagiaireModule } from './stagiaire/stagiaire.module';
 import { FactoryProjecteurModule } from './projecteur/projecteur.module';
 import { FactoryOrdinateurModule } from './ordinateur/ordinateur.module';
+import { FactoryDisponibiliteModule } from './disponibilite/disponibilite.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FactoryOrdinateurModule } from './ordinateur/ordinateur.module';
         FactoryStagiaireModule,
         FactoryProjecteurModule,
         FactoryOrdinateurModule,
+        FactoryDisponibiliteModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -2,27 +2,25 @@
     "factoryApp": {
         "formateur" : {
             "home": {
-                "title": "Formateurs",
-                "createLabel": "Create a new Formateur",
-                "createOrEditLabel": "Create or edit a Formateur",
-                "search": "Search for Formateur"
+                "title": "Formers",
+                "createLabel": "Create a new Former",
+                "createOrEditLabel": "Create or edit a Former",
+                "search": "Search for Former"
             },
-            "created": "A new Formateur is created with identifier {{ param }}",
-            "updated": "A Formateur is updated with identifier {{ param }}",
-            "deleted": "A Formateur is deleted with identifier {{ param }}",
+            "created": "A new Former is created with identifier {{ param }}",
+            "updated": "A Former is updated with identifier {{ param }}",
+            "deleted": "A Former is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Formateur {{ id }}?"
+                "question": "Are you sure you want to delete Former {{ id }}?"
             },
             "detail": {
-                "title": "Formateur"
+                "title": "Former"
             },
             "user": "User",
-            "dateDebutDispo": "Availability start",
-            "dateFinDispo": "Availability end",
             "competences": "Skills",
             "formations": "Trainings",
-            "lastname": "Lastname",
-            "firstname": "Firstname"
+            "modules": "Modules",
+            "disponibilites": "Availabilities"
         }
     }
 }
