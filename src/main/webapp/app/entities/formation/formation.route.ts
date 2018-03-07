@@ -5,6 +5,7 @@ import { FormationComponent } from './formation.component';
 import { FormationDetailComponent } from './formation-detail.component';
 import { FormationPopupComponent } from './formation-dialog.component';
 import { FormationDeletePopupComponent } from './formation-delete-dialog.component';
+import {FormationPdfComponent} from './formation-pdf.component';
 
 export const formationRoute: Routes = [
     {
@@ -57,4 +58,5 @@ export const formationPopupRoute: Routes = [
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
     }
+
 ];
