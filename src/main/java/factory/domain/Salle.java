@@ -29,30 +29,36 @@ public class Salle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @JsonView(Views.Common.class)
     private Long id;
 
     @NotNull
     @Size(min = 3, max = 8)
     @Column(name = "code", length = 8, nullable = false)
+    @JsonView(Views.Common.class)
     private String code;
 
     @Min(value = 2)
     @Max(value = 250)
     @Column(name = "capacite")
+    @JsonView(Views.Common.class)
     private Integer capacite;
 
     @Min(value = 1)
     @Max(value = 20)
     @Column(name = "etage")
+    @JsonView(Views.Common.class)
     private Integer etage;
 
     @OneToOne
     @JoinColumn(unique = true)
+    @JsonView(Views.Common.class)
     private Projecteur projecteur;
 
     @OneToMany(mappedBy = "salle")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JsonView(Views.Salle.class)
     private Set<Formation> formations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

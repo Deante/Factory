@@ -5,6 +5,7 @@ public interface Views {
 
 	public interface Formation extends Common{}
 	public interface Stagiaire extends Common{}
+	public interface Salle extends Common{}
 
 	public interface FormationWithStagiaires extends Formation{}
 }
