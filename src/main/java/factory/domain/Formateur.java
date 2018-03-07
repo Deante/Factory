@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -28,12 +27,6 @@ public class Formateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
-
-    @Column(name = "date_debut_dispo")
-    private LocalDate dateDebutDispo;
-
-    @Column(name = "date_fin_dispo")
-    private LocalDate dateFinDispo;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -56,6 +49,11 @@ public class Formateur implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Module> modules = new HashSet<>();
 
+    @OneToMany(mappedBy = "formateur")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Disponibilite> disponibilites = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -63,32 +61,6 @@ public class Formateur implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LocalDate getDateDebutDispo() {
-        return dateDebutDispo;
-    }
-
-    public Formateur dateDebutDispo(LocalDate dateDebutDispo) {
-        this.dateDebutDispo = dateDebutDispo;
-        return this;
-    }
-
-    public void setDateDebutDispo(LocalDate dateDebutDispo) {
-        this.dateDebutDispo = dateDebutDispo;
-    }
-
-    public LocalDate getDateFinDispo() {
-        return dateFinDispo;
-    }
-
-    public Formateur dateFinDispo(LocalDate dateFinDispo) {
-        this.dateFinDispo = dateFinDispo;
-        return this;
-    }
-
-    public void setDateFinDispo(LocalDate dateFinDispo) {
-        this.dateFinDispo = dateFinDispo;
     }
 
     public User getUser() {
@@ -178,6 +150,31 @@ public class Formateur implements Serializable {
     public void setModules(Set<Module> modules) {
         this.modules = modules;
     }
+
+    public Set<Disponibilite> getDisponibilites() {
+        return disponibilites;
+    }
+
+    public Formateur disponibilites(Set<Disponibilite> disponibilites) {
+        this.disponibilites = disponibilites;
+        return this;
+    }
+
+    public Formateur addDisponibilites(Disponibilite disponibilite) {
+        this.disponibilites.add(disponibilite);
+        disponibilite.setFormateur(this);
+        return this;
+    }
+
+    public Formateur removeDisponibilites(Disponibilite disponibilite) {
+        this.disponibilites.remove(disponibilite);
+        disponibilite.setFormateur(null);
+        return this;
+    }
+
+    public void setDisponibilites(Set<Disponibilite> disponibilites) {
+        this.disponibilites = disponibilites;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -204,8 +201,6 @@ public class Formateur implements Serializable {
     public String toString() {
         return "Formateur{" +
             "id=" + getId() +
-            ", dateDebutDispo='" + getDateDebutDispo() + "'" +
-            ", dateFinDispo='" + getDateFinDispo() + "'" +
             "}";
     }
 }

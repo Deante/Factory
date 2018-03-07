@@ -75,6 +75,8 @@ public class CacheConfiguration {
             cm.createCache(factory.domain.Stagiaire.class.getName() + ".ordinateurs", jcacheConfiguration);
             cm.createCache(factory.domain.Module.class.getName() + ".formateurs", jcacheConfiguration);
             cm.createCache(factory.domain.Formateur.class.getName() + ".modules", jcacheConfiguration);
+            cm.createCache(factory.domain.Disponibilite.class.getName(), jcacheConfiguration);
+            cm.createCache(factory.domain.Formateur.class.getName() + ".disponibilites", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

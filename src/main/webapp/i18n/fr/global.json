@@ -20,6 +20,7 @@
                 "stagiaire": "Stagiaire",
                 "projecteur": "Projecteur",
                 "ordinateur": "Ordinateur",
+                "disponibilite": "Disponibilite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "planning": "Planning",

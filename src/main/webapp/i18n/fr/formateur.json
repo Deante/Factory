@@ -16,12 +16,11 @@
             "detail": {
                 "title": "Formateur"
             },
-            "dateDebutDispo": "Date Début Dispo",
-            "dateFinDispo": "Date Fin Dispo",
-            "user": "Utilisateur",
+            "user": "User",
             "competences": "Compétences",
             "formations": "Formations",
-            "modules": "Modules"
+            "modules": "Modules",
+            "disponibilites": "Disponibilités"
         }
     }
 }

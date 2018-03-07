@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span jhiTranslate="factoryApp.formateur.home.title">Formateurs</span>
-        <button class="btn btn-primary float-right jh-create-entity create-formateur" [routerLink]="['/', { outlets: { popup: ['formateur-new'] } }]">
+        <span jhiTranslate="factoryApp.disponibilite.home.title">Disponibilites</span>
+        <button class="btn btn-primary float-right jh-create-entity create-disponibilite" [routerLink]="['/', { outlets: { popup: ['disponibilite-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span class="hidden-sm-down"  jhiTranslate="factoryApp.formateur.home.createLabel">
-            Create new Formateur
+            <span class="hidden-sm-down"  jhiTranslate="factoryApp.disponibilite.home.createLabel">
+            Create new Disponibilite
             </span>
         </button>
     </h2>
@@ -13,7 +13,7 @@
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'factoryApp.formateur.home.search' | translate }}">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'factoryApp.disponibilite.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
                     </button>
@@ -25,31 +25,37 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="formateurs">
+    <div class="table-responsive" *ngIf="disponibilites">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="user.login"><span jhiTranslate="factoryApp.formateur.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateDebut"><span jhiTranslate="factoryApp.disponibilite.dateDebut">Date Debut</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateFin"><span jhiTranslate="factoryApp.disponibilite.dateFin">Date Fin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="formateur.user.lastName"><span jhiTranslate="factoryApp.disponibilite.formateur">Formateur</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-            <tr *ngFor="let formateur of formateurs ;trackBy: trackId">
-                <td><a [routerLink]="['../formateur', formateur.id ]">{{formateur.id}}</a></td>
+            <tr *ngFor="let disponibilite of disponibilites ;trackBy: trackId">
+                <td><a [routerLink]="['../disponibilite', disponibilite.id ]">{{disponibilite.id}}</a></td>
+                <td>{{disponibilite.dateDebut | date:'mediumDate'}}</td>
+                <td>{{disponibilite.dateFin | date:'mediumDate'}}</td>
                 <td>
-                    {{formateur.user?.login}}
+                    <div *ngIf="disponibilite.formateur">
+                        <a [routerLink]="['../formateur', disponibilite.formateur?.id ]" >{{disponibilite.formateur?.user.lastName}}</a>
+                    </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../formateur', formateur.id ]"
+                                [routerLink]="['../disponibilite', disponibilite.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'formateur/'+ formateur.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'disponibilite/'+ disponibilite.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -57,7 +63,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'formateur/'+ formateur.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'disponibilite/'+ disponibilite.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

@@ -31,8 +31,6 @@ export class FormateurDialogComponent implements OnInit {
     formations: Formation[];
 
     modules: Module[];
-    dateDebutDispoDp: any;
-    dateFinDispoDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Formateur entity.
+ * Performance test for the Disponibilite entity.
  */
-class FormateurGatlingTest extends Simulation {
+class DisponibiliteGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -42,7 +42,7 @@ class FormateurGatlingTest extends Simulation {
         "Authorization" -> "${access_token}"
     )
 
-    val scn = scenario("Test the Formateur entity")
+    val scn = scenario("Test the Disponibilite entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -60,26 +60,26 @@ class FormateurGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all formateurs")
-            .get("/api/formateurs")
+            exec(http("Get all disponibilites")
+            .get("/api/disponibilites")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new formateur")
-            .post("/api/formateurs")
+            .exec(http("Create new disponibilite")
+            .post("/api/disponibilites")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null}""")).asJSON
+            .body(StringBody("""{"id":null, "dateDebut":"2020-01-01T00:00:00.000Z", "dateFin":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_formateur_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_disponibilite_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created formateur")
-                .get("${new_formateur_url}")
+                exec(http("Get created disponibilite")
+                .get("${new_disponibilite_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created formateur")
-            .delete("${new_formateur_url}")
+            .exec(http("Delete created disponibilite")
+            .delete("${new_disponibilite_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

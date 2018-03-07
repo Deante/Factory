@@ -3,34 +3,36 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { Formateur } from './formateur.model';
+import { JhiDateUtils } from 'ng-jhipster';
+
+import { Disponibilite } from './disponibilite.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Injectable()
-export class FormateurService {
+export class DisponibiliteService {
 
-    private resourceUrl =  SERVER_API_URL + 'api/formateurs';
-    private resourceSearchUrl = SERVER_API_URL + 'api/_search/formateurs';
+    private resourceUrl =  SERVER_API_URL + 'api/disponibilites';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/disponibilites';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(formateur: Formateur): Observable<Formateur> {
-        const copy = this.convert(formateur);
+    create(disponibilite: Disponibilite): Observable<Disponibilite> {
+        const copy = this.convert(disponibilite);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(formateur: Formateur): Observable<Formateur> {
-        const copy = this.convert(formateur);
+    update(disponibilite: Disponibilite): Observable<Disponibilite> {
+        const copy = this.convert(disponibilite);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    find(id: number): Observable<Formateur> {
+    find(id: number): Observable<Disponibilite> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -63,18 +65,26 @@ export class FormateurService {
     }
 
     /**
-     * Convert a returned JSON object to Formateur.
+     * Convert a returned JSON object to Disponibilite.
      */
-    private convertItemFromServer(json: any): Formateur {
-        const entity: Formateur = Object.assign(new Formateur(), json);
+    private convertItemFromServer(json: any): Disponibilite {
+        const entity: Disponibilite = Object.assign(new Disponibilite(), json);
+        entity.dateDebut = this.dateUtils
+            .convertLocalDateFromServer(json.dateDebut);
+        entity.dateFin = this.dateUtils
+            .convertLocalDateFromServer(json.dateFin);
         return entity;
     }
 
     /**
-     * Convert a Formateur to a JSON which can be sent to the server.
+     * Convert a Disponibilite to a JSON which can be sent to the server.
      */
-    private convert(formateur: Formateur): Formateur {
-        const copy: Formateur = Object.assign({}, formateur);
+    private convert(disponibilite: Disponibilite): Disponibilite {
+        const copy: Disponibilite = Object.assign({}, disponibilite);
+        copy.dateDebut = this.dateUtils
+            .convertLocalDateToServer(disponibilite.dateDebut);
+        copy.dateFin = this.dateUtils
+            .convertLocalDateToServer(disponibilite.dateFin);
         return copy;
     }
 }

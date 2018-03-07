@@ -1,17 +1,17 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Formateur } from './formateur.model';
-import { FormateurService } from './formateur.service';
+import { Disponibilite } from './disponibilite.model';
+import { DisponibiliteService } from './disponibilite.service';
 
 @Injectable()
-export class FormateurPopupService {
+export class DisponibilitePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
         private modalService: NgbModal,
         private router: Router,
-        private formateurService: FormateurService
+        private disponibiliteService: DisponibiliteService
 
     ) {
         this.ngbModalRef = null;
@@ -25,23 +25,37 @@ export class FormateurPopupService {
             }
 
             if (id) {
-                this.formateurService.find(id).subscribe((formateur) => {
-                    this.ngbModalRef = this.formateurModalRef(component, formateur);
+                this.disponibiliteService.find(id).subscribe((disponibilite) => {
+                    if (disponibilite.dateDebut) {
+                        disponibilite.dateDebut = {
+                            year: disponibilite.dateDebut.getFullYear(),
+                            month: disponibilite.dateDebut.getMonth() + 1,
+                            day: disponibilite.dateDebut.getDate()
+                        };
+                    }
+                    if (disponibilite.dateFin) {
+                        disponibilite.dateFin = {
+                            year: disponibilite.dateFin.getFullYear(),
+                            month: disponibilite.dateFin.getMonth() + 1,
+                            day: disponibilite.dateFin.getDate()
+                        };
+                    }
+                    this.ngbModalRef = this.disponibiliteModalRef(component, disponibilite);
                     resolve(this.ngbModalRef);
                 });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.formateurModalRef(component, new Formateur());
+                    this.ngbModalRef = this.disponibiliteModalRef(component, new Disponibilite());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    formateurModalRef(component: Component, formateur: Formateur): NgbModalRef {
+    disponibiliteModalRef(component: Component, disponibilite: Disponibilite): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.formateur = formateur;
+        modalRef.componentInstance.disponibilite = disponibilite;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;
