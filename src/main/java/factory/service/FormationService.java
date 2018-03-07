@@ -10,6 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import java.time.temporal.TemporalAdjusters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -260,30 +261,40 @@ public class FormationService {
 		int dureemodule = 0;
 		int nbmodule = 0;
 		int nbformateur = 0;
+		String month = null;
 
 		for (int i = 0; i < daysBetween; i++) {
 
 			for (int col = 0; col < 4; col++) {
 				switch (col) {
 				case 0:
+					if (month != date.getMonth().toString()) {
+						month = date.getMonth().toString();
+						LocalDate temp = date.withDayOfMonth(date.lengthOfMonth());
+						int dayfinm = (int) ChronoUnit.DAYS.between(date, temp);
+						cell = new PdfPCell(new Phrase(month));
+						cell.setRowspan(dayfinm+1);
+						table.addCell(cell);
+					}
+					break;
+
+				case 1:
 					String day = date.getDayOfWeek().toString() + " " + date.getDayOfMonth();
 					cell = new PdfPCell(new Phrase(day));
 					table.addCell(cell);
 					date = date.plusDays(1);
 					break;
 
-				case 1:
-					cell = new PdfPCell(new Phrase(date.getMonth().toString()));
-					table.addCell(cell);
-					break;
-
 				case 2:
 					Module m = new Module();
-					if (dureemodule == 0) {						
+					if (dureemodule == 0) {
 						if (nbmodule < modules.size()) {
 							m = modules.get(nbmodule);
-						}else {
+						} else {
 							m = modules.get(0);
+							cell = new PdfPCell(new Phrase("pas de modules"));
+							table.addCell(cell);
+							break;
 						}
 						dureemodule = m.getDuree().intValue();
 						cell = new PdfPCell(new Phrase(m.getTitre()));
