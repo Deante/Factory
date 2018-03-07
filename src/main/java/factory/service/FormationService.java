@@ -236,7 +236,7 @@ public class FormationService {
 
 	public File createPdf(Formation formation) throws IOException, DocumentException {
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream("temp.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream("src\\main\\webapp\\content\\temp.pdf"));
 		document.open();
 
 		PdfPTable table = new PdfPTable(4);
@@ -292,7 +292,7 @@ public class FormationService {
 							m = modules.get(nbmodule);
 						} else {
 							m = modules.get(0);
-							cell = new PdfPCell(new Phrase("pas de modules"));
+							cell = new PdfPCell(new Phrase("pas de modules supplémentaires"));
 							table.addCell(cell);
 							break;
 						}
@@ -320,7 +320,7 @@ public class FormationService {
 		document.add(table);
 		document.close();
 
-		File file = new File("temp.pdf");
+		File file = new File("src\\main\\webapp\\content\\temp.pdf");
 		return file;
 	}
 }

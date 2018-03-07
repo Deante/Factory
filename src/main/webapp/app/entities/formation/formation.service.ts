@@ -28,7 +28,7 @@ export class FormationService {
     getpdf(id: number): any {
         return this.http.get(`${this.resourceUrl}/${id}/pdf`, {responseType: ResponseContentType.Blob}).map(
             (res) => {
-                return new Blob([res.blob()], {type: 'application/pdf'})
+                return new Blob([res.blob()], { type: 'application/pdf' })
             });
     }
 
