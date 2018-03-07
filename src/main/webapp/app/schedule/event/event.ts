@@ -4,4 +4,7 @@ export class MyEvent {
     start: string;
     end: string;
     allDay = true;
+    salleCode: string;
+    salleCapacity: number;
+    stagiairecount = 0;
 }

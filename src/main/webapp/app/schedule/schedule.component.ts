@@ -27,7 +27,6 @@ export class ScheduleComponent implements OnInit {
 
     ngOnInit() {
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => { this.events = this.loadFormationEvent(events) });
 
         this.headerConfig = {
             left: 'prev,next today',
@@ -58,12 +57,16 @@ export class ScheduleComponent implements OnInit {
 
     private loadFormationEvent(response: ResponseWrapper): Array<any> {
         const result: Array<any> = Array<any>();
-        for (const f of response.json) {
+        let f: Formation;
+        for (f of response.json) {
             const e: MyEvent = new MyEvent();
             e.id = f.id;
             e.title = f.nom;
             e.start = f.dateDebutForm;
             e.end = f.dateFinForm;
+            const salle: Salle = f.salle;
+            e.salleCode = salle.code;
+            e.salleCapacity = salle.capacite;
             result.push(e);
         }
         return result;
@@ -93,6 +96,8 @@ export class ScheduleComponent implements OnInit {
         this.event.id = e.calEvent.id;
         this.event.start = start.format();
         this.event.allDay = e.calEvent.allDay;
+        this.event.salleCode = e.calEvent.salleCode;
+        this.event.salleCapacity = e.calEvent.salleCapacity;
         this.dialogVisible = true;
     }
 
@@ -101,37 +106,37 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventMouseout(event: any) {
+    handleEventMouseout(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStart(event: any) {
+    handleEventDragStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStop(event: any) {
+    handleEventDragStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDrop(event: any) {
+    handleEventDrop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStart(event: any) {
+    handleEventResizeStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStop(event: any) {
+    handleEventResizeStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResize(event: any) {
+    handleEventResize(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
