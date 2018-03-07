@@ -23,18 +23,22 @@
             "relationshipType": "many-to-many",
             "ownerSide": false,
             "otherEntityRelationshipName": "formateurs"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "dateDebutDispo",
-            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "dateFinDispo",
-            "fieldType": "LocalDate"
+            "relationshipName": "modules",
+            "otherEntityName": "module",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "formateurs"
+        },
+        {
+            "relationshipName": "disponibilites",
+            "otherEntityName": "disponibilite",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "formateur"
         }
     ],
+    "fields": [],
     "changelogDate": "20180227132455",
     "dto": "no",
     "service": "serviceClass",

@@ -9,9 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Stagiaire } from './stagiaire.model';
 import { StagiairePopupService } from './stagiaire-popup.service';
 import { StagiaireService } from './stagiaire.service';
-import { User, UserService } from '../../shared';
-import { Formation, FormationService } from '../formation';
 import { Ordinateur, OrdinateurService } from '../ordinateur';
+import { Formation, FormationService } from '../formation';
 import { ResponseWrapper } from '../../shared';
 
 @Component({
@@ -23,31 +22,26 @@ export class StagiaireDialogComponent implements OnInit {
     stagiaire: Stagiaire;
     isSaving: boolean;
 
-    users: User[];
+    ordinateurs: Ordinateur[];
 
     formations: Formation[];
-
-    ordinateurs: Ordinateur[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private stagiaireService: StagiaireService,
-        private userService: UserService,
-        private formationService: FormationService,
         private ordinateurService: OrdinateurService,
+        private formationService: FormationService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.userService.query()
-            .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
-        this.formationService.query()
-            .subscribe((res: ResponseWrapper) => { this.formations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.ordinateurService.query()
             .subscribe((res: ResponseWrapper) => { this.ordinateurs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.formationService.query()
+            .subscribe((res: ResponseWrapper) => { this.formations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -84,7 +78,7 @@ export class StagiaireDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackUserById(index: number, item: User) {
+    trackOrdinateurById(index: number, item: Ordinateur) {
         return item.id;
     }
 
@@ -92,8 +86,15 @@ export class StagiaireDialogComponent implements OnInit {
         return item.id;
     }
 
-    trackOrdinateurById(index: number, item: Ordinateur) {
-        return item.id;
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

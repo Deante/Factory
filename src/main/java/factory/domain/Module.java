@@ -62,6 +62,13 @@ public class Module implements Serializable {
                inverseJoinColumns = @JoinColumn(name="matieres_id", referencedColumnName="id"))
     private Set<Matiere> matieres = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "module_formateurs",
+               joinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="formateurs_id", referencedColumnName="id"))
+    private Set<Formateur> formateurs = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -184,6 +191,31 @@ public class Module implements Serializable {
 
     public void setMatieres(Set<Matiere> matieres) {
         this.matieres = matieres;
+    }
+
+    public Set<Formateur> getFormateurs() {
+        return formateurs;
+    }
+
+    public Module formateurs(Set<Formateur> formateurs) {
+        this.formateurs = formateurs;
+        return this;
+    }
+
+    public Module addFormateurs(Formateur formateur) {
+        this.formateurs.add(formateur);
+        formateur.getModules().add(this);
+        return this;
+    }
+
+    public Module removeFormateurs(Formateur formateur) {
+        this.formateurs.remove(formateur);
+        formateur.getModules().remove(this);
+        return this;
+    }
+
+    public void setFormateurs(Set<Formateur> formateurs) {
+        this.formateurs = formateurs;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

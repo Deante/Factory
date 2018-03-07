@@ -26,20 +26,6 @@ export class FormateurPopupService {
 
             if (id) {
                 this.formateurService.find(id).subscribe((formateur) => {
-                    if (formateur.dateDebutDispo) {
-                        formateur.dateDebutDispo = {
-                            year: formateur.dateDebutDispo.getFullYear(),
-                            month: formateur.dateDebutDispo.getMonth() + 1,
-                            day: formateur.dateDebutDispo.getDate()
-                        };
-                    }
-                    if (formateur.dateFinDispo) {
-                        formateur.dateFinDispo = {
-                            year: formateur.dateFinDispo.getFullYear(),
-                            month: formateur.dateFinDispo.getMonth() + 1,
-                            day: formateur.dateFinDispo.getDate()
-                        };
-                    }
                     this.ngbModalRef = this.formateurModalRef(component, formateur);
                     resolve(this.ngbModalRef);
                 });

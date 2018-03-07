@@ -23,8 +23,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static factory.web.rest.TestUtil.createFormattingConversionService;
@@ -41,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = FactoryApp.class)
 public class FormateurResourceIntTest {
-
-    private static final LocalDate DEFAULT_DATE_DEBUT_DISPO = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_DEBUT_DISPO = LocalDate.now(ZoneId.systemDefault());
-
-    private static final LocalDate DEFAULT_DATE_FIN_DISPO = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_FIN_DISPO = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private FormateurRepository formateurRepository;
@@ -91,9 +83,7 @@ public class FormateurResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Formateur createEntity(EntityManager em) {
-        Formateur formateur = new Formateur()
-            .dateDebutDispo(DEFAULT_DATE_DEBUT_DISPO)
-            .dateFinDispo(DEFAULT_DATE_FIN_DISPO);
+        Formateur formateur = new Formateur();
         return formateur;
     }
 
@@ -118,8 +108,6 @@ public class FormateurResourceIntTest {
         List<Formateur> formateurList = formateurRepository.findAll();
         assertThat(formateurList).hasSize(databaseSizeBeforeCreate + 1);
         Formateur testFormateur = formateurList.get(formateurList.size() - 1);
-        assertThat(testFormateur.getDateDebutDispo()).isEqualTo(DEFAULT_DATE_DEBUT_DISPO);
-        assertThat(testFormateur.getDateFinDispo()).isEqualTo(DEFAULT_DATE_FIN_DISPO);
 
         // Validate the Formateur in Elasticsearch
         Formateur formateurEs = formateurSearchRepository.findOne(testFormateur.getId());
@@ -155,9 +143,7 @@ public class FormateurResourceIntTest {
         restFormateurMockMvc.perform(get("/api/formateurs?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(formateur.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dateDebutDispo").value(hasItem(DEFAULT_DATE_DEBUT_DISPO.toString())))
-            .andExpect(jsonPath("$.[*].dateFinDispo").value(hasItem(DEFAULT_DATE_FIN_DISPO.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(formateur.getId().intValue())));
     }
 
     @Test
@@ -170,9 +156,7 @@ public class FormateurResourceIntTest {
         restFormateurMockMvc.perform(get("/api/formateurs/{id}", formateur.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(formateur.getId().intValue()))
-            .andExpect(jsonPath("$.dateDebutDispo").value(DEFAULT_DATE_DEBUT_DISPO.toString()))
-            .andExpect(jsonPath("$.dateFinDispo").value(DEFAULT_DATE_FIN_DISPO.toString()));
+            .andExpect(jsonPath("$.id").value(formateur.getId().intValue()));
     }
 
     @Test
@@ -195,9 +179,6 @@ public class FormateurResourceIntTest {
         Formateur updatedFormateur = formateurRepository.findOne(formateur.getId());
         // Disconnect from session so that the updates on updatedFormateur are not directly saved in db
         em.detach(updatedFormateur);
-        updatedFormateur
-            .dateDebutDispo(UPDATED_DATE_DEBUT_DISPO)
-            .dateFinDispo(UPDATED_DATE_FIN_DISPO);
 
         restFormateurMockMvc.perform(put("/api/formateurs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -208,8 +189,6 @@ public class FormateurResourceIntTest {
         List<Formateur> formateurList = formateurRepository.findAll();
         assertThat(formateurList).hasSize(databaseSizeBeforeUpdate);
         Formateur testFormateur = formateurList.get(formateurList.size() - 1);
-        assertThat(testFormateur.getDateDebutDispo()).isEqualTo(UPDATED_DATE_DEBUT_DISPO);
-        assertThat(testFormateur.getDateFinDispo()).isEqualTo(UPDATED_DATE_FIN_DISPO);
 
         // Validate the Formateur in Elasticsearch
         Formateur formateurEs = formateurSearchRepository.findOne(testFormateur.getId());
@@ -266,9 +245,7 @@ public class FormateurResourceIntTest {
         restFormateurMockMvc.perform(get("/api/_search/formateurs?query=id:" + formateur.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(formateur.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dateDebutDispo").value(hasItem(DEFAULT_DATE_DEBUT_DISPO.toString())))
-            .andExpect(jsonPath("$.[*].dateFinDispo").value(hasItem(DEFAULT_DATE_FIN_DISPO.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(formateur.getId().intValue())));
     }
 
     @Test

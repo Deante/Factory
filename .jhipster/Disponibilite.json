@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "formateur",
+            "otherEntityName": "formateur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "user.lastName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180307074938",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "disponibilite",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

@@ -10,6 +10,7 @@ import { ModuleService } from '../../../../../../main/webapp/app/entities/module
 import { Module } from '../../../../../../main/webapp/app/entities/module/module.model';
 import { FormationService } from '../../../../../../main/webapp/app/entities/formation';
 import { MatiereService } from '../../../../../../main/webapp/app/entities/matiere';
+import { FormateurService } from '../../../../../../main/webapp/app/entities/formateur';
 
 describe('Component Tests', () => {
 
@@ -27,6 +28,7 @@ describe('Component Tests', () => {
                 providers: [
                     FormationService,
                     MatiereService,
+                    FormateurService,
                     ModuleService
                 ]
             })

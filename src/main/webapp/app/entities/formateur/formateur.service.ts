@@ -3,8 +3,6 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Formateur } from './formateur.model';
 import { ResponseWrapper, createRequestOption } from '../../shared';
 
@@ -14,7 +12,7 @@ export class FormateurService {
     private resourceUrl =  SERVER_API_URL + 'api/formateurs';
     private resourceSearchUrl = SERVER_API_URL + 'api/_search/formateurs';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http) { }
 
     create(formateur: Formateur): Observable<Formateur> {
         const copy = this.convert(formateur);
@@ -69,10 +67,6 @@ export class FormateurService {
      */
     private convertItemFromServer(json: any): Formateur {
         const entity: Formateur = Object.assign(new Formateur(), json);
-        entity.dateDebutDispo = this.dateUtils
-            .convertLocalDateFromServer(json.dateDebutDispo);
-        entity.dateFinDispo = this.dateUtils
-            .convertLocalDateFromServer(json.dateFinDispo);
         return entity;
     }
 
@@ -81,10 +75,6 @@ export class FormateurService {
      */
     private convert(formateur: Formateur): Formateur {
         const copy: Formateur = Object.assign({}, formateur);
-        copy.dateDebutDispo = this.dateUtils
-            .convertLocalDateToServer(formateur.dateDebutDispo);
-        copy.dateFinDispo = this.dateUtils
-            .convertLocalDateToServer(formateur.dateFinDispo);
         return copy;
     }
 }

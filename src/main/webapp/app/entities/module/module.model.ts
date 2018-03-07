@@ -18,6 +18,7 @@ export class Module implements BaseEntity {
         public contenu?: string,
         public formations?: BaseEntity[],
         public matieres?: BaseEntity[],
+        public formateurs?: BaseEntity[],
     ) {
     }
 }

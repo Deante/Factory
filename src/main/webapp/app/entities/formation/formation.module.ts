@@ -11,6 +11,7 @@ import {
     FormationPopupComponent,
     FormationDeletePopupComponent,
     FormationDeleteDialogComponent,
+    FormationPdfComponent,
     formationRoute,
     formationPopupRoute,
 } from './';
@@ -32,6 +33,7 @@ const ENTITY_STATES = [
         FormationDeleteDialogComponent,
         FormationPopupComponent,
         FormationDeletePopupComponent,
+        FormationPdfComponent
     ],
     entryComponents: [
         FormationComponent,

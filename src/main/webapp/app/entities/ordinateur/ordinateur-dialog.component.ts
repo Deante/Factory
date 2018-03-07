@@ -4,11 +4,13 @@ import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Ordinateur } from './ordinateur.model';
 import { OrdinateurPopupService } from './ordinateur-popup.service';
 import { OrdinateurService } from './ordinateur.service';
+import { Stagiaire, StagiaireService } from '../stagiaire';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-ordinateur-dialog',
@@ -19,15 +21,21 @@ export class OrdinateurDialogComponent implements OnInit {
     ordinateur: Ordinateur;
     isSaving: boolean;
 
+    stagiaires: Stagiaire[];
+
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private ordinateurService: OrdinateurService,
+        private stagiaireService: StagiaireService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.stagiaireService.query()
+            .subscribe((res: ResponseWrapper) => { this.stagiaires = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -58,6 +66,25 @@ export class OrdinateurDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackStagiaireById(index: number, item: Stagiaire) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

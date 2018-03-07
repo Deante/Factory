@@ -4,8 +4,9 @@
         {
             "relationshipName": "stagiaires",
             "otherEntityName": "stagiaire",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "ordinateur"
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "ordinateurs"
         }
     ],
     "fields": [

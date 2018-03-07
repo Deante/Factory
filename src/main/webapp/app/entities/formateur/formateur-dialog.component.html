@@ -12,26 +12,6 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="formateur.id" readonly />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="factoryApp.formateur.dateDebutDispo" for="field_dateDebutDispo">Date Debut Dispo</label>
-            <div class="input-group">
-                <input id="field_dateDebutDispo" type="text" class="form-control" name="dateDebutDispo" ngbDatepicker  #dateDebutDispoDp="ngbDatepicker" [(ngModel)]="formateur.dateDebutDispo"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="dateDebutDispoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="factoryApp.formateur.dateFinDispo" for="field_dateFinDispo">Date Fin Dispo</label>
-            <div class="input-group">
-                <input id="field_dateFinDispo" type="text" class="form-control" name="dateFinDispo" ngbDatepicker  #dateFinDispoDp="ngbDatepicker" [(ngModel)]="formateur.dateFinDispo"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-secondary" (click)="dateFinDispoDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="factoryApp.formateur.user" for="field_user">User</label>

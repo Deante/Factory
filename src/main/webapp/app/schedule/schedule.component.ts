@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Salle } from './../entities/salle/salle.model';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { JhiLanguageService } from 'ng-jhipster';
 import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
 import {MyEvent} from './event/event';
+import { FormationService, Formation } from '../entities/formation';
+import { ResponseWrapper } from '../shared';
 
 @Component({
     selector: 'jhi-schedule',
@@ -19,10 +22,12 @@ export class ScheduleComponent implements OnInit {
     idGen = 100;
     fr: any;
 
-    constructor(private eventService: EventService) { }
+    constructor(private eventService: EventService
+                , private formationService: FormationService) { }
 
     ngOnInit() {
-        this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => { this.events = this.loadFormationEvent(events) });
 
         this.headerConfig = {
             left: 'prev,next today',
@@ -47,7 +52,21 @@ export class ScheduleComponent implements OnInit {
         const start = event.view.start;
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
-        this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
+        this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => { this.events = this.loadFormationEvent(response) });
+    }
+
+    private loadFormationEvent(response: ResponseWrapper): Array<any> {
+        const result: Array<any> = Array<any>();
+        for (const f of response.json) {
+            const e: MyEvent = new MyEvent();
+            e.id = f.id;
+            e.title = f.nom;
+            e.start = f.dateDebutForm;
+            e.end = f.dateFinForm;
+            result.push(e);
+        }
+        return result;
     }
 
     handleDayClick(event: any) {

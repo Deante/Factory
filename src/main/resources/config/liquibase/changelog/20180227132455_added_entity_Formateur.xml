@@ -20,15 +20,7 @@
         <createTable tableName="formateur">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="date_debut_dispo" type="date">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="date_fin_dispo" type="date">
-                <constraints nullable="true" />
-            </column>
-            <column name="user_id" type="bigint">
+            </column>            <column name="user_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

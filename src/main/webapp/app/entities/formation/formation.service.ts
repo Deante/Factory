@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {Http, Response, ResponseContentType} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
+import {JhiDateUtils} from 'ng-jhipster';
 
-import { Formation } from './formation.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import {Formation} from './formation.model';
+import {createRequestOption, ResponseWrapper} from '../../shared';
 
 @Injectable()
 export class FormationService {
 
-    private resourceUrl =  SERVER_API_URL + 'api/formations';
+    private resourceUrl = SERVER_API_URL + 'api/formations';
     private resourceSearchUrl = SERVER_API_URL + 'api/_search/formations';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils) {
+    }
 
     create(formation: Formation): Observable<Formation> {
         const copy = this.convert(formation);
@@ -22,6 +23,13 @@ export class FormationService {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
+    }
+
+    getpdf(id: number): any {
+        return this.http.get(`${this.resourceUrl}/${id}/pdf`, {responseType: ResponseContentType.Blob}).map(
+            (res) => {
+                return new Blob([res.blob()], {type: 'application/pdf'})
+            });
     }
 
     update(formation: Formation): Observable<Formation> {
