@@ -3,9 +3,12 @@ package factory.service;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -25,7 +28,9 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import factory.domain.Formateur;
 import factory.domain.Formation;
+import factory.domain.Module;
 import factory.repository.FormationRepository;
 import factory.repository.search.FormationSearchRepository;
 
@@ -116,13 +121,15 @@ public class FormationService {
 		return result;
 	}
 
-	public File createPdf(Formation formation) throws IOException, DocumentException {
+	public File createPdf2(Formation formation) throws IOException, DocumentException {
 		Document document = new Document();
-		
+
 		PdfWriter.getInstance(document, new FileOutputStream("temp.pdf"));
 		document.open();
+
 		PdfPTable table = new PdfPTable(3);
 		PdfPTable table2 = new PdfPTable(4);
+
 		Stream.of("column header 1", "column header 2", "column header 3").forEach(columnTitle -> {
 			PdfPCell header = new PdfPCell();
 			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -130,6 +137,7 @@ public class FormationService {
 			header.setPhrase(new Phrase(columnTitle));
 			table.addCell(header);
 		});
+
 		table.addCell("row 1, col 1");
 		table.addCell("row 1, col 2");
 		table.addCell("row 1, col 3");
@@ -220,7 +228,87 @@ public class FormationService {
 		table3.addCell("row 2; cell 2");
 		document.add(table3);
 		document.close();
-		
+
+		File file = new File("temp.pdf");
+		return file;
+	}
+
+	public File createPdf(Formation formation) throws IOException, DocumentException {
+		Document document = new Document();
+		PdfWriter.getInstance(document, new FileOutputStream("temp.pdf"));
+		document.open();
+
+		PdfPTable table = new PdfPTable(4);
+
+		Stream.of("Date", "Mois", "Module", "Formateur").forEach(columnTitle -> {
+			PdfPCell header = new PdfPCell();
+			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			header.setBorderWidth(2);
+			header.setPhrase(new Phrase(columnTitle));
+			table.addCell(header);
+		});
+
+		LocalDate datedebut = formation.getDateDebutForm();
+		LocalDate datefin = formation.getDateFinForm();
+		LocalDate date = datedebut;
+		List<Formateur> formateurs = new ArrayList<Formateur>();
+		formateurs.addAll(formation.getFormateurs());
+		List<Module> modules = new ArrayList<Module>();
+		modules.addAll(formation.getModules());
+		PdfPCell cell = new PdfPCell();
+		long daysBetween = ChronoUnit.DAYS.between(datedebut, datefin);
+		int dureemodule = 0;
+		int nbmodule = 0;
+		int nbformateur = 0;
+
+		for (int i = 0; i < daysBetween; i++) {
+
+			for (int col = 0; col < 4; col++) {
+				switch (col) {
+				case 0:
+					String day = date.getDayOfWeek().toString() + " " + date.getDayOfMonth();
+					cell = new PdfPCell(new Phrase(day));
+					table.addCell(cell);
+					date = date.plusDays(1);
+					break;
+
+				case 1:
+					cell = new PdfPCell(new Phrase(date.getMonth().toString()));
+					table.addCell(cell);
+					break;
+
+				case 2:
+					Module m = new Module();
+					if (dureemodule == 0) {						
+						if (nbmodule < modules.size()) {
+							m = modules.get(nbmodule);
+						}else {
+							m = modules.get(0);
+						}
+						dureemodule = m.getDuree().intValue();
+						cell = new PdfPCell(new Phrase(m.getTitre()));
+						cell.setRowspan(dureemodule);
+						table.addCell(cell);
+						dureemodule--;
+						nbmodule++;
+					} else {
+						dureemodule--;
+					}
+					break;
+
+				case 3:
+					cell = new PdfPCell(new Phrase("formateur"));
+					table.addCell(cell);
+					break;
+
+				}
+			}
+
+		}
+
+		document.add(table);
+		document.close();
+
 		File file = new File("temp.pdf");
 		return file;
 	}
