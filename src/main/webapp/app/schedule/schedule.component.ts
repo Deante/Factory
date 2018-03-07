@@ -60,6 +60,7 @@ export class ScheduleComponent implements OnInit {
         let f: Formation;
         for (f of response.json) {
             const e: MyEvent = new MyEvent();
+            console.log(f);
             e.id = f.id;
             e.title = f.nom;
             e.start = f.dateDebutForm;
@@ -67,6 +68,9 @@ export class ScheduleComponent implements OnInit {
             const salle: Salle = f.salle;
             e.salleCode = salle.code;
             e.salleCapacity = salle.capacite;
+            if (f.stagiaires != null) {
+                e.stagiaireCount = f.stagiaires.length;
+            }
             result.push(e);
         }
         return result;
@@ -98,6 +102,7 @@ export class ScheduleComponent implements OnInit {
         this.event.allDay = e.calEvent.allDay;
         this.event.salleCode = e.calEvent.salleCode;
         this.event.salleCapacity = e.calEvent.salleCapacity;
+        this.event.stagiaireCount = e.calEvent.stagiaireCount;
         this.dialogVisible = true;
     }
 

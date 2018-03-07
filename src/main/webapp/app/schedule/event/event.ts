@@ -6,5 +6,5 @@ export class MyEvent {
     allDay = true;
     salleCode: string;
     salleCapacity: number;
-    stagiairecount = 0;
+    stagiaireCount: number;
 }

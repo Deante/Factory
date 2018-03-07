@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 /**
  * A Formation.
@@ -28,26 +30,32 @@ public class Formation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @JsonView(Views.Common.class)
     private Long id;
 
     @NotNull
     @Size(min = 3, max = 50)
     @Column(name = "nom", length = 50, nullable = false)
+    @JsonView(Views.Common.class)
     private String nom;
 
     @NotNull
     @Column(name = "date_debut_form", nullable = false)
+    @JsonView(Views.Common.class)
     private LocalDate dateDebutForm;
 
     @NotNull
     @Column(name = "date_fin_form", nullable = false)
+    @JsonView(Views.Common.class)
     private LocalDate dateFinForm;
 
     @Size(min = 0, max = 250)
     @Column(name = "objectifs", length = 250)
+    @JsonView(Views.Common.class)
     private String objectifs;
 
     @ManyToOne
+    @JsonView(Views.Formation.class)
     private Departement departement;
 
     @ManyToMany
@@ -55,20 +63,24 @@ public class Formation implements Serializable {
     @JoinTable(name = "formation_formateurs",
                joinColumns = @JoinColumn(name="formations_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="formateurs_id", referencedColumnName="id"))
+    @JsonView(Views.Formation.class)
     private Set<Formateur> formateurs = new HashSet<>();
 
     @ManyToOne
+    @JsonView(Views.Formation.class)
     private Gestionnaire gestionnaire;
 
-    @OneToMany(mappedBy = "formation")
-    @JsonIgnore
+    @OneToMany(mappedBy = "formation",fetch = FetchType.EAGER)
+    @JsonView(Views.FormationWithStagiaires.class)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Stagiaire> stagiaires = new HashSet<>();
 
     @ManyToOne
+    @JsonView(Views.Formation.class)
     private Salle salle;
 
     @ManyToOne
+    @JsonView(Views.Formation.class)
     private Technicien technicien;
 
     @ManyToMany
@@ -76,6 +88,7 @@ public class Formation implements Serializable {
     @JoinTable(name = "formation_modules",
                joinColumns = @JoinColumn(name="formations_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"))
+    @JsonView(Views.Formation.class)
     private Set<Module> modules = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
