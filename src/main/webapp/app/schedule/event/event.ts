@@ -7,4 +7,6 @@ export class MyEvent {
     salleCode: string;
     salleCapacity: number;
     stagiaireCount: number;
+    color: string;
+    textColor: string;
 }

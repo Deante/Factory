@@ -66,11 +66,15 @@ export class ScheduleComponent implements OnInit {
             e.start = f.dateDebutForm;
             e.end = f.dateFinForm;
             const salle: Salle = f.salle;
-            e.salleCode = salle.code;
-            e.salleCapacity = salle.capacite;
+            if (salle != null) {
+                e.salleCode = salle.code;
+                e.salleCapacity = salle.capacite;
+            }
             if (f.stagiaires != null) {
                 e.stagiaireCount = f.stagiaires.length;
             }
+            e.color = (salle != null && f.stagiaires != null ? (e.stagiaireCount > e.salleCapacity ? 'red' : 'blue') : 'blue');
+            e.textColor = 'white';
             result.push(e);
         }
         return result;

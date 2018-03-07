@@ -42,7 +42,7 @@ public class Stagiaire implements Serializable {
     @JoinTable(name = "stagiaire_ordinateurs",
                joinColumns = @JoinColumn(name="stagiaires_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="ordinateurs_id", referencedColumnName="id"))
-    @JsonView(Views.Common.class)
+    @JsonView(Views.Stagiaire.class)
     private Set<Ordinateur> ordinateurs = new HashSet<>();
 
     @ManyToOne
