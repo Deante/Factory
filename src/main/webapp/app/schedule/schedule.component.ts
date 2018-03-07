@@ -60,7 +60,6 @@ export class ScheduleComponent implements OnInit {
         const start = event.view.start;
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
-        console.log('loadevents');
         this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => {this.events = this.loadFormationEvent(events)});
     }
 
@@ -192,7 +191,6 @@ export class ScheduleComponent implements OnInit {
             e.capacite = forma.salle.capacite;
             result.push(e);
         }
-        console.log(this.events);
         return result;
     }
 
