@@ -62,7 +62,7 @@ public class Module implements Serializable {
                inverseJoinColumns = @JoinColumn(name="matieres_id", referencedColumnName="id"))
     private Set<Matiere> matieres = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "module_formateurs",
                joinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"),
