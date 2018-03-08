@@ -6,7 +6,7 @@ export const scheduleRoute: Route = {
     path: 'schedule',
     component: ScheduleComponent,
     data: {
-        authorities: ['ROLE_USER']
+        authorities: []
     },
     canActivate: [UserRouteAccessService]
 };

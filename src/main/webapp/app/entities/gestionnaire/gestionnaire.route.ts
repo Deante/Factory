@@ -11,7 +11,7 @@ export const gestionnaireRoute: Routes = [
         path: 'gestionnaire',
         component: GestionnaireComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.gestionnaire.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const gestionnaireRoute: Routes = [
         path: 'gestionnaire/:id',
         component: GestionnaireDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.gestionnaire.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const gestionnairePopupRoute: Routes = [
         path: 'gestionnaire-new',
         component: GestionnairePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.gestionnaire.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const gestionnairePopupRoute: Routes = [
         path: 'gestionnaire/:id/edit',
         component: GestionnairePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.gestionnaire.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const gestionnairePopupRoute: Routes = [
         path: 'gestionnaire/:id/delete',
         component: GestionnaireDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.gestionnaire.home.title'
         },
         canActivate: [UserRouteAccessService],
