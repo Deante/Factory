@@ -20,9 +20,6 @@
                 "stagiaire": "Trainee",
                 "projecteur": "Projector",
                 "ordinateur": "Computer",
-                "stagiaire": "Stagiaire",
-                "ordinateur": "Ordinateur",
-                "formateur": "Formateur",
                 "disponibilite": "Disponibilite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
