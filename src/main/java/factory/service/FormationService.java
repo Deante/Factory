@@ -125,118 +125,6 @@ public class FormationService {
 		return result;
 	}
 
-	public File createPdf2(Formation formation) throws IOException, DocumentException {
-		Document document = new Document();
-
-		PdfWriter.getInstance(document, new FileOutputStream("temp.pdf"));
-		document.open();
-
-		PdfPTable table = new PdfPTable(3);
-		PdfPTable table2 = new PdfPTable(4);
-
-		Stream.of("column header 1", "column header 2", "column header 3").forEach(columnTitle -> {
-			PdfPCell header = new PdfPCell();
-			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
-			header.setBorderWidth(2);
-			header.setPhrase(new Phrase(columnTitle));
-			table.addCell(header);
-		});
-
-		table.addCell("row 1, col 1");
-		table.addCell("row 1, col 2");
-		table.addCell("row 1, col 3");
-		PdfPCell cell = new PdfPCell(new Phrase(" 1,1 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 1,2 "));
-		table.addCell(cell);
-		PdfPCell cell23 = new PdfPCell(new Phrase("1,3 & 2,3"));
-		cell23.setRotation(90);
-		cell23.setRowspan(10);
-		table.addCell(cell23);
-		cell = new PdfPCell(new Phrase(" 2,1 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 2,2 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 3,1 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 3,2 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 4,1 "));
-		table.addCell(cell);
-		cell = new PdfPCell(new Phrase(" 4,2 "));
-		table.addCell(cell);
-		document.add(table);
-
-		Chunk chunk = new Chunk("Hello World");
-		Paragraph p = new Paragraph(chunk);
-		document.add(p);
-
-		table2.addCell("row 1, col 1");
-		table2.addCell("row 1, col 2");
-		table2.addCell("row 1, col 3");
-		table2.addCell("row 1, col 4");
-		PdfPCell cell2 = new PdfPCell(new Phrase("col 1 (10 lines)"));
-		cell2.setRowspan(10);
-		table2.addCell(cell2);
-		table2.addCell("row 2, col 2");
-		table2.addCell("row 2, col 3");
-		cell2 = new PdfPCell(new Phrase("col 4 (10 lines)"));
-		cell2.setRowspan(10);
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3 (5 lines)"));
-		cell2.setColspan(2);
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3 (5 lines)"));
-		cell2.setRowspan(5);
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-		cell2 = new PdfPCell(new Phrase("col 2,3"));
-		table2.addCell(cell2);
-
-		document.add(table2);
-
-		chunk = new Chunk("Hello World");
-		p = new Paragraph(chunk);
-		document.add(p);
-
-		PdfPTable table3 = new PdfPTable(3);
-		// we add a cell with colspan 3
-		cell = new PdfPCell(new Phrase("Cell with colspan 3"));
-		cell.setColspan(3);
-		table3.addCell(cell);
-		// now we add a cell with rowspan 2
-		cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
-		cell.setRowspan(2);
-		table3.addCell(cell);
-		// we add the four remaining cells with addCell()
-		table3.addCell("row 1; cell 1");
-		table3.addCell("row 1; cell 2");
-		table3.addCell("row 2; cell 1");
-		table3.addCell("row 2; cell 2");
-		document.add(table3);
-		document.close();
-
-		File file = new File("temp.pdf");
-		return file;
-	}
-
 	public File createPdf(Formation formation) throws IOException, DocumentException {
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream("src\\main\\webapp\\content\\temp.pdf"));
@@ -246,10 +134,11 @@ public class FormationService {
 		PdfPCell title = new PdfPCell();
 		Phrase titre = new Phrase("formation: " + formation.getNom());
 		titre.setFont(FontFactory.getFont(FontFactory.TIMES_ROMAN, 18f));
-		
+
 		title.setPhrase(titre);
 		title.setColspan(4);
-		title.setFixedHeight(40f);;
+		title.setFixedHeight(40f);
+		;
 		title.setVerticalAlignment(Element.ALIGN_CENTER);
 		title.setHorizontalAlignment(Element.ALIGN_CENTER);
 		title.setBorderWidth(2);
@@ -300,8 +189,7 @@ public class FormationService {
 				case 1:
 					String day = date.getDayOfWeek().toString() + " " + date.getDayOfMonth();
 					cell = new PdfPCell(new Phrase(day));
-					if (date.getDayOfWeek() == DayOfWeek.SATURDAY
-							|| date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+					if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
 						cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
 					}
 					table.addCell(cell);
@@ -309,13 +197,6 @@ public class FormationService {
 					break;
 
 				case 2:
-					
-					if (dureemodule == 0) {
-						if (nbmodule < modules.size()) {
-							m = modules.get(nbmodule);
-						} else {
-							m = null;
-							cell = new PdfPCell(new Phrase("pas de modules supplémentaires"));
 					if (date.minusDays(1).getDayOfWeek() != DayOfWeek.SATURDAY
 							&& date.minusDays(1).getDayOfWeek() != DayOfWeek.SUNDAY) {
 						if (dureemodule == 0) {
@@ -342,7 +223,6 @@ public class FormationService {
 							dureemodule--;
 							nbmodule++;
 							addform = true;
-							break;
 						} else if (date.minusDays(1).getDayOfWeek() == DayOfWeek.MONDAY
 								&& (dureemodule + 1) != m.getDuree().intValue() && spanrem != 0) {
 							cell = new PdfPCell(new Phrase(m.getTitre()));
@@ -364,16 +244,7 @@ public class FormationService {
 							dureemodule--;
 							addform = false;
 						}
-						dureemodule = m.getDuree().intValue();
-						cell = new PdfPCell(new Phrase(m.getTitre()));
-						cell.setRowspan(dureemodule);
-						table.addCell(cell);
-						dureemodule--;
-						nbmodule++;
-						addform = true;
 					} else {
-						dureemodule--;
-						addform = false;
 						cell = new PdfPCell(new Phrase(""));
 						cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
 						table.addCell(cell);
@@ -408,7 +279,6 @@ public class FormationService {
 								cell.setVerticalAlignment(Element.ALIGN_CENTER);
 								cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 								cell.setRotation(270);
-								cell.setRowspan(dureemodule + 1);
 								cell.setRowspan(spanf);
 								table.addCell(cell);
 								break;
