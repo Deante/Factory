@@ -11,7 +11,6 @@ export const departementRoute: Routes = [
         path: 'departement',
         component: DepartementComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'factoryApp.departement.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +18,6 @@ export const departementRoute: Routes = [
         path: 'departement/:id',
         component: DepartementDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'factoryApp.departement.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +29,6 @@ export const departementPopupRoute: Routes = [
         path: 'departement-new',
         component: DepartementPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'factoryApp.departement.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +38,6 @@ export const departementPopupRoute: Routes = [
         path: 'departement/:id/edit',
         component: DepartementPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'factoryApp.departement.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +47,6 @@ export const departementPopupRoute: Routes = [
         path: 'departement/:id/delete',
         component: DepartementDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'factoryApp.departement.home.title'
         },
         canActivate: [UserRouteAccessService],

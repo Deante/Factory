@@ -11,7 +11,7 @@ export const disponibiliteRoute: Routes = [
         path: 'disponibilite',
         component: DisponibiliteComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FORMATEUR'],
             pageTitle: 'factoryApp.disponibilite.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const disponibiliteRoute: Routes = [
         path: 'disponibilite/:id',
         component: DisponibiliteDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FORMATEUR'],
             pageTitle: 'factoryApp.disponibilite.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const disponibilitePopupRoute: Routes = [
         path: 'disponibilite-new',
         component: DisponibilitePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FORMATEUR'],
             pageTitle: 'factoryApp.disponibilite.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const disponibilitePopupRoute: Routes = [
         path: 'disponibilite/:id/edit',
         component: DisponibilitePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FORMATEUR'],
             pageTitle: 'factoryApp.disponibilite.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const disponibilitePopupRoute: Routes = [
         path: 'disponibilite/:id/delete',
         component: DisponibiliteDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FORMATEUR'],
             pageTitle: 'factoryApp.disponibilite.home.title'
         },
         canActivate: [UserRouteAccessService],
