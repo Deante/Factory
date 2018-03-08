@@ -4,7 +4,6 @@ package factory.domain.enumeration;
  * The CouleurEnum enumeration.
  */
 public enum CouleurEnum {
-    ROUGE, VERT, BLEU, JAUNE, NOIR
     ROUGE(205,0,0), VERT(0,100,0), BLEU(25,25,112), JAUNE(238,201,0), NOIR(255,255,255);
     
     
