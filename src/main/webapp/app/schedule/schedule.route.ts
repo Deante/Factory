@@ -7,6 +7,8 @@ export const scheduleRoute: Route = {
     component: ScheduleComponent,
     data: {
         authorities: []
+        authorities: ['ROLE_USER'],
+        pageTitle: 'factoryApp.schedule.home.title'
     },
     canActivate: [UserRouteAccessService]
 };
