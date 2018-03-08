@@ -11,7 +11,7 @@
         <dt><span jhiTranslate="factoryApp.formateur.competences">Competences</span></dt>
         <dd>
             <span *ngFor="let competences of formateur.competences; let last = last">
-                <a [routerLink]="['/competence', competences?.id ]">{{competences.id}}</a>{{last ? '' : ', '}}
+                <a [routerLink]="['/competence', competences?.id ]">{{competences.nom}}</a>{{last ? '' : ', '}}
             </span>
         </dd>
     </dl>

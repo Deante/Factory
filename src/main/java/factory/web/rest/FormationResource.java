@@ -1,9 +1,13 @@
 package factory.web.rest;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -186,7 +191,7 @@ public class FormationResource {
 	 */
 	@GetMapping("/formations/{id}/pdf")
 	@Timed
-	public ResponseEntity<File> getFormationPdf(@PathVariable Long id) {
+	public ResponseEntity<byte[]> getFormationPdf(@PathVariable Long id) {
 		log.debug("REST request to get pdf of Formation : {}", id);
 		Formation formation = formationService.findOne(id);
 		File file = null;
@@ -200,7 +205,25 @@ public class FormationResource {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResponseUtil.wrapOrNotFound(Optional.ofNullable(file));
+		
+		Path path = Paths.get(file.toURI());
+		byte[] contents = null;
+		try {
+			contents = Files.readAllBytes(path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    String filename = "output.pdf";
+	    headers.setContentDispositionFormData(filename, filename);
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(contents, headers, HttpStatus.OK);
+	    
+	    return response;
+		
 	}
 
 }

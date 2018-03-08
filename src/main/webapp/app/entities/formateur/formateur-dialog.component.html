@@ -23,7 +23,7 @@
         <div class="form-group">
             <label jhiTranslate="factoryApp.formateur.competences" for="field_competences">Competences</label>
             <select class="form-control" id="field_competences" multiple name="competences" [(ngModel)]="formateur.competences">
-                <option [ngValue]="getSelected(formateur.competences, competenceOption)" *ngFor="let competenceOption of competences; trackBy: trackCompetenceById">{{competenceOption.id}}</option>
+                <option [ngValue]="getSelected(formateur.competences, competenceOption)" *ngFor="let competenceOption of competences; trackBy: trackCompetenceById">{{competenceOption.nom}}</option>
             </select>
         </div>
     </div>

@@ -11,7 +11,7 @@ export const technicienRoute: Routes = [
         path: 'technicien',
         component: TechnicienComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.technicien.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const technicienRoute: Routes = [
         path: 'technicien/:id',
         component: TechnicienDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.technicien.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const technicienPopupRoute: Routes = [
         path: 'technicien-new',
         component: TechnicienPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.technicien.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const technicienPopupRoute: Routes = [
         path: 'technicien/:id/edit',
         component: TechnicienPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.technicien.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const technicienPopupRoute: Routes = [
         path: 'technicien/:id/delete',
         component: TechnicienDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.technicien.home.title'
         },
         canActivate: [UserRouteAccessService],

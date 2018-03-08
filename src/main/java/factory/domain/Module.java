@@ -32,8 +32,8 @@ public class Module implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 3, max = 20)
-    @Column(name = "titre", length = 20, nullable = false)
+    @Size(min = 3, max = 50)
+    @Column(name = "titre", length = 50, nullable = false)
     private String titre;
 
     @NotNull
@@ -62,7 +62,7 @@ public class Module implements Serializable {
                inverseJoinColumns = @JoinColumn(name="matieres_id", referencedColumnName="id"))
     private Set<Matiere> matieres = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "module_formateurs",
                joinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"),

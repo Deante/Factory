@@ -1,82 +1,84 @@
-<div *ngIf="formation" class="row-md">
-    <div class="col-md-3">
-        <h3><span jhiTranslate="factoryApp.formation.detail.title">Formation</span> {{formation.id}}</h3>
-        <hr>
-        <jhi-alert-error></jhi-alert-error>
-        <dl class="jh-entity-details">
-            <dt><span jhiTranslate="factoryApp.formation.nom">Nom</span></dt>
-            <dd>
-                <span>{{formation.nom}}</span>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.dateDebutForm">Date Debut Form</span></dt>
-            <dd>
-                <span>{{formation.dateDebutForm | date:'mediumDate'}}</span>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.dateFinForm">Date Fin Form</span></dt>
-            <dd>
-                <span>{{formation.dateFinForm | date:'mediumDate'}}</span>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.objectifs">Objectifs</span></dt>
-            <dd>
-                <span>{{formation.objectifs}}</span>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.departement">Departement</span></dt>
-            <dd>
-                <div *ngIf="formation.departement">
-                    <a [routerLink]="['/departement', formation.departement?.id]">{{formation.departement?.nom}}</a>
-                </div>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.formateurs">Formateurs</span></dt>
-            <dd>
+<div *ngIf="formation">
+    <div class="row">
+        <div class="col-3">
+            <h3><span jhiTranslate="factoryApp.formation.detail.title">Formation</span> {{formation.id}}</h3>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="jh-entity-details">
+                <dt><span jhiTranslate="factoryApp.formation.nom">Nom</span></dt>
+                <dd>
+                    <span>{{formation.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.dateDebutForm">Date Debut Form</span></dt>
+                <dd>
+                    <span>{{formation.dateDebutForm | date:'mediumDate'}}</span>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.dateFinForm">Date Fin Form</span></dt>
+                <dd>
+                    <span>{{formation.dateFinForm | date:'mediumDate'}}</span>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.objectifs">Objectifs</span></dt>
+                <dd>
+                    <span>{{formation.objectifs}}</span>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.departement">Departement</span></dt>
+                <dd>
+                    <div *ngIf="formation.departement">
+                        <a [routerLink]="['/departement', formation.departement?.id]">{{formation.departement?.nom}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.formateurs">Formateurs</span></dt>
+                <dd>
             <span *ngFor="let formateurs of formation.formateurs; let last = last">
                 <a [routerLink]="['/formateur', formateurs?.id ]">{{formateurs.nom}}</a>{{last ? '' : ', '}}
             </span>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.gestionnaire">Gestionnaire</span></dt>
-            <dd>
-                <div *ngIf="formation.gestionnaire">
-                    <a [routerLink]="['/gestionnaire', formation.gestionnaire?.id]">{{formation.gestionnaire?.user.lastName}}
-                        {{formation.gestionnaire?.user.firstName}}</a>
-                </div>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.salle">Salle</span></dt>
-            <dd>
-                <div *ngIf="formation.salle">
-                    <a [routerLink]="['/salle', formation.salle?.id]">{{formation.salle?.code}}</a>
-                </div>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.technicien">Technicien</span></dt>
-            <dd>
-                <div *ngIf="formation.technicien">
-                    <a [routerLink]="['/technicien', formation.technicien?.id]">{{formation.technicien?.user.lastName}}
-                        {{formation.technicien?.user.firstName}}</a>
-                </div>
-            </dd>
-            <dt><span jhiTranslate="factoryApp.formation.modules">Modules</span></dt>
-            <dd>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.gestionnaire">Gestionnaire</span></dt>
+                <dd>
+                    <div *ngIf="formation.gestionnaire">
+                        <a [routerLink]="['/gestionnaire', formation.gestionnaire?.id]">{{formation.gestionnaire?.user.lastName}}
+                            {{formation.gestionnaire?.user.firstName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.salle">Salle</span></dt>
+                <dd>
+                    <div *ngIf="formation.salle">
+                        <a [routerLink]="['/salle', formation.salle?.id]">{{formation.salle?.code}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.technicien">Technicien</span></dt>
+                <dd>
+                    <div *ngIf="formation.technicien">
+                        <a [routerLink]="['/technicien', formation.technicien?.id]">{{formation.technicien?.user.lastName}}
+                            {{formation.technicien?.user.firstName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="factoryApp.formation.modules">Modules</span></dt>
+                <dd>
             <span *ngFor="let modules of formation.modules; let last = last">
                 <a [routerLink]="['/module', modules?.id ]">{{modules.titre}}</a>{{last ? '' : ', '}}
             </span>
-            </dd>
-        </dl>
+                </dd>
+            </dl>
 
-        <button type="submit"
-                (click)="previousState()"
-                class="btn btn-info">
-            <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-        </button>
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
 
-        <button type="button"
-                [routerLink]="['/', { outlets: { popup: 'formation/'+ formation.id + '/edit'} }]"
-                replaceUrl="true"
-                queryParamsHandling="merge"
-                class="btn btn-primary">
-            <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-        </button>
-        <br/>
-        <br/>
-    </div>
-    <div class="col-md-9">
-        <jhi-formation-pdf></jhi-formation-pdf>
+            <button type="button"
+                    [routerLink]="['/', { outlets: { popup: 'formation/'+ formation.id + '/edit'} }]"
+                    replaceUrl="true"
+                    queryParamsHandling="merge"
+                    class="btn btn-primary">
+                <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+            <br/>
+            <br/>
+        </div>
+        <div class="col-9">
+            <jhi-formation-pdf></jhi-formation-pdf>
+        </div>
     </div>
 </div>

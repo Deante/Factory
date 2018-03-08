@@ -35,7 +35,7 @@
                 "maxlength"
             ],
             "fieldValidateRulesMinlength": "3",
-            "fieldValidateRulesMaxlength": "20"
+            "fieldValidateRulesMaxlength": "50"
         },
         {
             "fieldName": "duree",
