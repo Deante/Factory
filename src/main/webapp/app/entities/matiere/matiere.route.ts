@@ -11,6 +11,7 @@ export const matiereRoute: Routes = [
         path: 'matiere',
         component: MatiereComponent,
         data: {
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.matiere.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -18,6 +19,7 @@ export const matiereRoute: Routes = [
         path: 'matiere/:id',
         component: MatiereDetailComponent,
         data: {
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.matiere.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -29,6 +31,7 @@ export const matierePopupRoute: Routes = [
         path: 'matiere-new',
         component: MatierePopupComponent,
         data: {
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.matiere.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -38,6 +41,7 @@ export const matierePopupRoute: Routes = [
         path: 'matiere/:id/edit',
         component: MatierePopupComponent,
         data: {
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.matiere.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -47,6 +51,7 @@ export const matierePopupRoute: Routes = [
         path: 'matiere/:id/delete',
         component: MatiereDeletePopupComponent,
         data: {
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.matiere.home.title'
         },
         canActivate: [UserRouteAccessService],

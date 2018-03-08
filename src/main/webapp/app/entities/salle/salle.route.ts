@@ -11,7 +11,7 @@ export const salleRoute: Routes = [
         path: 'salle',
         component: SalleComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.salle.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const salleRoute: Routes = [
         path: 'salle/:id',
         component: SalleDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.salle.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const sallePopupRoute: Routes = [
         path: 'salle-new',
         component: SallePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.salle.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const sallePopupRoute: Routes = [
         path: 'salle/:id/edit',
         component: SallePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.salle.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const sallePopupRoute: Routes = [
         path: 'salle/:id/delete',
         component: SalleDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'factoryApp.salle.home.title'
         },
         canActivate: [UserRouteAccessService],

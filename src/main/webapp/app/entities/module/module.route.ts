@@ -11,7 +11,7 @@ export const moduleRoute: Routes = [
         path: 'module',
         component: ModuleComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.module.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const moduleRoute: Routes = [
         path: 'module/:id',
         component: ModuleDetailComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.module.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const modulePopupRoute: Routes = [
         path: 'module-new',
         component: ModulePopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.module.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const modulePopupRoute: Routes = [
         path: 'module/:id/edit',
         component: ModulePopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.module.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const modulePopupRoute: Routes = [
         path: 'module/:id/delete',
         component: ModuleDeletePopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.module.home.title'
         },
         canActivate: [UserRouteAccessService],

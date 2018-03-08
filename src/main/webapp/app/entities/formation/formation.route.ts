@@ -12,7 +12,7 @@ export const formationRoute: Routes = [
         path: 'formation',
         component: FormationComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.formation.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -20,7 +20,7 @@ export const formationRoute: Routes = [
         path: 'formation/:id',
         component: FormationDetailComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.formation.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -32,7 +32,7 @@ export const formationPopupRoute: Routes = [
         path: 'formation-new',
         component: FormationPopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.formation.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -42,7 +42,7 @@ export const formationPopupRoute: Routes = [
         path: 'formation/:id/edit',
         component: FormationPopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.formation.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -52,7 +52,7 @@ export const formationPopupRoute: Routes = [
         path: 'formation/:id/delete',
         component: FormationDeletePopupComponent,
         data: {
-            authorities: ['ROLE_GESTIONNAIRE'],
+            authorities: ['ROLE_GESTIONNAIRE', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.formation.home.title'
         },
         canActivate: [UserRouteAccessService],

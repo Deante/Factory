@@ -11,7 +11,7 @@ export const projecteurRoute: Routes = [
         path: 'projecteur',
         component: ProjecteurComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_TECHNICIEN', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.projecteur.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const projecteurRoute: Routes = [
         path: 'projecteur/:id',
         component: ProjecteurDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_TECHNICIEN', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.projecteur.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const projecteurPopupRoute: Routes = [
         path: 'projecteur-new',
         component: ProjecteurPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_TECHNICIEN', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.projecteur.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const projecteurPopupRoute: Routes = [
         path: 'projecteur/:id/edit',
         component: ProjecteurPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_TECHNICIEN', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.projecteur.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const projecteurPopupRoute: Routes = [
         path: 'projecteur/:id/delete',
         component: ProjecteurDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_TECHNICIEN', 'ROLE_ADMIN'],
             pageTitle: 'factoryApp.projecteur.home.title'
         },
         canActivate: [UserRouteAccessService],
