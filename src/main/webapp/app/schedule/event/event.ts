@@ -3,10 +3,25 @@ export class MyEvent {
     title: string;
     start: string;
     end: string;
-    allDay = true;
-    salleCode: string;
-    salleCapacity: number;
-    stagiaireCount: number;
     color: string;
     textColor: string;
+    allDay = true;
+}
+
+export class FormationEvent extends MyEvent {
+    salleCode: string;
+    salleCapacity: number;
+    projecteurState: string;
+    stagiaireCount: number;
+}
+
+export class TechnicianEvent extends MyEvent {
+    computerUsed: number;
+    computerStock: number;
+    projecteurUsed: number;
+    projecteurStock: number;
+}
+
+export class FormerEvent extends MyEvent {
+
 }

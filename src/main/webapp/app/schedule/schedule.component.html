@@ -19,9 +19,15 @@
                 (onViewDestroy)="handleViewDestroy($event)"
                 (onDrop)="handleDrop($event)"></p-schedule>
 
-    <p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade"
-              [modal]="false" [contentStyle]="{'overflow':'visible'}"
-              [style]="{'overflow':'visible'}" [resizable]="false">
+    <p-dialog header="Event Details"
+        showEffect="fade"
+        [(visible)]="dialogVisible"
+        [responsive]="true"
+        [modal]="false" 
+        [contentStyle]="{'overflow':'visible'}"
+        [style]="{'overflow':'visible'}" 
+        [resizable]="false">
+
         <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
             <div class="ui-grid-row">
                 <div class="ui-grid-col-4"><label for="title">Title</label></div>
@@ -52,10 +58,11 @@
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete"
-                        [disabled]="!event?.id"></button>
-                <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save"
-                        [disabled]="!event?.start"></button>
+                <!--
+                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.id"></button>
+                <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save" [disabled]="!event?.start"></button>
+                -->
+                <button type="button" pButton icon="fa-close" (click)="closeEventDetailModal()" label="fermer" [disabled]="false"></button>
             </div>
         </p-footer>
     </p-dialog>

@@ -16,7 +16,7 @@ export class EventService {
             .map((response) => response);
     }
 
-    getFormationEvents(formationService: FormationService): Observable<any> {
+    getFormations(formationService: FormationService): Observable<any> {
         return formationService.query();
     }
 }
