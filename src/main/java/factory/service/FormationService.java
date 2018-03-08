@@ -236,12 +236,12 @@ public class FormationService {
 
 	public File createPdf(Formation formation) throws IOException, DocumentException {
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream("temp.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream("src\\main\\webapp\\content\\temp.pdf"));
 		document.open();
 
 		PdfPTable table = new PdfPTable(4);
 
-		Stream.of("Date", "Mois", "Module", "Formateur").forEach(columnTitle -> {
+		Stream.of("Mois", "Date", "Module", "Formateur").forEach(columnTitle -> {
 			PdfPCell header = new PdfPCell();
 			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			header.setBorderWidth(2);
@@ -260,8 +260,9 @@ public class FormationService {
 		long daysBetween = ChronoUnit.DAYS.between(datedebut, datefin);
 		int dureemodule = 0;
 		int nbmodule = 0;
-		int nbformateur = 0;
+		boolean addform = false;
 		String month = null;
+		Module m = new Module();
 
 		for (int i = 0; i < daysBetween; i++) {
 
@@ -273,7 +274,7 @@ public class FormationService {
 						LocalDate temp = date.withDayOfMonth(date.lengthOfMonth());
 						int dayfinm = (int) ChronoUnit.DAYS.between(date, temp);
 						cell = new PdfPCell(new Phrase(month));
-						cell.setRowspan(dayfinm+1);
+						cell.setRowspan(dayfinm + 1);
 						table.addCell(cell);
 					}
 					break;
@@ -286,14 +287,15 @@ public class FormationService {
 					break;
 
 				case 2:
-					Module m = new Module();
+					
 					if (dureemodule == 0) {
 						if (nbmodule < modules.size()) {
 							m = modules.get(nbmodule);
 						} else {
-							m = modules.get(0);
-							cell = new PdfPCell(new Phrase("pas de modules"));
+							m = null;
+							cell = new PdfPCell(new Phrase("pas de modules supplémentaires"));
 							table.addCell(cell);
+							addform = true;
 							break;
 						}
 						dureemodule = m.getDuree().intValue();
@@ -302,16 +304,38 @@ public class FormationService {
 						table.addCell(cell);
 						dureemodule--;
 						nbmodule++;
+						addform = true;
 					} else {
 						dureemodule--;
+						addform = false;
 					}
 					break;
 
 				case 3:
-					cell = new PdfPCell(new Phrase("formateur"));
-					table.addCell(cell);
+					if (addform) {
+						if (m == null) {
+							cell = new PdfPCell(new Phrase("please set module"));
+							table.addCell(cell);
+							break;
+						}
+						for (int k = 0; k < formateurs.size(); k++) {
+							if (m.getFormateurs().contains(formateurs.get(k))) {
+								cell = new PdfPCell(new Phrase(formateurs.get(k).getUser().getFirstName() + " "
+										+ formateurs.get(k).getUser().getLastName()));
+								cell.setRotation(270);
+								cell.setRowspan(dureemodule + 1);
+								table.addCell(cell);
+								break;
+							} else if (k == formateurs.size() - 1) {
+								cell = new PdfPCell(new Phrase("pas de formateur"));
+								cell.setRotation(270);
+								cell.setRowspan(dureemodule + 1);
+								table.addCell(cell);
+								break;
+							}
+						}
+					}
 					break;
-
 				}
 			}
 
@@ -320,7 +344,7 @@ public class FormationService {
 		document.add(table);
 		document.close();
 
-		File file = new File("temp.pdf");
+		File file = new File("src\\main\\webapp\\content\\temp.pdf");
 		return file;
 	}
 }
