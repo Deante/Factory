@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="factoryApp.module.titre" for="field_titre">Titre</label>
             <input type="text" class="form-control" name="titre" id="field_titre"
-                [(ngModel)]="module.titre" required minlength="3" maxlength="20"/>
+                [(ngModel)]="module.titre" required minlength="3" maxlength="50"/>
             <div [hidden]="!(editForm.controls.titre?.dirty && editForm.controls.titre?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.titre?.errors?.required" jhiTranslate="entity.validation.required">

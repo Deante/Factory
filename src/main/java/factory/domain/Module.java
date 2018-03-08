@@ -32,8 +32,8 @@ public class Module implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 3, max = 20)
-    @Column(name = "titre", length = 20, nullable = false)
+    @Size(min = 3, max = 50)
+    @Column(name = "titre", length = 50, nullable = false)
     private String titre;
 
     @NotNull
