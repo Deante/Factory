@@ -37,6 +37,9 @@ import factory.domain.Formation;
 import factory.domain.Module;
 import factory.repository.FormationRepository;
 import factory.repository.search.FormationSearchRepository;
+import factory.domain.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 /**
  * Service Implementation for managing Formation.
@@ -78,6 +81,7 @@ public class FormationService {
 	 *            the pagination information
 	 * @return the list of entities
 	 */
+	@JsonView(Views.FormationWithStagiaires.class)
 	@Transactional(readOnly = true)
 	public Page<Formation> findAll(Pageable pageable) {
 		log.debug("Request to get all Formations");
@@ -91,6 +95,7 @@ public class FormationService {
 	 *            the id of the entity
 	 * @return the entity
 	 */
+	@JsonView(Views.FormationWithStagiaires.class)
 	@Transactional(readOnly = true)
 	public Formation findOne(Long id) {
 		log.debug("Request to get Formation : {}", id);

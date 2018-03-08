@@ -1,6 +1,7 @@
 package factory.service;
 
 import factory.domain.Stagiaire;
+import factory.domain.Views;
 import factory.repository.StagiaireRepository;
 import factory.repository.search.StagiaireSearchRepository;
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 /**
  * Service Implementation for managing Stagiaire.
@@ -51,6 +54,7 @@ public class StagiaireService {
      * @return the list of entities
      */
     @Transactional(readOnly = true)
+    @JsonView(Views.Stagiaire.class)
     public Page<Stagiaire> findAll(Pageable pageable) {
         log.debug("Request to get all Stagiaires");
         return stagiaireRepository.findAll(pageable);
@@ -63,6 +67,7 @@ public class StagiaireService {
      * @return the entity
      */
     @Transactional(readOnly = true)
+    @JsonView(Views.Stagiaire.class)
     public Stagiaire findOne(Long id) {
         log.debug("Request to get Stagiaire : {}", id);
         return stagiaireRepository.findOneWithEagerRelationships(id);
