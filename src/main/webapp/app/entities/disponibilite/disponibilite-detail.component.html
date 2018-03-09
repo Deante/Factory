@@ -15,7 +15,7 @@
         <dt><span jhiTranslate="factoryApp.disponibilite.formateur">Formateur</span></dt>
         <dd>
             <div *ngIf="disponibilite.formateur">
-                <a [routerLink]="['/formateur', disponibilite.formateur?.id]">{{disponibilite.formateur?.user.lastName}}</a>
+                <a [routerLink]="['/formateur', disponibilite.formateur?.id]">{{disponibilite.formateur?.user?.lastName}}</a>
             </div>
         </dd>
     </dl>

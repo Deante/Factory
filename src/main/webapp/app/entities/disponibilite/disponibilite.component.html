@@ -43,7 +43,7 @@
                 <td>{{disponibilite.dateFin | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="disponibilite.formateur">
-                        <a [routerLink]="['../formateur', disponibilite.formateur?.id ]" >{{disponibilite.formateur?.user.lastName}}</a>
+                        <a [routerLink]="['../formateur', disponibilite.formateur?.id ]" >{{disponibilite.formateur?.user?.lastName}}</a>
                     </div>
                 </td>
                 <td class="text-right">
