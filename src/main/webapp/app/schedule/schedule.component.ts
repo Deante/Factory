@@ -75,7 +75,7 @@ export class ScheduleComponent implements OnInit {
             const salle: Salle = f.salle; // f.salle is of type BaseEntity so need cast to get real object pointed to by BaseEntity.id
             const projecteur: Projecteur = (salle != null ? salle.projecteur : null);
             e.salleCode = (salle != null ? salle.code : '');
-            e.salleCapacity = (salle != null ? salle.capacite : 0);
+            e.salleCapacity = (salle.code ? salle.capacite : 0);
             e.stagiaireCount = (f.stagiaires != null ? f.stagiaires.length : 0);
             // here we set the color whether or not there is a resource problem in the formation
             e.color = (salle != null && f.stagiaires != null ?
@@ -112,7 +112,7 @@ export class ScheduleComponent implements OnInit {
         e.id = event.calEvent.id;
         e.title = event.calEvent.title;
         e.start = (event.view.name === 'month' ? event.calEvent.start.stripTime().format() : event.calEvent.start.format());
-        e.end = (event.calEvent.end ? event.calEvent.end.stripTime().format() : e.start);
+        e.end = event.calEvent.end.stripTime().format();
         e.allDay = event.calEvent.allDay;
         return e;
     }
