@@ -26,6 +26,7 @@ export class ScheduleComponent implements OnInit {
     idGen = 100;
     fr: any;
     userHasGestionnaireRole: boolean;
+    userHasAdminRole: boolean;
 
     constructor(private eventService: EventService
                 , private principal: Principal
@@ -36,6 +37,7 @@ export class ScheduleComponent implements OnInit {
 
         this.principal.identity().then((account) => {
             this.account = account;
+            this.userHasAdminRole = this.isUserAdmin();
             this.userHasGestionnaireRole = this.isUserGestionnaire();
             console.log('user account', this.account);
             console.log('isUserGestionnaire: ' + this.userHasGestionnaireRole);
@@ -64,13 +66,17 @@ export class ScheduleComponent implements OnInit {
         return (this.account.authorities.find((role) => role === 'ROLE_GESTIONNAIRE') !== undefined);
     }
 
+    private isUserAdmin() {
+        return (this.account.authorities.find((role) => role === 'ROLE_ADMIN') !== undefined);
+    }
+
     loadEvents(event: any) {
         const start = event.view.start;
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
         this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => {
-            if (this.userHasGestionnaireRole) {
+            if (this.userHasAdminRole || this.userHasGestionnaireRole) {
                 console.log('bdd response', response);
                 this.events = this.loadGestionnaireEvent(response);
                 console.log('events', this.events);
@@ -181,10 +187,15 @@ export class ScheduleComponent implements OnInit {
     handleDayClick(event: any) {
         this.event = null;
         this.dialogVisible = false;
+
+        // technician events here
+        /*
+            need request to get all formations running at this date
+        */
     }
 
     handleEventClick(e: any) {
-        if (this.userHasGestionnaireRole) {
+        if (this.userHasAdminRole || this.userHasGestionnaireRole) {
             this.getGestionnaireEvent(e);
         }
         this.dialogVisible = true;
