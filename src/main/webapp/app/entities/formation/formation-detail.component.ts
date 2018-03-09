@@ -33,6 +33,7 @@ export class FormationDetailComponent implements OnInit, OnDestroy {
     load(id) {
         this.formationService.find(id).subscribe((formation) => {
             this.formation = formation;
+            console.log(this.formation);
         });
     }
     previousState() {

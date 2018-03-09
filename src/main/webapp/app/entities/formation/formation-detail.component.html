@@ -30,7 +30,7 @@
                 <dt><span jhiTranslate="factoryApp.formation.formateurs">Formateurs</span></dt>
                 <dd>
             <span *ngFor="let formateurs of formation.formateurs; let last = last">
-                <a [routerLink]="['/formateur', formateurs?.id ]">{{formateurs.nom}}</a>{{last ? '' : ', '}}
+                <a [routerLink]="['/formateur', formateurs?.id ]">{{formateurs.user.lastName}}</a>{{last ? '' : ', '}}
             </span>
                 </dd>
                 <dt><span jhiTranslate="factoryApp.formation.gestionnaire">Gestionnaire</span></dt>
