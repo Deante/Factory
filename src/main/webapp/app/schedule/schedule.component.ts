@@ -5,7 +5,7 @@ import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
 import {MyEvent} from './event/event';
 import { FormationService, Formation } from '../entities/formation';
-import { ResponseWrapper } from '../shared';
+import { ResponseWrapper, Principal, Account } from '../shared';
 
 @Component({
     selector: 'jhi-schedule',
@@ -13,6 +13,7 @@ import { ResponseWrapper } from '../shared';
     styles: []
 })
 export class ScheduleComponent implements OnInit {
+    account: Account;
     msgs: Message[] = [];
     activeIndex = 0;
     events: any[];
@@ -23,11 +24,15 @@ export class ScheduleComponent implements OnInit {
     fr: any;
 
     constructor(private eventService: EventService
+                , private principal: Principal
                 , private formationService: FormationService) { }
 
     ngOnInit() {
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => { this.events = this.loadFormationEvent(events) });
+
+        this.principal.identity().then((account) => {
+            this.account = account;
+        });
 
         this.headerConfig = {
             left: 'prev,next today',
@@ -53,7 +58,9 @@ export class ScheduleComponent implements OnInit {
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => { this.events = this.loadFormationEvent(response) });
+        this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => {
+            this.events = this.loadFormationEvent(response)
+        });
     }
 
     private loadFormationEvent(response: ResponseWrapper): Array<any> {
@@ -70,9 +77,8 @@ export class ScheduleComponent implements OnInit {
     }
 
     handleDayClick(event: any) {
-        this.event = new MyEvent();
-        this.event.start = event.date.format();
-        this.dialogVisible = true;
+        this.event = null;
+        this.dialogVisible = false;
     }
 
     handleEventClick(e: any) {
@@ -146,6 +152,11 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: 'The view is about to be removed from the DOM'});
     }
 
+    HandleChangeStep(label: string) {
+        this.msgs.length = 0;
+        this.msgs.push({severity: 'info', summary: label});
+    }
+
     saveEvent() {
         // update
         if ( this.event.id) {
@@ -181,9 +192,8 @@ export class ScheduleComponent implements OnInit {
         return index;
     }
 
-    onChangeStep(label: string) {
-        this.msgs.length = 0;
-        this.msgs.push({severity: 'info', summary: label});
+    closeEventDialog() {
+        this.dialogVisible = false;
     }
 
 }
