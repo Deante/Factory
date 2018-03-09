@@ -34,6 +34,13 @@
                 <option [ngValue]="formationOption.id === stagiaire.formation?.id ? stagiaire.formation : formationOption" *ngFor="let formationOption of formations; trackBy: trackFormationById">{{formationOption.nom}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="factoryApp.stagiaire.ordinateur" for="field_ordinateur">Ordinateur</label>
+            <select class="form-control" id="field_ordinateur" name="ordinateur" [(ngModel)]="stagiaire.ordinateur" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ordinateurOption.id === stagiaire.ordinateur?.id ? stagiaire.ordinateur : ordinateurOption" *ngFor="let ordinateurOption of ordinateurs; trackBy: trackOrdinateurById">{{ordinateurOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
