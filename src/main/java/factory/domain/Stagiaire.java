@@ -12,8 +12,6 @@ import java.util.Set;
 import java.util.Objects;
 
 import factory.domain.enumeration.NiveauEnum;
-import com.fasterxml.jackson.annotation.JsonView;
-
 
 /**
  * A Stagiaire.
@@ -29,12 +27,10 @@ public class Stagiaire implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @JsonView(Views.Common.class)
     private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "niveau")
-    @JsonView(Views.Common.class)
     private NiveauEnum niveau;
 
     @ManyToMany
@@ -42,15 +38,12 @@ public class Stagiaire implements Serializable {
     @JoinTable(name = "stagiaire_ordinateurs",
                joinColumns = @JoinColumn(name="stagiaires_id", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name="ordinateurs_id", referencedColumnName="id"))
-    @JsonView(Views.Stagiaire.class)
     private Set<Ordinateur> ordinateurs = new HashSet<>();
 
     @ManyToOne
-    @JsonView(Views.Stagiaire.class)
     private Formation formation;
 
     @ManyToOne
-    @JsonView(Views.Stagiaire.class)
     private Ordinateur ordinateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -41,8 +41,6 @@ import factory.web.rest.errors.BadRequestAlertException;
 import factory.web.rest.util.HeaderUtil;
 import factory.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
-import factory.domain.Views;
-import com.fasterxml.jackson.annotation.JsonView;
 
 
 /**
@@ -119,7 +117,6 @@ public class FormationResource {
 	 * @return the ResponseEntity with status 200 (OK) and the list of formations in
 	 *         body
 	 */
-	@JsonView(Views.FormationWithStagiaires.class)
 	@GetMapping("/formations")
 	@Timed
 	public ResponseEntity<List<Formation>> getAllFormations(Pageable pageable) {
@@ -137,7 +134,6 @@ public class FormationResource {
 	 * @return the ResponseEntity with status 200 (OK) and with body the formation,
 	 *         or with status 404 (Not Found)
 	 */
-	@JsonView(Views.FormationWithStagiaires.class)
 	@GetMapping("/formations/{id}")
 	@Timed
 	public ResponseEntity<Formation> getFormation(@PathVariable Long id) {

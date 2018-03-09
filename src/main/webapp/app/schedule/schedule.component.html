@@ -1,36 +1,18 @@
 <div class="row">
-    <p-schedule [events]="events"
-                [header]="headerConfig"
-                [eventLimit]="4"
-                [editable]="true"
-                [height]="500"
-                [styleClass]="'schedule-width'"
-                (onDayClick)="handleDayClick($event)"
-                (onEventClick)="handleEventClick($event)"
-                (onEventMouseover)="handleEventMouseover($event)"
-                (onEventMouseout)="handleEventMouseout($event)"
-                (onEventDragStart)="handleEventDragStart($event)"
-                (onEventDragStop)="handleEventDragStop($event)"
-                (onEventDrop)="handleEventDrop($event)"
-                (onEventResizeStart)="handleEventResizeStart($event)"
-                (onEventResizeStop)="handleEventResizeStop($event)"
-                (onEventResize)="handleEventResize($event)"
-                (onViewRender)="loadEvents($event)"
-                (onViewDestroy)="handleViewDestroy($event)"
-                (onDrop)="handleDrop($event)"></p-schedule>
+    <p-schedule [events]="events" [header]="headerConfig" [eventLimit]="4" [editable]="true"
+                        (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"
+                        (onEventMouseover)="handleEventMouseover($event)" (onEventMouseout)="handleEventMouseout($event)"
+                        (onEventDragStart)="handleEventDragStart($event)" (onEventDragStop)="handleEventDragStop($event)"
+                        (onEventDrop)="handleEventDrop($event)" (onEventResizeStart)="handleEventResizeStart($event)"
+                        (onEventResizeStop)="handleEventResizeStop($event)" (onEventResize)="handleEventResize($event)"
+                        (onViewRender)="loadEvents($event)" (onViewDestroy)="handleViewDestroy($event)" (onDrop)="handleDrop($event)" [height]="500" [styleClass]="'schedule-width'"></p-schedule>
 
-    <p-dialog header="Event Details"
-        showEffect="fade"
-        [(visible)]="dialogVisible"
-        [responsive]="true"
-        [modal]="false" 
-        [contentStyle]="{'overflow':'visible'}"
-        [style]="{'overflow':'visible'}" 
-        [resizable]="false">
-
+    <p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade"
+              [modal]="false" [contentStyle]="{'overflow':'visible'}"
+              [style]="{'overflow':'visible'}" [resizable]="false">
         <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
             <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="title">Title</label></div>
+                <div class="ui-grid-col-4"><label for="vin">Title</label></div>
                 <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="event.title"/></div>
             </div>
             <div class="ui-grid-row">
@@ -46,23 +28,18 @@
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2"><label for="sac">Salle</label></div>
-                <div class="ui-grid-col-4"><input pInputText id="sc" [(ngModel)]="event.salleCode"/></div>
-                <div class="ui-grid-col-2"><label for="scpty">Capacité</label></div>
-                <div class="ui-grid-col-4"><input pInputText id="scpty" [(ngModel)]="event.salleCapacity"/></div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="stagiaireCount">Stagiaires</label></div>
-                <div class="ui-grid-col-8"><input pInputText id="stagiaireCount" [(ngModel)]="event.stagiaireCount"/></div>
+                <div class="ui-grid-col-4"><label for="allday">All Day</label></div>
+                <div class="ui-grid-col-8">
+                    <p-checkbox [(ngModel)]="event.allDay" binary="checkbox"></p-checkbox>
+                </div>
             </div>
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-                <!--
-                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.id"></button>
-                <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save" [disabled]="!event?.start"></button>
-                -->
-                <button type="button" pButton icon="fa-close" (click)="closeEventDetailModal()" label="fermer" [disabled]="false"></button>
+                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete"
+                        [disabled]="!event?.id"></button>
+                <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save"
+                        [disabled]="!event?.start"></button>
             </div>
         </p-footer>
     </p-dialog>
