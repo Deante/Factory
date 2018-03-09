@@ -1,6 +1,6 @@
 <div *ngIf="formation">
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <h3><span jhiTranslate="factoryApp.formation.detail.title">Formation</span> {{formation.id}}</h3>
             <hr>
             <jhi-alert-error></jhi-alert-error>
@@ -74,11 +74,12 @@
                     class="btn btn-primary">
                 <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
+            <jhi-formation-pdf></jhi-formation-pdf>
             <br/>
             <br/>
         </div>
-        <div class="col-9">
-            <jhi-formation-pdf></jhi-formation-pdf>
+        <div class="col-8">
+
         </div>
     </div>
 </div>
