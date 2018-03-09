@@ -1,11 +1,14 @@
-import { Salle } from './../entities/salle/salle.model';
+import { Salle } from './../entities/salle';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { JhiLanguageService } from 'ng-jhipster';
 import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
-import {MyEvent} from './event/event';
+import {MyEvent, GestionnaireEvent} from './event/event';
 import { FormationService, Formation } from '../entities/formation';
-import { ResponseWrapper, Principal, Account } from '../shared';
+import { ResponseWrapper, Principal, Account, User } from '../shared';
+import { Stagiaire } from '../entities/stagiaire';
+import { Formateur } from '../entities/formateur';
+import { Gestionnaire } from '../entities/gestionnaire';
 
 @Component({
     selector: 'jhi-schedule',
@@ -18,10 +21,11 @@ export class ScheduleComponent implements OnInit {
     activeIndex = 0;
     events: any[];
     headerConfig: any;
-    event: MyEvent;
+    event;
     dialogVisible = false;
     idGen = 100;
     fr: any;
+    userHasGestionnaireRole: boolean;
 
     constructor(private eventService: EventService
                 , private principal: Principal
@@ -32,6 +36,9 @@ export class ScheduleComponent implements OnInit {
 
         this.principal.identity().then((account) => {
             this.account = account;
+            this.userHasGestionnaireRole = this.isUserGestionnaire();
+            console.log('user account', this.account);
+            console.log('isUserGestionnaire: ' + this.userHasGestionnaireRole);
         });
 
         this.headerConfig = {
@@ -53,36 +60,99 @@ export class ScheduleComponent implements OnInit {
         };
     }
 
+    private isUserGestionnaire() {
+        return (this.account.authorities.find((role) => role === 'ROLE_GESTIONNAIRE') !== undefined);
+    }
+
     loadEvents(event: any) {
         const start = event.view.start;
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
         this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => {
-            this.events = this.loadFormationEvent(response)
+            if (this.userHasGestionnaireRole) {
+                console.log('bdd response', response);
+                this.events = this.loadGestionnaireEvent(response);
+                console.log('events', this.events);
+            }
         });
     }
 
-    private loadFormationEvent(response: ResponseWrapper): Array<any> {
+    // gestionnaire
+    private loadGestionnaireEvent(response: ResponseWrapper): Array<any> {
         const result: Array<any> = Array<any>();
-        for (const f of response.json) {
-            const e: MyEvent = new MyEvent();
-            e.id = f.id;
-            e.title = f.nom;
-            e.start = f.dateDebutForm;
-            e.end = f.dateFinForm;
+        let formation: Formation;
+        for (formation of response.json) {
+            const e = new GestionnaireEvent();
+            e.id = formation.id;
+            e.title = formation.nom;
+            e.start = formation.dateDebutForm;
+            e.end = formation.dateFinForm;
+            const gestionnaire: Gestionnaire = formation.gestionnaire;
+            if (gestionnaire !== undefined && gestionnaire !== null) {
+                const gestionnaireUser: User = gestionnaire.user;
+                if (gestionnaireUser !== undefined && gestionnaireUser !== null) {
+                    if (gestionnaireUser.lastName !== undefined
+                        && gestionnaireUser.lastName !== null
+                        && gestionnaireUser.lastName !== ''
+                        && gestionnaireUser.firstName !== undefined
+                        && gestionnaireUser.firstName !== null
+                        && gestionnaireUser.firstName !== '' ) {
+                            e.gestionnaire = gestionnaireUser.lastName + ' ' + gestionnaireUser.firstName;
+                    } else {
+                        e.gestionnaire = 'gestionnaire ' + gestionnaire.id;
+                    }
+                }
+            } else {
+                e.color = 'red';
+            }
+            const salle: Salle = formation.salle;
+            if (salle !== undefined && salle !== null) {
+                e.salleCode = (salle.code !== null ? salle.code : '');
+                e.salleCapacity = (salle.capacite !== null ? salle.capacite : 0);
+                e.color = (salle.code !== null && salle.capacite !== null  && salle.capacite > 0 ? 'blue' : 'red');
+            } else {
+                e.salleCode = '';
+                e.salleCapacity = 0;
+                e.color = 'red';
+            }
+            const stagiaires: Stagiaire[] = formation.stagiaires;
+            if (stagiaires !== undefined && stagiaires !== null) {
+                e.stagiaireCount = stagiaires.length;
+                if (salle !== undefined && salle !== null && e.stagiaireCount <= salle.capacite) {
+                    e.color = (e.color !== 'red') ? 'blue' : 'red';
+                } else {
+                    e.color = 'red';
+                }
+            } else {
+                e.color = 'red';
+            }
+            const formateurs: Formateur[] = formation.formateurs;
+            if (formateurs !== undefined && formateurs !== null) {
+                for (const formateur of formateurs) {
+                    const formateurUser: User = formateur.user;
+                    let formateurFullName: string;
+                    if (formateurUser !== undefined && formateurUser !== null) {
+                        formateurFullName = formateurUser.lastName + ' ' + formateurUser.firstName;
+                    } else {
+                        formateurFullName = 'formateur ' + formateur.id;
+                    }
+                    e.formateursList.push(formateurFullName);
+                }
+                if (e.formateursList.length > 0) {
+                    e.color = (e.color !== 'red' ? 'blue' : 'red');
+                }
+            } else {
+                e.color = 'red';
+            }
+
             result.push(e);
         }
         return result;
     }
 
-    handleDayClick(event: any) {
-        this.event = null;
-        this.dialogVisible = false;
-    }
-
-    handleEventClick(e: any) {
-        this.event = new MyEvent();
+    private getGestionnaireEvent(e: any) {
+        this.event = new GestionnaireEvent();
         this.event.title = e.calEvent.title;
 
         const start = e.calEvent.start;
@@ -99,6 +169,24 @@ export class ScheduleComponent implements OnInit {
         this.event.id = e.calEvent.id;
         this.event.start = start.format();
         this.event.allDay = e.calEvent.allDay;
+        this.event.gestionnaire = e.calEvent.gestionnaire;
+        this.event.salleCode = e.calEvent.salleCode;
+        this.event.color = e.calEvent.color;
+        this.event.salleCapacity = e.calEvent.salleCapacity;
+        this.event.stagiaireCount = e.calEvent.stagiaireCount;
+        this.event.formateursList = e.calEvent.formateursList;
+        console.log('event detail', this.event);
+    }
+
+    handleDayClick(event: any) {
+        this.event = null;
+        this.dialogVisible = false;
+    }
+
+    handleEventClick(e: any) {
+        if (this.userHasGestionnaireRole) {
+            this.getGestionnaireEvent(e);
+        }
         this.dialogVisible = true;
     }
 
@@ -107,37 +195,37 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventMouseout(event: any) {
+    handleEventMouseout(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStart(event: any) {
+    handleEventDragStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStop(event: any) {
+    handleEventDragStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDrop(event: any) {
+    handleEventDrop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStart(event: any) {
+    handleEventResizeStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStop(event: any) {
+    handleEventResizeStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResize(event: any) {
+    handleEventResize(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
