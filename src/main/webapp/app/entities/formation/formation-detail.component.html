@@ -30,13 +30,13 @@
                 <dt><span jhiTranslate="factoryApp.formation.formateurs">Formateurs</span></dt>
                 <dd>
             <span *ngFor="let formateurs of formation.formateurs; let last = last">
-                <a [routerLink]="['/formateur', formateurs?.id ]">{{formateurs.user.lastName}}</a>{{last ? '' : ', '}}
+                <a [routerLink]="['/formateur', formateurs?.id ]">{{formateurs?.user.lastName}}</a>{{last ? '' : ', '}}
             </span>
                 </dd>
                 <dt><span jhiTranslate="factoryApp.formation.gestionnaire">Gestionnaire</span></dt>
                 <dd>
                     <div *ngIf="formation.gestionnaire">
-                        <a [routerLink]="['/gestionnaire', formation.gestionnaire?.id]">{{formation.gestionnaire?.user.lastName}}
+                        <a [routerLink]="['/gestionnaire', formation?.gestionnaire?.id]">{{formation?.gestionnaire?.user.lastName}}
                             {{formation.gestionnaire?.user.firstName}}</a>
                     </div>
                 </dd>
@@ -49,7 +49,7 @@
                 <dt><span jhiTranslate="factoryApp.formation.technicien">Technicien</span></dt>
                 <dd>
                     <div *ngIf="formation.technicien">
-                        <a [routerLink]="['/technicien', formation.technicien?.id]">{{formation.technicien?.user.lastName}}
+                        <a [routerLink]="['/technicien', formation?.technicien?.id]">{{formation?.technicien?.user.lastName}}
                             {{formation.technicien?.user.firstName}}</a>
                     </div>
                 </dd>
