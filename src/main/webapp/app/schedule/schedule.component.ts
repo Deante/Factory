@@ -64,57 +64,11 @@ export class ScheduleComponent implements OnInit {
             e.title = f.nom;
             e.start = f.dateDebutForm;
             e.end = f.dateFinForm;
-<<<<<<< HEAD
-            const salle: Salle = f.salle; // f.salle is of type BaseEntity so need cast to get real object pointed to by BaseEntity.id
-            const projecteur: Projecteur = (salle != null ? salle.projecteur : null);
-            e.salleCode = (salle != null ? salle.code : '');
-            e.salleCapacity = (salle != null ? salle.capacite : 0);
-            e.stagiaireCount = (f.stagiaires != null ? f.stagiaires.length : 0);
-            // here we set the color whether or not there is a resource problem in the formation
-            e.color = (salle != null && f.stagiaires != null ?
-                        (e.stagiaireCount <= e.salleCapacity && e.stagiaireCount > 0 ?
-                            (projecteur != null && projecteur.etat !== EtatMaterielEnum.INUTILISABLE ? 'blue' : 'red')
-                            : 'red')
-                        : 'red');
-            // event text's color, doesn't work :/
-            e.textColor = 'white';
-=======
->>>>>>> parent of b9ae5c8... Merge remote-tracking branch 'origin/master'
             result.push(e);
         }
         return result;
     }
 
-<<<<<<< HEAD
-    // when schedule event is clicked
-    private getEventFromSchedule(event: any): MyEvent {
-        let e;
-        if (event.calEvent instanceof FormationEvent) {
-            e = new FormationEvent();
-            e.salleCode = event.calEvent.salleCode;
-            e.salleCapacity = event.calEvent.salleCapacity;
-            e.stagiaireCount = e.calEvent.stagiaireCount;
-            e.prjecteurState = e.calEvent.prjecteurState;
-        } else if (event.calEvent instanceof TechnicianEvent) {
-            e = new TechnicianEvent();
-            e.computerUsed = event.calEvent.computerUsed;
-            e.computerStock = event.calEvent.computerStock;
-            e.projecteurUsed = event.calEvent.projecteurUsed;
-            e.projecteurStock = event.calEvent.projecteurStock;
-        } else {
-            e = (event.calEvent instanceof FormerEvent ? new FormerEvent() : new MyEvent());
-        }
-
-        e.id = event.calEvent.id;
-        e.title = event.calEvent.title;
-        e.start = (event.view.name === 'month' ? event.calEvent.start.stripTime().format() : event.calEvent.start.format());
-        e.end = (event.calEvent.end ? event.calEvent.end.stripTime().format() : e.start);
-        e.allDay = event.calEvent.allDay;
-        return e;
-    }
-
-=======
->>>>>>> parent of b9ae5c8... Merge remote-tracking branch 'origin/master'
     handleDayClick(event: any) {
         this.event = new MyEvent();
         this.event.start = event.date.format();

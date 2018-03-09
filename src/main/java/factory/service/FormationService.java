@@ -133,7 +133,7 @@ public class FormationService {
 		PdfPTable table = new PdfPTable(4);
 		PdfPCell title = new PdfPCell();
 		Phrase titre = new Phrase("formation: " + formation.getNom());
-		titre.setFont(FontFactory.getFont(FontFactory.TIMES_ROMAN, 18f));
+		titre.setFont(FontFactory.getFont(FontFactory.TIMES_ROMAN, 18.0f));
 
 		title.setPhrase(titre);
 		title.setColspan(4);
@@ -168,7 +168,7 @@ public class FormationService {
 		String month = null;
 		Module m = new Module();
 
-		for (int i = 0; i < daysBetween; i++) {
+		for (int i = 0; i <= daysBetween; i++) {
 
 			for (int col = 0; col < 4; col++) {
 				switch (col) {
@@ -273,8 +273,18 @@ public class FormationService {
 								for (int l = 0; l <= between; l++) {
 									if (debutform.plusDays(l).getDayOfWeek() == DayOfWeek.SATURDAY
 											|| debutform.plusDays(l).getDayOfWeek() == DayOfWeek.SUNDAY) {
-										spanf++;
+										spanf = spanf + 1;
+
 									}
+
+								}
+								if ((date.minusDays(1).getDayOfWeek() == DayOfWeek.FRIDAY || date.minusDays(1).getDayOfWeek() == DayOfWeek.MONDAY)
+										&& formateurs.get(k) == formateurs.get(formateurs.size() - 1)) {
+									spanf += 2;
+								}
+								if ((date.minusDays(1).getDayOfWeek() == DayOfWeek.THURSDAY)
+										&& formateurs.get(k) == formateurs.get(formateurs.size() - 1)) {
+									spanf = -1;
 								}
 								cell.setVerticalAlignment(Element.ALIGN_CENTER);
 								cell.setHorizontalAlignment(Element.ALIGN_CENTER);
