@@ -1,10 +1,7 @@
 package factory.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.fasterxml.jackson.annotation.JsonView;
-
 import factory.domain.Stagiaire;
-import factory.domain.Views;
 import factory.service.StagiaireService;
 import factory.web.rest.errors.BadRequestAlertException;
 import factory.web.rest.util.HeaderUtil;
@@ -95,7 +92,6 @@ public class StagiaireResource {
      */
     @GetMapping("/stagiaires")
     @Timed
-    @JsonView(Views.Stagiaire.class)
     public ResponseEntity<List<Stagiaire>> getAllStagiaires(Pageable pageable) {
         log.debug("REST request to get a page of Stagiaires");
         Page<Stagiaire> page = stagiaireService.findAll(pageable);
@@ -111,7 +107,6 @@ public class StagiaireResource {
      */
     @GetMapping("/stagiaires/{id}")
     @Timed
-    @JsonView(Views.Stagiaire.class)
     public ResponseEntity<Stagiaire> getStagiaire(@PathVariable Long id) {
         log.debug("REST request to get Stagiaire : {}", id);
         Stagiaire stagiaire = stagiaireService.findOne(id);
