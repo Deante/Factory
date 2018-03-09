@@ -12,6 +12,8 @@ export class Stagiaire implements BaseEntity {
         public niveau?: NiveauEnum,
         public ordinateurs?: BaseEntity[],
         public formation?: BaseEntity
+        public formation?: BaseEntity,
+        public ordinateur?: BaseEntity,
     ) {
     }
 }

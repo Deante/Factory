@@ -14,6 +14,7 @@
             <div class="ui-grid-row">
                 <div class="ui-grid-col-4"><label for="vin">Title</label></div>
                 <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="event.title"/></div>
+                <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="event.title" readonly/></div>
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-4"><label for="start">Start</label></div>
@@ -27,19 +28,40 @@
                     <p-calendar [(ngModel)]="event.end" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
                 </div>
             </div>
+            <!--
             <div class="ui-grid-row">
                 <div class="ui-grid-col-4"><label for="allday">All Day</label></div>
                 <div class="ui-grid-col-8">
                     <p-checkbox [(ngModel)]="event.allDay" binary="checkbox"></p-checkbox>
                 </div>
             </div>
+            -->
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="gestInput">Gestionnaire</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="gestInput" [(ngModel)]="event.gestionnaire" readonly/></div>
+            </div>
+            <div class="ui-grid-row" *ngIf="userHasGestionnaireRole || userHasAdminRole">
+                <div class="ui-grid-col-4"><label for="salleInput">salle</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="salleInput" [(ngModel)]="event.salleCode" readonly/></div>
+            </div>
+            <div class="ui-grid-row" *ngIf="userHasGestionnaireRole || userHasAdminRole">
+                <div class="ui-grid-col-8"><label for="salleCapInput">Capacité de la salle</label></div>
+                <div class="ui-grid-col-4"><input pInputText id="salleCapInput" [(ngModel)]="event.salleCapacity" readonly/></div>
+            </div>
+            <div class="ui-grid-row" *ngIf="userHasGestionnaireRole || userHasAdminRole">
+                <div class="ui-grid-col-8"><label for="stagiaireCountInput">Nombre de stagiaire</label></div>
+                <div class="ui-grid-col-4"><input pInputText id="stagiaireCountInput" [(ngModel)]="event.stagiaireCount" readonly/></div>
+            </div>
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                <!--
                 <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete"
                         [disabled]="!event?.id"></button>
                 <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save"
                         [disabled]="!event?.start"></button>
+                -->
+                <button type="button" pButton icon="fa-check" (click)="closeEventDialog()" label="Close" [disabled]="false"></button>
             </div>
         </p-footer>
     </p-dialog>

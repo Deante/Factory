@@ -50,6 +50,7 @@
             <select class="form-control" id="field_formateur" name="formateur" [(ngModel)]="disponibilite.formateur" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="formateurOption.id === disponibilite.formateur?.id ? disponibilite.formateur : formateurOption" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user.lastName}}</option>
+                <option [ngValue]="formateurOption.id === disponibilite.formateur?.id ? disponibilite.formateur : formateurOption" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user?.lastName}}</option>
             </select>
         </div>
     </div>

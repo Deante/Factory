@@ -77,6 +77,7 @@
             <label jhiTranslate="factoryApp.module.formateurs" for="field_formateurs">Formateurs</label>
             <select class="form-control" id="field_formateurs" multiple name="formateurs" [(ngModel)]="module.formateurs">
                 <option [ngValue]="getSelected(module.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user.lastName}}</option>
+                <option [ngValue]="getSelected(module.formateurs, formateurOption)" *ngFor="let formateurOption of formateurs; trackBy: trackFormateurById">{{formateurOption.user?.lastName}}</option>
             </select>
         </div>
     </div>
