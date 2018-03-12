@@ -3,8 +3,6 @@ export class MyEvent {
     title: string;
     start: string;
     end: string;
-    allDay = true;
-}
     color: string;
     gestionnaire: string;
     allDay = true;
@@ -23,4 +21,4 @@ export class GestionnaireEvent extends MyEvent implements IGestionnaireEvent {
     stagiaireCount: number;
     formateursList: string[];
 }
->>>>>>> sonny
+

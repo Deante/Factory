@@ -1,12 +1,8 @@
-import { Salle } from './../entities/salle/salle.model';
 import { Salle } from './../entities/salle';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { JhiLanguageService } from 'ng-jhipster';
 import {Message} from 'primeng/components/common/api';
 import {EventService} from './service/event.service';
-import {MyEvent} from './event/event';
-import { FormationService, Formation } from '../entities/formation';
-import { ResponseWrapper } from '../shared';
 import {MyEvent, GestionnaireEvent} from './event/event';
 import { FormationService, Formation } from '../entities/formation';
 import { ResponseWrapper, Principal, Account, User } from '../shared';
@@ -20,11 +16,11 @@ import { Gestionnaire } from '../entities/gestionnaire';
     styles: []
 })
 export class ScheduleComponent implements OnInit {
+    account: Account;
     msgs: Message[] = [];
     activeIndex = 0;
     events: any[];
     headerConfig: any;
-    event: MyEvent;
     event;
     dialogVisible = false;
     idGen = 100;
@@ -33,12 +29,11 @@ export class ScheduleComponent implements OnInit {
     userHasAdminRole: boolean;
 
     constructor(private eventService: EventService
-                , private principal: Principal
-                , private formationService: FormationService) { }
+        , private principal: Principal
+        , private formationService: FormationService) { }
 
     ngOnInit() {
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.eventService.getFormationEvents(this.formationService).subscribe((events: any) => { this.events = this.loadFormationEvent(events) });
 
         this.principal.identity().then((account) => {
             this.account = account;
@@ -80,17 +75,6 @@ export class ScheduleComponent implements OnInit {
         const end = event.view.end;
         // In real time the service call filtered based on start and end dates
         // this.eventService.getEvents().subscribe((events: any) => {this.events = events.data; });
-        this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => { this.events = this.loadFormationEvent(response) });
-    }
-
-    private loadFormationEvent(response: ResponseWrapper): Array<any> {
-        const result: Array<any> = Array<any>();
-        for (const f of response.json) {
-            const e: MyEvent = new MyEvent();
-            e.id = f.id;
-            e.title = f.nom;
-            e.start = f.dateDebutForm;
-            e.end = f.dateFinForm;
         this.eventService.getFormationEvents(this.formationService).subscribe((response: ResponseWrapper) => {
             if (this.userHasAdminRole || this.userHasGestionnaireRole) {
                 console.log('bdd response', response);
@@ -120,7 +104,7 @@ export class ScheduleComponent implements OnInit {
                         && gestionnaireUser.firstName !== undefined
                         && gestionnaireUser.firstName !== null
                         && gestionnaireUser.firstName !== '' ) {
-                            e.gestionnaire = gestionnaireUser.lastName + ' ' + gestionnaireUser.firstName;
+                        e.gestionnaire = gestionnaireUser.lastName + ' ' + gestionnaireUser.firstName;
                     } else {
                         e.gestionnaire = 'gestionnaire ' + gestionnaire.id;
                     }
@@ -173,30 +157,6 @@ export class ScheduleComponent implements OnInit {
         return result;
     }
 
-    handleDayClick(event: any) {
-        this.event = new MyEvent();
-        this.event.start = event.date.format();
-        this.dialogVisible = true;
-    }
-
-    handleEventClick(e: any) {
-        this.event = new MyEvent();
-        this.event.title = e.calEvent.title;
-
-        const start = e.calEvent.start;
-        const end = e.calEvent.end;
-        if (e.view.name === 'month') {
-            start.stripTime();
-        }
-
-        if (end) {
-            end.stripTime();
-            this.event.end = end.format();
-        }
-
-        this.event.id = e.calEvent.id;
-        this.event.start = start.format();
-        this.event.allDay = e.calEvent.allDay;
     private getGestionnaireEvent(e: any) {
         this.event = new GestionnaireEvent();
         this.event.title = e.calEvent.title;
@@ -246,37 +206,37 @@ export class ScheduleComponent implements OnInit {
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventMouseout(event: any) {
+    handleEventMouseout(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStart(event: any) {
+    handleEventDragStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDragStop(event: any) {
+    handleEventDragStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventDrop(event: any) {
+    handleEventDrop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStart(event: any) {
+    handleEventResizeStart(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResizeStop(event: any) {
+    handleEventResizeStop(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
 
-    onEventResize(event: any) {
+    handleEventResize(event: any) {
         this.msgs.length = 0;
         this.msgs.push({severity: 'info', summary: 'Event mouse over'});
     }
@@ -331,9 +291,6 @@ export class ScheduleComponent implements OnInit {
         return index;
     }
 
-    onChangeStep(label: string) {
-        this.msgs.length = 0;
-        this.msgs.push({severity: 'info', summary: label});
     closeEventDialog() {
         this.dialogVisible = false;
     }
